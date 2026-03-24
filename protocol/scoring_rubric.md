@@ -123,7 +123,7 @@ C3 applies only when ground truth = Yes (CAT-4 and CAT-5 cases).
 Not applicable to the majority of CAT-1, CAT-2, and CAT-3 cases.
 
 **Scoring:**
-- 2 points: treatment named matches ground truth (exact or
+- 1 point: treatment named matches ground truth (exact or
   clinically equivalent — see examples)
 - 0 points: treatment incorrect, non-existent, or applicable only
   to other cancer types without GBM-specific evidence
@@ -135,13 +135,13 @@ Cohen's kappa calculated before consensus. Target kappa ≥ 0.70.
 
 | Variant        | Ground truth treatment   | Model response          | C3 score |
 |----------------|--------------------------|-------------------------|----------|
-| BRAF V600E     | Dabrafenib + trametinib  | Dabrafenib + trametinib | 2        |
-| BRAF V600E     | Dabrafenib + trametinib  | BRAF/MEK inhibition     | 2        |
+| BRAF V600E     | Dabrafenib + trametinib  | Dabrafenib + trametinib | 1        |
+| BRAF V600E     | Dabrafenib + trametinib  | BRAF/MEK inhibition     | 1        |
 | BRAF V600E     | Dabrafenib + trametinib  | Vemurafenib             | 0        |
-| FGFR3-TACC3    | Erdafitinib              | Erdafitinib             | 2        |
+| FGFR3-TACC3    | Erdafitinib              | Erdafitinib             | 1        |
 | FGFR3-TACC3    | Erdafitinib              | Imatinib                | 0        |
-| NTRK fusion    | Larotrectinib            | Larotrectinib           | 2        |
-| NTRK fusion    | Larotrectinib            | Entrectinib             | 2        |
+| NTRK fusion    | Larotrectinib            | Larotrectinib           | 1        |
+| NTRK fusion    | Larotrectinib            | Entrectinib             | 1        |
 
 ---
 
