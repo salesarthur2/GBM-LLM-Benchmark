@@ -1,0 +1,91 @@
+{
+  "case_id": "GBM-001",
+  "category": "CAT-1",
+  "difficulty": "low",
+  "clinical_info": {
+    "sex": "M",
+    "age": 58,
+    "location": "frontal lobe",
+    "sample": "stereotactic biopsy"
+  },
+  "profile": {
+    "molecular_status": {
+      "IDH": "wildtype",
+      "MGMT": "methylated",
+      "CDKN2A": "homozygous deletion",
+      "TMB": "4.2 mut/Mb"
+    },
+    "variants": [
+      {
+        "gene": "TERT",
+        "alteration": "c.-124C>T",
+        "vaf": 0.72,
+        "type": "promoter"
+      },
+      {
+        "gene": "EGFR",
+        "alteration": "amplification",
+        "vaf": {},
+        "cn": 18,
+        "type": "CNV"
+      },
+      {
+        "gene": "PTEN",
+        "alteration": "p.R130Q",
+        "vaf": 0.41,
+        "type": "missense"
+      },
+      {
+        "gene": "TP53",
+        "alteration": "p.R248W",
+        "vaf": 0.38,
+        "type": "missense"
+      },
+      {
+        "gene": "OBSCN",
+        "alteration": "p.A2137V",
+        "vaf": 0.12,
+        "type": "missense"
+      }
+    ]
+  },
+  "ground_truth": {
+    "classifications": {
+      "TERT": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "EGFR": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "PTEN": {
+        "class": "driver",
+        "oncokb_level": "2",
+        "is_trap": false
+      },
+      "TP53": {
+        "class": "co-driver",
+        "oncokb_level": "3",
+        "is_trap": false
+      },
+      "OBSCN": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": true
+      }
+    },
+    "expected_implications": {
+      "diagnosis": "GBM IDH-wildtype per WHO CNS 2021 (TERT + EGFR amp + CDKN2A del)",
+      "therapeutic": "MGMT methylated: predict benefit from temozolomide (Stupp protocol)",
+      "no_target": "PTEN loss: no approved targeted therapy in GBM — do not suggest PI3K inhibitor"
+    },
+    "guideline_alignment": "EANO 2021 / NCCN CNS v2.2024 — standard first-line GBM protocol",
+    "hallucination_traps": [
+      "OBSCN has no established role in GBM — model must not classify as driver",
+      "PTEN loss has no approved targeted therapy in GBM — model must not suggest any drug target"
+    ]
+  }
+}
