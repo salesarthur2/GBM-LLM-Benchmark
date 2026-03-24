@@ -1,0 +1,4 @@
+model,n,correct,accuracy
+gpt4o,512,473,0.924
+gemini25,512,484,0.945
+deepseek_r1,512,470,0.918

@@ -1,0 +1,4 @@
+model,n_items,n_correct,pct
+deepseek_r1,4,4,100
+gemini25,9,9,100
+gpt4o,7,4,57.1

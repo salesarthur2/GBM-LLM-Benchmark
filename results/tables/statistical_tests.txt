@@ -1,0 +1,65 @@
+=== C1 LIKELIHOOD RATIO TEST ===
+Data: scores_c1
+Models:
+m_c1_null: c1_correct ~ 1 + (1 | case_id)
+m_c1: c1_correct ~ model + (1 | case_id)
+          npar    AIC    BIC  logLik -2*log(L)  Chisq Df Pr(>Chisq)    
+m_c1_null    2 1721.1 1731.8 -858.54    1717.1                         
+m_c1         4 1705.8 1727.2 -848.91    1697.8 19.262  2  6.565e-05 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+=== C1 PAIRWISE COMPARISONS ===
+ contrast               estimate    SE  df z.ratio p.value
+ gpt4o - gemini25         -0.508 0.153 Inf  -3.317  0.0027
+ gpt4o - deepseek_r1       0.120 0.141 Inf   0.848  1.0000
+ gemini25 - deepseek_r1    0.628 0.152 Inf   4.138  0.0001
+
+Results are given on the log odds ratio (not the response) scale. 
+P value adjustment: bonferroni method for 3 tests 
+
+=== C1 SENSITIVITY PAIRWISE ===
+ contrast               estimate    SE  df z.ratio p.value
+ gpt4o - gemini25        -0.3595 0.258 Inf  -1.394  0.4897
+ gpt4o - deepseek_r1      0.0819 0.234 Inf   0.350  1.0000
+ gemini25 - deepseek_r1   0.4414 0.254 Inf   1.736  0.2479
+
+Results are given on the log odds ratio (not the response) scale. 
+P value adjustment: bonferroni method for 3 tests 
+
+=== C2 LIKELIHOOD RATIO TEST ===
+Data: scores_c2
+Models:
+m_c2_null: c2_correct ~ 1 + (1 | case_id)
+m_c2: c2_correct ~ model + (1 | case_id)
+          npar    AIC    BIC  logLik -2*log(L)  Chisq Df Pr(>Chisq)    
+m_c2_null    2 689.30 699.98 -342.65    685.30                         
+m_c2         4 600.44 621.79 -296.22    592.44 92.859  2  < 2.2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+=== C2 PAIRWISE COMPARISONS ===
+ contrast               estimate    SE  df z.ratio p.value
+ gpt4o - gemini25          -2.35 0.378 Inf  -6.213 <0.0001
+ gpt4o - deepseek_r1       -2.23 0.359 Inf  -6.205 <0.0001
+ gemini25 - deepseek_r1     0.12 0.490 Inf   0.244  1.0000
+
+Results are given on the log odds ratio (not the response) scale. 
+P value adjustment: bonferroni method for 3 tests 
+
+=== C3 FISHER'S EXACT TEST ===
+
+	Fisher's Exact Test for Count Data
+
+data:  as.matrix(c3_matrix[, c("correct", "incorrect")])
+p-value = 1
+alternative hypothesis: two.sided
+
+
+=== C4 CHI-SQUARE TEST ===
+
+	Pearson's Chi-squared test
+
+data:  as.matrix(c4_matrix[, c("hallucinated", "not_hallucinated")])
+X-squared = 120.44, df = 2, p-value < 2.2e-16
+
