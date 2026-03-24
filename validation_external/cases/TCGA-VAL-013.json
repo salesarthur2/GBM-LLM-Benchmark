@@ -1,0 +1,114 @@
+{
+  "case_id": "TCGA-VAL-013",
+  "tcga_id": "TCGA-06-0879-01",
+  "category": "TCGA_VAL",
+  "difficulty": "real_world",
+  "clinical_info": {
+    "patient_id": "TCGA-06-0879-01",
+    "sex": null,
+    "age": "NA",
+    "location": "not reported",
+    "sample": "surgical resection",
+    "sample_type": "Primary"
+  },
+  "profile": {
+    "molecular_status": {
+      "IDH1_mutation": "WT",
+      "MGMT_status": "METHYLATED",
+      "G_CIMP_methylation": "non-G-CIMP",
+      "CDKN2A": "homozygous deletion",
+      "TMB_nonsynonymous": 1.33,
+      "expression_subtype": "Classical"
+    },
+    "variants": [
+      {
+        "gene": "CDKN2A",
+        "HGVSp_short": "homozygous_deletion",
+        "variant_classification": "HomDel",
+        "variant_type": "CNV",
+        "t_alt_count": null,
+        "t_ref_count": null,
+        "vaf": null
+      },
+      {
+        "gene": "EGFR",
+        "HGVSp_short": "p.N771_H773dup",
+        "variant_classification": "In_Frame_Ins",
+        "variant_type": "INS",
+        "t_alt_count": null,
+        "t_ref_count": null,
+        "vaf": null
+      },
+      {
+        "gene": "PIK3CA",
+        "HGVSp_short": "p.E453D",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": null,
+        "t_ref_count": null,
+        "vaf": null
+      },
+      {
+        "gene": "PIK3CA",
+        "HGVSp_short": "p.L455_G460delinsF",
+        "variant_classification": "In_Frame_Del",
+        "variant_type": "DEL",
+        "t_alt_count": null,
+        "t_ref_count": null,
+        "vaf": null
+      },
+      {
+        "gene": "AADACL2",
+        "HGVSp_short": "p.T333I",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": null,
+        "t_ref_count": null,
+        "vaf": null
+      }
+    ]
+  },
+  "ground_truth": {
+    "classifications": {
+      "CDKN2A": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "EGFR": {
+        "class": "driver",
+        "oncokb_level": "2",
+        "is_trap": false
+      },
+      "PIK3CA": {
+        "class": "co-driver",
+        "oncokb_level": "3",
+        "is_trap": false
+      },
+      "AADACL2": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": false
+      }
+    },
+    "therapeutic_relevance": {
+      "CDKN2A": {
+        "relevant": false,
+        "treatment": null
+      },
+      "EGFR": {
+        "relevant": false,
+        "treatment": null
+      },
+      "PIK3CA": {
+        "relevant": false,
+        "treatment": null
+      },
+      "AADACL2": {
+        "relevant": false,
+        "treatment": null
+      }
+    },
+    "note": "Ground truth annotated by PI — review before running models"
+  }
+}

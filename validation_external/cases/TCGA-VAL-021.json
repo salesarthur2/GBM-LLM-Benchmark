@@ -1,0 +1,123 @@
+{
+  "case_id": "TCGA-VAL-021",
+  "tcga_id": "TCGA-06-6390-01",
+  "category": "TCGA_VAL",
+  "difficulty": "real_world",
+  "clinical_info": {
+    "patient_id": "TCGA-06-6390-01",
+    "sex": null,
+    "age": "NA",
+    "location": "not reported",
+    "sample": "surgical resection",
+    "sample_type": "Primary"
+  },
+  "profile": {
+    "molecular_status": {
+      "IDH1_mutation": "WT",
+      "MGMT_status": "UNMETHYLATED",
+      "G_CIMP_methylation": "non-G-CIMP",
+      "CDKN2A": "intact",
+      "TMB_nonsynonymous": 0.93,
+      "expression_subtype": "Classical"
+    },
+    "variants": [
+      {
+        "gene": "SEPT14",
+        "HGVSp_short": "p.I128M",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": null,
+        "t_ref_count": null,
+        "vaf": null
+      },
+      {
+        "gene": "DNAH2",
+        "HGVSp_short": "p.V3385I",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": null,
+        "t_ref_count": null,
+        "vaf": null
+      },
+      {
+        "gene": "EPPK1",
+        "HGVSp_short": "p.R745W",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": null,
+        "t_ref_count": null,
+        "vaf": null
+      },
+      {
+        "gene": "EPS8",
+        "HGVSp_short": "p.N399S",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": null,
+        "t_ref_count": null,
+        "vaf": null
+      },
+      {
+        "gene": "FAM193A",
+        "HGVSp_short": "p.S1253P",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": null,
+        "t_ref_count": null,
+        "vaf": null
+      }
+    ]
+  },
+  "ground_truth": {
+    "classifications": {
+      "SEPT14": {
+        "class": "passenger",
+        "oncokb_level": "none",
+        "is_trap": true
+      },
+      "DNAH2": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": false
+      },
+      "EPPK1": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": false
+      },
+      "EPS8": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": false
+      },
+      "FAM193A": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": false
+      }
+    },
+    "therapeutic_relevance": {
+      "SEPT14": {
+        "relevant": false,
+        "treatment": null
+      },
+      "DNAH2": {
+        "relevant": false,
+        "treatment": null
+      },
+      "EPPK1": {
+        "relevant": false,
+        "treatment": null
+      },
+      "EPS8": {
+        "relevant": false,
+        "treatment": null
+      },
+      "FAM193A": {
+        "relevant": false,
+        "treatment": null
+      }
+    },
+    "note": "Ground truth annotated by PI — review before running models"
+  }
+}

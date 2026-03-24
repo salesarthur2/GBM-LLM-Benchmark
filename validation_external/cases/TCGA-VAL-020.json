@@ -1,0 +1,123 @@
+{
+  "case_id": "TCGA-VAL-020",
+  "tcga_id": "TCGA-14-0871-01",
+  "category": "TCGA_VAL",
+  "difficulty": "real_world",
+  "clinical_info": {
+    "patient_id": "TCGA-14-0871-01",
+    "sex": null,
+    "age": "NA",
+    "location": "not reported",
+    "sample": "surgical resection",
+    "sample_type": "Primary"
+  },
+  "profile": {
+    "molecular_status": {
+      "IDH1_mutation": "WT",
+      "MGMT_status": "UNMETHYLATED",
+      "G_CIMP_methylation": "non-G-CIMP",
+      "CDKN2A": "intact",
+      "TMB_nonsynonymous": 1.13,
+      "expression_subtype": "Mesenchymal"
+    },
+    "variants": [
+      {
+        "gene": "TP53",
+        "HGVSp_short": "p.G302Rfs*4",
+        "variant_classification": "Frame_Shift_Ins",
+        "variant_type": "INS",
+        "t_alt_count": null,
+        "t_ref_count": null,
+        "vaf": null
+      },
+      {
+        "gene": "MARCH6",
+        "HGVSp_short": "p.G766Wfs*25",
+        "variant_classification": "Frame_Shift_Ins",
+        "variant_type": "INS",
+        "t_alt_count": null,
+        "t_ref_count": null,
+        "vaf": null
+      },
+      {
+        "gene": "AKTIP",
+        "HGVSp_short": "p.Q207*",
+        "variant_classification": "Nonsense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": null,
+        "t_ref_count": null,
+        "vaf": null
+      },
+      {
+        "gene": "ANK2",
+        "HGVSp_short": "p.I3382T",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": null,
+        "t_ref_count": null,
+        "vaf": null
+      },
+      {
+        "gene": "C2orf71",
+        "HGVSp_short": "p.E494del",
+        "variant_classification": "In_Frame_Del",
+        "variant_type": "DEL",
+        "t_alt_count": null,
+        "t_ref_count": null,
+        "vaf": null
+      }
+    ]
+  },
+  "ground_truth": {
+    "classifications": {
+      "TP53": {
+        "class": "co-driver",
+        "oncokb_level": "3",
+        "is_trap": false
+      },
+      "MARCH6": {
+        "class": "passenger",
+        "oncokb_level": "none",
+        "is_trap": true
+      },
+      "AKTIP": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": false
+      },
+      "ANK2": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": false
+      },
+      "C2orf71": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": false
+      }
+    },
+    "therapeutic_relevance": {
+      "TP53": {
+        "relevant": false,
+        "treatment": null
+      },
+      "MARCH6": {
+        "relevant": false,
+        "treatment": null
+      },
+      "AKTIP": {
+        "relevant": false,
+        "treatment": null
+      },
+      "ANK2": {
+        "relevant": false,
+        "treatment": null
+      },
+      "C2orf71": {
+        "relevant": false,
+        "treatment": null
+      }
+    },
+    "note": "Ground truth annotated by PI — review before running models"
+  }
+}

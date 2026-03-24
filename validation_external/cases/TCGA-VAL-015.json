@@ -1,0 +1,123 @@
+{
+  "case_id": "TCGA-VAL-015",
+  "tcga_id": "TCGA-27-1833-01",
+  "category": "TCGA_VAL",
+  "difficulty": "real_world",
+  "clinical_info": {
+    "patient_id": "TCGA-27-1833-01",
+    "sex": null,
+    "age": "NA",
+    "location": "not reported",
+    "sample": "surgical resection",
+    "sample_type": "Primary"
+  },
+  "profile": {
+    "molecular_status": {
+      "IDH1_mutation": "WT",
+      "MGMT_status": "UNMETHYLATED",
+      "G_CIMP_methylation": "non-G-CIMP",
+      "CDKN2A": "homozygous deletion",
+      "TMB_nonsynonymous": 1.3,
+      "expression_subtype": "Classical"
+    },
+    "variants": [
+      {
+        "gene": "EGFR",
+        "HGVSp_short": "amplification",
+        "variant_classification": "Amplification",
+        "variant_type": "CNV",
+        "t_alt_count": null,
+        "t_ref_count": null,
+        "vaf": null
+      },
+      {
+        "gene": "CDKN2A",
+        "HGVSp_short": "homozygous_deletion",
+        "variant_classification": "HomDel",
+        "variant_type": "CNV",
+        "t_alt_count": null,
+        "t_ref_count": null,
+        "vaf": null
+      },
+      {
+        "gene": "A1CF",
+        "HGVSp_short": "p.R125H",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": null,
+        "t_ref_count": null,
+        "vaf": null
+      },
+      {
+        "gene": "B3GNT8",
+        "HGVSp_short": "p.Y206*",
+        "variant_classification": "Nonsense_Mutation",
+        "variant_type": "DEL",
+        "t_alt_count": null,
+        "t_ref_count": null,
+        "vaf": null
+      },
+      {
+        "gene": "BRWD3",
+        "HGVSp_short": "p.R1418*",
+        "variant_classification": "Nonsense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": null,
+        "t_ref_count": null,
+        "vaf": null
+      }
+    ]
+  },
+  "ground_truth": {
+    "classifications": {
+      "EGFR": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "CDKN2A": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "A1CF": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": false
+      },
+      "B3GNT8": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": false
+      },
+      "BRWD3": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": false
+      }
+    },
+    "therapeutic_relevance": {
+      "EGFR": {
+        "relevant": false,
+        "treatment": null
+      },
+      "CDKN2A": {
+        "relevant": false,
+        "treatment": null
+      },
+      "A1CF": {
+        "relevant": false,
+        "treatment": null
+      },
+      "B3GNT8": {
+        "relevant": false,
+        "treatment": null
+      },
+      "BRWD3": {
+        "relevant": false,
+        "treatment": null
+      }
+    },
+    "note": "Ground truth annotated by PI — review before running models"
+  }
+}

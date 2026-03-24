@@ -1,0 +1,123 @@
+{
+  "case_id": "TCGA-VAL-014",
+  "tcga_id": "TCGA-28-2509-01",
+  "category": "TCGA_VAL",
+  "difficulty": "real_world",
+  "clinical_info": {
+    "patient_id": "TCGA-28-2509-01",
+    "sex": null,
+    "age": "NA",
+    "location": "not reported",
+    "sample": "surgical resection",
+    "sample_type": "Primary"
+  },
+  "profile": {
+    "molecular_status": {
+      "IDH1_mutation": "WT",
+      "MGMT_status": "METHYLATED",
+      "G_CIMP_methylation": "non-G-CIMP",
+      "CDKN2A": "intact",
+      "TMB_nonsynonymous": 1.47,
+      "expression_subtype": "Mesenchymal"
+    },
+    "variants": [
+      {
+        "gene": "AASDH",
+        "HGVSp_short": "p.L440F",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": null,
+        "t_ref_count": null,
+        "vaf": null
+      },
+      {
+        "gene": "CNDP1",
+        "HGVSp_short": "p.R91H",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": null,
+        "t_ref_count": null,
+        "vaf": null
+      },
+      {
+        "gene": "CXorf22",
+        "HGVSp_short": "p.T543M",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": null,
+        "t_ref_count": null,
+        "vaf": null
+      },
+      {
+        "gene": "DARC",
+        "HGVSp_short": "p.R89H",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": null,
+        "t_ref_count": null,
+        "vaf": null
+      },
+      {
+        "gene": "DBR1",
+        "HGVSp_short": "p.D542del",
+        "variant_classification": "In_Frame_Del",
+        "variant_type": "DEL",
+        "t_alt_count": null,
+        "t_ref_count": null,
+        "vaf": null
+      }
+    ]
+  },
+  "ground_truth": {
+    "classifications": {
+      "AASDH": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": false
+      },
+      "CNDP1": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": false
+      },
+      "CXorf22": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": false
+      },
+      "DARC": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": false
+      },
+      "DBR1": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": false
+      }
+    },
+    "therapeutic_relevance": {
+      "AASDH": {
+        "relevant": false,
+        "treatment": null
+      },
+      "CNDP1": {
+        "relevant": false,
+        "treatment": null
+      },
+      "CXorf22": {
+        "relevant": false,
+        "treatment": null
+      },
+      "DARC": {
+        "relevant": false,
+        "treatment": null
+      },
+      "DBR1": {
+        "relevant": false,
+        "treatment": null
+      }
+    },
+    "note": "Ground truth annotated by PI — review before running models"
+  }
+}

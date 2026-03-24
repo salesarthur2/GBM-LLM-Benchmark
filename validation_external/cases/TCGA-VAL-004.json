@@ -1,0 +1,123 @@
+{
+  "case_id": "TCGA-VAL-004",
+  "tcga_id": "TCGA-32-4211-01",
+  "category": "TCGA_VAL",
+  "difficulty": "real_world",
+  "clinical_info": {
+    "patient_id": "TCGA-32-4211-01",
+    "sex": null,
+    "age": "NA",
+    "location": "not reported",
+    "sample": "surgical resection",
+    "sample_type": "Primary"
+  },
+  "profile": {
+    "molecular_status": {
+      "IDH1_mutation": "WT",
+      "MGMT_status": "UNMETHYLATED",
+      "G_CIMP_methylation": "non-G-CIMP",
+      "CDKN2A": "intact",
+      "TMB_nonsynonymous": 2.2,
+      "expression_subtype": "Neural"
+    },
+    "variants": [
+      {
+        "gene": "PDGFRA",
+        "HGVSp_short": "amplification",
+        "variant_classification": "Amplification",
+        "variant_type": "CNV",
+        "t_alt_count": null,
+        "t_ref_count": null,
+        "vaf": null
+      },
+      {
+        "gene": "AADACL4",
+        "HGVSp_short": "p.W278*",
+        "variant_classification": "Nonsense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": null,
+        "t_ref_count": null,
+        "vaf": null
+      },
+      {
+        "gene": "ADAMTS20",
+        "HGVSp_short": "p.R640T",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": null,
+        "t_ref_count": null,
+        "vaf": null
+      },
+      {
+        "gene": "ALK",
+        "HGVSp_short": "p.P1215=",
+        "variant_classification": "Splice_Region",
+        "variant_type": "SNP",
+        "t_alt_count": null,
+        "t_ref_count": null,
+        "vaf": null
+      },
+      {
+        "gene": "AMT",
+        "HGVSp_short": "p.S6Kfs*22",
+        "variant_classification": "Frame_Shift_Ins",
+        "variant_type": "INS",
+        "t_alt_count": null,
+        "t_ref_count": null,
+        "vaf": null
+      }
+    ]
+  },
+  "ground_truth": {
+    "classifications": {
+      "PDGFRA": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "AADACL4": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": false
+      },
+      "ADAMTS20": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": false
+      },
+      "ALK": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": false
+      },
+      "AMT": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": false
+      }
+    },
+    "therapeutic_relevance": {
+      "PDGFRA": {
+        "relevant": false,
+        "treatment": null
+      },
+      "AADACL4": {
+        "relevant": false,
+        "treatment": null
+      },
+      "ADAMTS20": {
+        "relevant": false,
+        "treatment": null
+      },
+      "ALK": {
+        "relevant": false,
+        "treatment": null
+      },
+      "AMT": {
+        "relevant": false,
+        "treatment": null
+      }
+    },
+    "note": "Ground truth annotated by PI — review before running models"
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "case_id": "TCGA-VAL-018",
+  "tcga_id": "TCGA-14-1825-01",
+  "category": "TCGA_VAL",
+  "difficulty": "real_world",
+  "clinical_info": {
+    "patient_id": "TCGA-14-1825-01",
+    "sex": null,
+    "age": "NA",
+    "location": "not reported",
+    "sample": "surgical resection",
+    "sample_type": "Primary"
+  },
+  "profile": {
+    "molecular_status": {
+      "IDH1_mutation": "WT",
+      "MGMT_status": "UNMETHYLATED",
+      "G_CIMP_methylation": "non-G-CIMP",
+      "CDKN2A": "homozygous deletion",
+      "TMB_nonsynonymous": 1.17,
+      "expression_subtype": "Proneural"
+    },
+    "variants": [
+      {
+        "gene": "CDKN2A",
+        "HGVSp_short": "homozygous_deletion",
+        "variant_classification": "HomDel",
+        "variant_type": "CNV",
+        "t_alt_count": null,
+        "t_ref_count": null,
+        "vaf": null
+      },
+      {
+        "gene": "TP53",
+        "HGVSp_short": "p.R282W",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": null,
+        "t_ref_count": null,
+        "vaf": null
+      },
+      {
+        "gene": "TP53",
+        "HGVSp_short": "p.R196*",
+        "variant_classification": "Nonsense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": null,
+        "t_ref_count": null,
+        "vaf": null
+      },
+      {
+        "gene": "AACS",
+        "HGVSp_short": "p.H302P",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": null,
+        "t_ref_count": null,
+        "vaf": null
+      },
+      {
+        "gene": "AARS",
+        "HGVSp_short": "p.L133I",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": null,
+        "t_ref_count": null,
+        "vaf": null
+      }
+    ]
+  },
+  "ground_truth": {
+    "classifications": {
+      "CDKN2A": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "TP53": {
+        "class": "co-driver",
+        "oncokb_level": "3",
+        "is_trap": false
+      },
+      "AACS": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": false
+      },
+      "AARS": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": false
+      }
+    },
+    "therapeutic_relevance": {
+      "CDKN2A": {
+        "relevant": false,
+        "treatment": null
+      },
+      "TP53": {
+        "relevant": false,
+        "treatment": null
+      },
+      "AACS": {
+        "relevant": false,
+        "treatment": null
+      },
+      "AARS": {
+        "relevant": false,
+        "treatment": null
+      }
+    },
+    "note": "Ground truth annotated by PI — review before running models"
+  }
+}

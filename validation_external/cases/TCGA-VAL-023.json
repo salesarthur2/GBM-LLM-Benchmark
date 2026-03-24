@@ -1,0 +1,123 @@
+{
+  "case_id": "TCGA-VAL-023",
+  "tcga_id": "TCGA-06-5411-01",
+  "category": "TCGA_VAL",
+  "difficulty": "real_world",
+  "clinical_info": {
+    "patient_id": "TCGA-06-5411-01",
+    "sex": null,
+    "age": "NA",
+    "location": "not reported",
+    "sample": "surgical resection",
+    "sample_type": "Primary"
+  },
+  "profile": {
+    "molecular_status": {
+      "IDH1_mutation": "WT",
+      "MGMT_status": "UNMETHYLATED",
+      "G_CIMP_methylation": "non-G-CIMP",
+      "CDKN2A": "homozygous deletion",
+      "TMB_nonsynonymous": 0.9,
+      "expression_subtype": "Neural"
+    },
+    "variants": [
+      {
+        "gene": "CDKN2A",
+        "HGVSp_short": "homozygous_deletion",
+        "variant_classification": "HomDel",
+        "variant_type": "CNV",
+        "t_alt_count": null,
+        "t_ref_count": null,
+        "vaf": null
+      },
+      {
+        "gene": "A1BG",
+        "HGVSp_short": "p.G466D",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": null,
+        "t_ref_count": null,
+        "vaf": null
+      },
+      {
+        "gene": "ABI2",
+        "HGVSp_short": "p.R253*",
+        "variant_classification": "Nonsense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": null,
+        "t_ref_count": null,
+        "vaf": null
+      },
+      {
+        "gene": "ANO9",
+        "HGVSp_short": "p.R574H",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": null,
+        "t_ref_count": null,
+        "vaf": null
+      },
+      {
+        "gene": "ARHGEF28",
+        "HGVSp_short": "p.A18V",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": null,
+        "t_ref_count": null,
+        "vaf": null
+      }
+    ]
+  },
+  "ground_truth": {
+    "classifications": {
+      "CDKN2A": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "A1BG": {
+        "class": "passenger",
+        "oncokb_level": "none",
+        "is_trap": true
+      },
+      "ABI2": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": false
+      },
+      "ANO9": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": false
+      },
+      "ARHGEF28": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": false
+      }
+    },
+    "therapeutic_relevance": {
+      "CDKN2A": {
+        "relevant": false,
+        "treatment": null
+      },
+      "A1BG": {
+        "relevant": false,
+        "treatment": null
+      },
+      "ABI2": {
+        "relevant": false,
+        "treatment": null
+      },
+      "ANO9": {
+        "relevant": false,
+        "treatment": null
+      },
+      "ARHGEF28": {
+        "relevant": false,
+        "treatment": null
+      }
+    },
+    "note": "Ground truth annotated by PI — review before running models"
+  }
+}

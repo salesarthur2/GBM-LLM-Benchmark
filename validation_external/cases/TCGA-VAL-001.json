@@ -1,0 +1,123 @@
+{
+  "case_id": "TCGA-VAL-001",
+  "tcga_id": "TCGA-19-1790-01",
+  "category": "TCGA_VAL",
+  "difficulty": "real_world",
+  "clinical_info": {
+    "patient_id": "TCGA-19-1790-01",
+    "sex": null,
+    "age": "NA",
+    "location": "not reported",
+    "sample": "surgical resection",
+    "sample_type": "Primary"
+  },
+  "profile": {
+    "molecular_status": {
+      "IDH1_mutation": "WT",
+      "MGMT_status": "UNMETHYLATED",
+      "G_CIMP_methylation": "non-G-CIMP",
+      "CDKN2A": "intact",
+      "TMB_nonsynonymous": 3.67,
+      "expression_subtype": "Mesenchymal"
+    },
+    "variants": [
+      {
+        "gene": "EGFR",
+        "HGVSp_short": "p.D807H",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": null,
+        "t_ref_count": null,
+        "vaf": null
+      },
+      {
+        "gene": "FGFR3",
+        "HGVSp_short": "p.R603Q",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": null,
+        "t_ref_count": null,
+        "vaf": null
+      },
+      {
+        "gene": "PIK3CA",
+        "HGVSp_short": "p.X463_splice",
+        "variant_classification": "Splice_Site",
+        "variant_type": "DEL",
+        "t_alt_count": null,
+        "t_ref_count": null,
+        "vaf": null
+      },
+      {
+        "gene": "SEPT4",
+        "HGVSp_short": "p.G156D",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": null,
+        "t_ref_count": null,
+        "vaf": null
+      },
+      {
+        "gene": "ACPL2",
+        "HGVSp_short": "p.E145*",
+        "variant_classification": "Nonsense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": null,
+        "t_ref_count": null,
+        "vaf": null
+      }
+    ]
+  },
+  "ground_truth": {
+    "classifications": {
+      "EGFR": {
+        "class": "driver",
+        "oncokb_level": "2",
+        "is_trap": false
+      },
+      "FGFR3": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": false
+      },
+      "PIK3CA": {
+        "class": "co-driver",
+        "oncokb_level": "3",
+        "is_trap": false
+      },
+      "SEPT4": {
+        "class": "passenger",
+        "oncokb_level": "none",
+        "is_trap": true
+      },
+      "ACPL2": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": false
+      }
+    },
+    "therapeutic_relevance": {
+      "EGFR": {
+        "relevant": false,
+        "treatment": null
+      },
+      "FGFR3": {
+        "relevant": false,
+        "treatment": null
+      },
+      "PIK3CA": {
+        "relevant": false,
+        "treatment": null
+      },
+      "SEPT4": {
+        "relevant": false,
+        "treatment": null
+      },
+      "ACPL2": {
+        "relevant": false,
+        "treatment": null
+      }
+    },
+    "note": "Ground truth annotated by PI — review before running models"
+  }
+}
