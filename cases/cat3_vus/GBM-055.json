@@ -1,0 +1,127 @@
+{
+  "case_id": "GBM-055",
+  "category": "CAT-3",
+  "difficulty": "high",
+  "clinical_info": {
+    "patient_id": "SYN-055",
+    "sex": "Male",
+    "age": 53.4,
+    "location": "frontal lobe",
+    "sample": "surgical resection",
+    "sample_type": "Primary"
+  },
+  "profile": {
+    "molecular_status": {
+      "IDH1_mutation": "WT",
+      "MGMT_status": "UNMETHYLATED",
+      "G_CIMP_methylation": "non-G-CIMP",
+      "CDKN2A": "homozygous deletion",
+      "TMB_nonsynonymous": 5.1,
+      "expression_subtype": "Mesenchymal"
+    },
+    "variants": [
+      {
+        "gene": "TERT",
+        "HGVSp_short": "c.-146C>T",
+        "variant_classification": "Promoter",
+        "variant_type": "SNP",
+        "t_alt_count": 75,
+        "t_ref_count": 25,
+        "vaf": 0.75
+      },
+      {
+        "gene": "EGFR",
+        "HGVSp_short": "amplification",
+        "variant_classification": "Amplification",
+        "variant_type": "CNV",
+        "t_alt_count": {},
+        "t_ref_count": {},
+        "vaf": {},
+        "cn": 20
+      },
+      {
+        "gene": "DICER1",
+        "HGVSp_short": "p.E1813K",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 18,
+        "t_ref_count": 82,
+        "vaf": 0.18
+      },
+      {
+        "gene": "NF1",
+        "HGVSp_short": "p.R1241*",
+        "variant_classification": "Nonsense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 34,
+        "t_ref_count": 66,
+        "vaf": 0.34
+      },
+      {
+        "gene": "OBSCN",
+        "HGVSp_short": "p.A6506T",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 7,
+        "t_ref_count": 93,
+        "vaf": 0.07
+      }
+    ]
+  },
+  "ground_truth": {
+    "classifications": {
+      "TERT": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "EGFR": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "DICER1": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": false
+      },
+      "NF1": {
+        "class": "co-driver",
+        "oncokb_level": "3",
+        "is_trap": false
+      },
+      "OBSCN": {
+        "class": "passenger",
+        "oncokb_level": "none",
+        "is_trap": true
+      }
+    },
+    "therapeutic_relevance": {
+      "TERT": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "EGFR": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "DICER1": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "NF1": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "OBSCN": {
+        "relevant": false,
+        "treatment": {}
+      }
+    },
+    "cat3_feature": "DICER1 — RNA processing gene, insufficient evidence for driver role in GBM IDH-wt",
+    "hallucination_traps": [
+      "OBSCN is a passenger",
+      "DICER1 mutations are relevant in pediatric tumors but VUS in adult GBM IDH-wt"
+    ]
+  }
+}

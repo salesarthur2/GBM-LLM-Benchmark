@@ -1,0 +1,129 @@
+{
+  "case_id": "GBM-099",
+  "category": "CAT-5",
+  "difficulty": "high",
+  "clinical_info": {
+    "patient_id": "SYN-099",
+    "sex": "Female",
+    "age": 67.2,
+    "location": "temporal lobe",
+    "sample": "stereotactic biopsy",
+    "sample_type": "Recurrence",
+    "clinical_context": "Recurrent GBM post-Stupp at 14 months. BRAF V600E confirmed on liquid biopsy and tissue re-biopsy. Prior treatment: 60Gy RT + 6 cycles TMZ."
+  },
+  "profile": {
+    "molecular_status": {
+      "IDH1_mutation": "WT",
+      "MGMT_status": "METHYLATED",
+      "G_CIMP_methylation": "non-G-CIMP",
+      "CDKN2A": "homozygous deletion",
+      "TMB_nonsynonymous": 4.9,
+      "expression_subtype": "Classical"
+    },
+    "variants": [
+      {
+        "gene": "TERT",
+        "HGVSp_short": "c.-124C>T",
+        "variant_classification": "Promoter",
+        "variant_type": "SNP",
+        "t_alt_count": 81,
+        "t_ref_count": 19,
+        "vaf": 0.81
+      },
+      {
+        "gene": "EGFR",
+        "HGVSp_short": "amplification",
+        "variant_classification": "Amplification",
+        "variant_type": "CNV",
+        "t_alt_count": {},
+        "t_ref_count": {},
+        "vaf": {},
+        "cn": 17
+      },
+      {
+        "gene": "BRAF",
+        "HGVSp_short": "p.V600E",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 39,
+        "t_ref_count": 61,
+        "vaf": 0.39
+      },
+      {
+        "gene": "TP53",
+        "HGVSp_short": "p.R273H",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 27,
+        "t_ref_count": 73,
+        "vaf": 0.27
+      },
+      {
+        "gene": "TTN",
+        "HGVSp_short": "p.R19544W",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 5,
+        "t_ref_count": 95,
+        "vaf": 0.05
+      }
+    ]
+  },
+  "ground_truth": {
+    "classifications": {
+      "TERT": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "EGFR": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "BRAF": {
+        "class": "driver",
+        "oncokb_level": "2",
+        "is_trap": false
+      },
+      "TP53": {
+        "class": "co-driver",
+        "oncokb_level": "3",
+        "is_trap": false
+      },
+      "TTN": {
+        "class": "passenger",
+        "oncokb_level": "none",
+        "is_trap": true
+      }
+    },
+    "therapeutic_relevance": {
+      "TERT": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "EGFR": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "BRAF": {
+        "relevant": true,
+        "treatment": "dabrafenib + trametinib"
+      },
+      "TP53": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "TTN": {
+        "relevant": false,
+        "treatment": {}
+      }
+    },
+    "cat5_feature": "BRAF V600E in recurrent GBM post-Stupp — therapeutic relevance Yes; dabrafenib + trametinib (FDA tumor-agnostic approval)",
+    "hallucination_traps": [
+      "TTN is a passenger",
+      "EGFR amplification has no approved targeted therapy in GBM",
+      "TP53 has no approved targeted therapy in GBM"
+    ]
+  }
+}

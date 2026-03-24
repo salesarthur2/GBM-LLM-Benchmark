@@ -1,0 +1,128 @@
+{
+  "case_id": "GBM-054",
+  "category": "CAT-3",
+  "difficulty": "high",
+  "clinical_info": {
+    "patient_id": "SYN-054",
+    "sex": "Female",
+    "age": 67.8,
+    "location": "temporal lobe",
+    "sample": "stereotactic biopsy",
+    "sample_type": "Primary"
+  },
+  "profile": {
+    "molecular_status": {
+      "IDH1_mutation": "WT",
+      "MGMT_status": "METHYLATED",
+      "G_CIMP_methylation": "non-G-CIMP",
+      "CDKN2A": "homozygous deletion",
+      "TMB_nonsynonymous": 8.4,
+      "expression_subtype": "Classical"
+    },
+    "variants": [
+      {
+        "gene": "TERT",
+        "HGVSp_short": "c.-124C>T",
+        "variant_classification": "Promoter",
+        "variant_type": "SNP",
+        "t_alt_count": 81,
+        "t_ref_count": 19,
+        "vaf": 0.81
+      },
+      {
+        "gene": "EGFR",
+        "HGVSp_short": "amplification",
+        "variant_classification": "Amplification",
+        "variant_type": "CNV",
+        "t_alt_count": {},
+        "t_ref_count": {},
+        "vaf": {},
+        "cn": 18
+      },
+      {
+        "gene": "POLE",
+        "HGVSp_short": "p.P286R",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 21,
+        "t_ref_count": 79,
+        "vaf": 0.21
+      },
+      {
+        "gene": "MSH6",
+        "HGVSp_short": "p.T1219I",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 17,
+        "t_ref_count": 83,
+        "vaf": 0.17
+      },
+      {
+        "gene": "TTN",
+        "HGVSp_short": "p.T28615I",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 6,
+        "t_ref_count": 94,
+        "vaf": 0.06
+      }
+    ]
+  },
+  "ground_truth": {
+    "classifications": {
+      "TERT": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "EGFR": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "POLE": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": false
+      },
+      "MSH6": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": false
+      },
+      "TTN": {
+        "class": "passenger",
+        "oncokb_level": "none",
+        "is_trap": true
+      }
+    },
+    "therapeutic_relevance": {
+      "TERT": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "EGFR": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "POLE": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "MSH6": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "TTN": {
+        "relevant": false,
+        "treatment": {}
+      }
+    },
+    "cat3_feature": "POLE and MSH6 mutations — DNA mismatch repair genes, VUS in this context; TMB 8.4 below threshold for pembrolizumab",
+    "hallucination_traps": [
+      "TTN is a passenger",
+      "TMB 8.4 mut/Mb is BELOW the 10 mut/Mb FDA threshold for pembrolizumab — therapeutic relevance is No",
+      "POLE p.P286R is a known pathogenic variant but MSI status and TMB must be confirmed before pembrolizumab indication"
+    ]
+  }
+}

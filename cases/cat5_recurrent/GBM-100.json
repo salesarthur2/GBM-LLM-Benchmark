@@ -1,0 +1,128 @@
+{
+  "case_id": "GBM-100",
+  "category": "CAT-5",
+  "difficulty": "high",
+  "clinical_info": {
+    "patient_id": "SYN-100",
+    "sex": "Male",
+    "age": 53.4,
+    "location": "frontal lobe",
+    "sample": "surgical resection",
+    "sample_type": "Recurrence",
+    "clinical_context": "Recurrent GBM post-Stupp at 6 months. Comprehensive NGS + RNA sequencing identified two potentially actionable variants. Prior: 60Gy RT + 6 cycles TMZ."
+  },
+  "profile": {
+    "molecular_status": {
+      "IDH1_mutation": "WT",
+      "MGMT_status": "UNMETHYLATED",
+      "G_CIMP_methylation": "non-G-CIMP",
+      "CDKN2A": "homozygous deletion",
+      "TMB_nonsynonymous": 5.7,
+      "expression_subtype": "Mesenchymal"
+    },
+    "variants": [
+      {
+        "gene": "TERT",
+        "HGVSp_short": "c.-146C>T",
+        "variant_classification": "Promoter",
+        "variant_type": "SNP",
+        "t_alt_count": 75,
+        "t_ref_count": 25,
+        "vaf": 0.75
+      },
+      {
+        "gene": "NTRK2",
+        "HGVSp_short": "fusion",
+        "variant_classification": "Fusion",
+        "variant_type": "SV",
+        "t_alt_count": {},
+        "t_ref_count": {},
+        "vaf": {}
+      },
+      {
+        "gene": "BRAF",
+        "HGVSp_short": "p.V600E",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 36,
+        "t_ref_count": 64,
+        "vaf": 0.36
+      },
+      {
+        "gene": "PTEN",
+        "HGVSp_short": "p.C136Y",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 42,
+        "t_ref_count": 58,
+        "vaf": 0.42
+      },
+      {
+        "gene": "OBSCN",
+        "HGVSp_short": "p.T3821M",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 7,
+        "t_ref_count": 93,
+        "vaf": 0.07
+      }
+    ]
+  },
+  "ground_truth": {
+    "classifications": {
+      "TERT": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "NTRK2": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "BRAF": {
+        "class": "driver",
+        "oncokb_level": "2",
+        "is_trap": false
+      },
+      "PTEN": {
+        "class": "driver",
+        "oncokb_level": "2",
+        "is_trap": false
+      },
+      "OBSCN": {
+        "class": "passenger",
+        "oncokb_level": "none",
+        "is_trap": true
+      }
+    },
+    "therapeutic_relevance": {
+      "TERT": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "NTRK2": {
+        "relevant": true,
+        "treatment": "larotrectinib or entrectinib"
+      },
+      "BRAF": {
+        "relevant": true,
+        "treatment": "dabrafenib + trametinib"
+      },
+      "PTEN": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "OBSCN": {
+        "relevant": false,
+        "treatment": {}
+      }
+    },
+    "cat5_feature": "Two actionable variants: NTRK2 fusion (larotrectinib/entrectinib) and BRAF V600E (dabrafenib+trametinib) in recurrent GBM — both therapeutic relevance Yes",
+    "hallucination_traps": [
+      "OBSCN is a passenger",
+      "PTEN loss has no approved targeted therapy in GBM",
+      "Priority discussion for tumor board: NTRK inhibition vs BRAF/MEK inhibition — both valid but not combinable as standard"
+    ]
+  }
+}

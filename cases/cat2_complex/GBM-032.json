@@ -1,0 +1,145 @@
+{
+  "case_id": "GBM-032",
+  "category": "CAT-2",
+  "difficulty": "moderate",
+  "clinical_info": {
+    "patient_id": "SYN-032",
+    "sex": "Male",
+    "age": 64.2,
+    "location": "parietal lobe",
+    "sample": "surgical resection",
+    "sample_type": "Primary"
+  },
+  "profile": {
+    "molecular_status": {
+      "IDH1_mutation": "WT",
+      "MGMT_status": "METHYLATED",
+      "G_CIMP_methylation": "non-G-CIMP",
+      "CDKN2A": "homozygous deletion",
+      "TMB_nonsynonymous": 5.6,
+      "expression_subtype": "Classical"
+    },
+    "variants": [
+      {
+        "gene": "TERT",
+        "HGVSp_short": "c.-124C>T",
+        "variant_classification": "Promoter",
+        "variant_type": "SNP",
+        "t_alt_count": 77,
+        "t_ref_count": 23,
+        "vaf": 0.77
+      },
+      {
+        "gene": "EGFR",
+        "HGVSp_short": "amplification",
+        "variant_classification": "Amplification",
+        "variant_type": "CNV",
+        "t_alt_count": {},
+        "t_ref_count": {},
+        "vaf": {},
+        "cn": 21
+      },
+      {
+        "gene": "PTEN",
+        "HGVSp_short": "p.C136S",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 41,
+        "t_ref_count": 59,
+        "vaf": 0.41
+      },
+      {
+        "gene": "PIK3CA",
+        "HGVSp_short": "p.E545K",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 24,
+        "t_ref_count": 76,
+        "vaf": 0.24
+      },
+      {
+        "gene": "PIK3R1",
+        "HGVSp_short": "p.R574*",
+        "variant_classification": "Nonsense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 19,
+        "t_ref_count": 81,
+        "vaf": 0.19
+      },
+      {
+        "gene": "TTN",
+        "HGVSp_short": "p.T28615I",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 6,
+        "t_ref_count": 94,
+        "vaf": 0.06
+      }
+    ]
+  },
+  "ground_truth": {
+    "classifications": {
+      "TERT": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "EGFR": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "PTEN": {
+        "class": "driver",
+        "oncokb_level": "2",
+        "is_trap": false
+      },
+      "PIK3CA": {
+        "class": "co-driver",
+        "oncokb_level": "3",
+        "is_trap": false
+      },
+      "PIK3R1": {
+        "class": "co-driver",
+        "oncokb_level": "3",
+        "is_trap": false
+      },
+      "TTN": {
+        "class": "passenger",
+        "oncokb_level": "none",
+        "is_trap": true
+      }
+    },
+    "therapeutic_relevance": {
+      "TERT": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "EGFR": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "PTEN": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "PIK3CA": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "PIK3R1": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "TTN": {
+        "relevant": false,
+        "treatment": {}
+      }
+    },
+    "cat2_feature": "PIK3CA + PIK3R1 co-mutation — dual PI3K pathway activation, no approved combination therapy in GBM",
+    "hallucination_traps": [
+      "TTN is a passenger",
+      "PIK3CA+PIK3R1 co-mutation has no approved PI3K inhibitor therapy in GBM"
+    ]
+  }
+}

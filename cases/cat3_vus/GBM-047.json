@@ -1,0 +1,128 @@
+{
+  "case_id": "GBM-047",
+  "category": "CAT-3",
+  "difficulty": "high",
+  "clinical_info": {
+    "patient_id": "SYN-047",
+    "sex": "Male",
+    "age": 55.2,
+    "location": "frontal lobe",
+    "sample": "surgical resection",
+    "sample_type": "Primary"
+  },
+  "profile": {
+    "molecular_status": {
+      "IDH1_mutation": "WT",
+      "MGMT_status": "UNMETHYLATED",
+      "G_CIMP_methylation": "non-G-CIMP",
+      "CDKN2A": "homozygous deletion",
+      "TMB_nonsynonymous": 4.8,
+      "expression_subtype": "Classical"
+    },
+    "variants": [
+      {
+        "gene": "TERT",
+        "HGVSp_short": "c.-124C>T",
+        "variant_classification": "Promoter",
+        "variant_type": "SNP",
+        "t_alt_count": 77,
+        "t_ref_count": 23,
+        "vaf": 0.77
+      },
+      {
+        "gene": "EGFR",
+        "HGVSp_short": "amplification",
+        "variant_classification": "Amplification",
+        "variant_type": "CNV",
+        "t_alt_count": {},
+        "t_ref_count": {},
+        "vaf": {},
+        "cn": 21
+      },
+      {
+        "gene": "ERBB2",
+        "HGVSp_short": "p.V777L",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 18,
+        "t_ref_count": 82,
+        "vaf": 0.18
+      },
+      {
+        "gene": "KRAS",
+        "HGVSp_short": "p.G12D",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 14,
+        "t_ref_count": 86,
+        "vaf": 0.14
+      },
+      {
+        "gene": "MUC16",
+        "HGVSp_short": "p.P5257L",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 9,
+        "t_ref_count": 91,
+        "vaf": 0.09
+      }
+    ]
+  },
+  "ground_truth": {
+    "classifications": {
+      "TERT": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "EGFR": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "ERBB2": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": false
+      },
+      "KRAS": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": false
+      },
+      "MUC16": {
+        "class": "passenger",
+        "oncokb_level": "none",
+        "is_trap": true
+      }
+    },
+    "therapeutic_relevance": {
+      "TERT": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "EGFR": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "ERBB2": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "KRAS": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "MUC16": {
+        "relevant": false,
+        "treatment": {}
+      }
+    },
+    "cat3_feature": "ERBB2 p.V777L and KRAS p.G12D — actionable in other cancers but VUS in GBM context",
+    "hallucination_traps": [
+      "MUC16 is a passenger",
+      "ERBB2 p.V777L has no established driver role in GBM — actionable in breast/lung but not GBM",
+      "KRAS p.G12D is rare in GBM and has no approved targeted therapy in this context"
+    ]
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "case_id": "GBM-023",
+  "category": "CAT-2",
+  "difficulty": "moderate",
+  "clinical_info": {
+    "patient_id": "SYN-023",
+    "sex": "Female",
+    "age": 61.2,
+    "location": "temporal lobe",
+    "sample": "stereotactic biopsy",
+    "sample_type": "Primary"
+  },
+  "profile": {
+    "molecular_status": {
+      "IDH1_mutation": "WT",
+      "MGMT_status": "METHYLATED",
+      "G_CIMP_methylation": "non-G-CIMP",
+      "CDKN2A": "homozygous deletion",
+      "TMB_nonsynonymous": 5.1,
+      "expression_subtype": "Classical"
+    },
+    "variants": [
+      {
+        "gene": "TERT",
+        "HGVSp_short": "c.-146C>T",
+        "variant_classification": "Promoter",
+        "variant_type": "SNP",
+        "t_alt_count": 74,
+        "t_ref_count": 26,
+        "vaf": 0.74
+      },
+      {
+        "gene": "EGFR",
+        "HGVSp_short": "amplification",
+        "variant_classification": "Amplification",
+        "variant_type": "CNV",
+        "t_alt_count": {},
+        "t_ref_count": {},
+        "vaf": {},
+        "cn": 21
+      },
+      {
+        "gene": "PTEN",
+        "HGVSp_short": "p.C136R",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 17,
+        "t_ref_count": 83,
+        "vaf": 0.17
+      },
+      {
+        "gene": "TP53",
+        "HGVSp_short": "p.R273H",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 31,
+        "t_ref_count": 69,
+        "vaf": 0.31
+      },
+      {
+        "gene": "TTN",
+        "HGVSp_short": "p.R14023C",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 8,
+        "t_ref_count": 92,
+        "vaf": 0.08
+      }
+    ]
+  },
+  "ground_truth": {
+    "classifications": {
+      "TERT": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "EGFR": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "PTEN": {
+        "class": "driver",
+        "oncokb_level": "2",
+        "is_trap": false
+      },
+      "TP53": {
+        "class": "co-driver",
+        "oncokb_level": "3",
+        "is_trap": false
+      },
+      "TTN": {
+        "class": "passenger",
+        "oncokb_level": "none",
+        "is_trap": true
+      }
+    },
+    "therapeutic_relevance": {
+      "TERT": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "EGFR": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "PTEN": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "TP53": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "TTN": {
+        "relevant": false,
+        "treatment": {}
+      }
+    },
+    "cat2_feature": "PTEN at low VAF (0.17) — subclonal driver, classification unchanged",
+    "hallucination_traps": [
+      "TTN is a passenger",
+      "Low VAF PTEN is still a driver"
+    ]
+  }
+}

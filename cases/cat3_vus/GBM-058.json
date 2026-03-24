@@ -1,0 +1,126 @@
+{
+  "case_id": "GBM-058",
+  "category": "CAT-3",
+  "difficulty": "high",
+  "clinical_info": {
+    "patient_id": "SYN-058",
+    "sex": "Female",
+    "age": 56.7,
+    "location": "frontal lobe",
+    "sample": "surgical resection",
+    "sample_type": "Primary"
+  },
+  "profile": {
+    "molecular_status": {
+      "IDH1_mutation": "WT",
+      "MGMT_status": "METHYLATED",
+      "G_CIMP_methylation": "non-G-CIMP",
+      "CDKN2A": "homozygous deletion",
+      "TMB_nonsynonymous": 6.4,
+      "expression_subtype": "Mesenchymal"
+    },
+    "variants": [
+      {
+        "gene": "TERT",
+        "HGVSp_short": "c.-146C>T",
+        "variant_classification": "Promoter",
+        "variant_type": "SNP",
+        "t_alt_count": 74,
+        "t_ref_count": 26,
+        "vaf": 0.74
+      },
+      {
+        "gene": "PTEN",
+        "HGVSp_short": "p.C136Y",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 41,
+        "t_ref_count": 59,
+        "vaf": 0.41
+      },
+      {
+        "gene": "NF1",
+        "HGVSp_short": "p.R1534*",
+        "variant_classification": "Nonsense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 36,
+        "t_ref_count": 64,
+        "vaf": 0.36
+      },
+      {
+        "gene": "BRCA2",
+        "HGVSp_short": "p.R2318H",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 19,
+        "t_ref_count": 81,
+        "vaf": 0.19
+      },
+      {
+        "gene": "OBSCN",
+        "HGVSp_short": "p.R6241H",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 7,
+        "t_ref_count": 93,
+        "vaf": 0.07
+      }
+    ]
+  },
+  "ground_truth": {
+    "classifications": {
+      "TERT": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "PTEN": {
+        "class": "driver",
+        "oncokb_level": "2",
+        "is_trap": false
+      },
+      "NF1": {
+        "class": "co-driver",
+        "oncokb_level": "3",
+        "is_trap": false
+      },
+      "BRCA2": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": false
+      },
+      "OBSCN": {
+        "class": "passenger",
+        "oncokb_level": "none",
+        "is_trap": true
+      }
+    },
+    "therapeutic_relevance": {
+      "TERT": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "PTEN": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "NF1": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "BRCA2": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "OBSCN": {
+        "relevant": false,
+        "treatment": {}
+      }
+    },
+    "cat3_feature": "BRCA2 p.R2318H — VUS in GBM context; PARP inhibitors not indicated without confirmed HRD",
+    "hallucination_traps": [
+      "OBSCN is a passenger",
+      "BRCA2 p.R2318H is a missense VUS — olaparib/PARP inhibitors not indicated without confirmed pathogenic BRCA2 variant and HRD"
+    ]
+  }
+}

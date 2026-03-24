@@ -1,0 +1,127 @@
+{
+  "case_id": "GBM-057",
+  "category": "CAT-3",
+  "difficulty": "high",
+  "clinical_info": {
+    "patient_id": "SYN-057",
+    "sex": "Male",
+    "age": 64.6,
+    "location": "temporal lobe",
+    "sample": "surgical resection",
+    "sample_type": "Primary"
+  },
+  "profile": {
+    "molecular_status": {
+      "IDH1_mutation": "WT",
+      "MGMT_status": "UNMETHYLATED",
+      "G_CIMP_methylation": "non-G-CIMP",
+      "CDKN2A": "homozygous deletion",
+      "TMB_nonsynonymous": 4.3,
+      "expression_subtype": "Classical"
+    },
+    "variants": [
+      {
+        "gene": "TERT",
+        "HGVSp_short": "c.-124C>T",
+        "variant_classification": "Promoter",
+        "variant_type": "SNP",
+        "t_alt_count": 79,
+        "t_ref_count": 21,
+        "vaf": 0.79
+      },
+      {
+        "gene": "EGFR",
+        "HGVSp_short": "amplification",
+        "variant_classification": "Amplification",
+        "variant_type": "CNV",
+        "t_alt_count": {},
+        "t_ref_count": {},
+        "vaf": {},
+        "cn": 21
+      },
+      {
+        "gene": "FUBP1",
+        "HGVSp_short": "p.R422*",
+        "variant_classification": "Nonsense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 17,
+        "t_ref_count": 83,
+        "vaf": 0.17
+      },
+      {
+        "gene": "CIC",
+        "HGVSp_short": "p.R1515H",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 14,
+        "t_ref_count": 86,
+        "vaf": 0.14
+      },
+      {
+        "gene": "TTN",
+        "HGVSp_short": "p.G22391R",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 6,
+        "t_ref_count": 94,
+        "vaf": 0.06
+      }
+    ]
+  },
+  "ground_truth": {
+    "classifications": {
+      "TERT": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "EGFR": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "FUBP1": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": false
+      },
+      "CIC": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": false
+      },
+      "TTN": {
+        "class": "passenger",
+        "oncokb_level": "none",
+        "is_trap": true
+      }
+    },
+    "therapeutic_relevance": {
+      "TERT": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "EGFR": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "FUBP1": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "CIC": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "TTN": {
+        "relevant": false,
+        "treatment": {}
+      }
+    },
+    "cat3_feature": "FUBP1 and CIC — oligodendroglioma markers, VUS in GBM IDH-wt context without 1p/19q codeletion",
+    "hallucination_traps": [
+      "TTN is a passenger",
+      "FUBP1 and CIC are drivers in oligodendroglioma but VUS in GBM IDH-wt — no therapeutic implication"
+    ]
+  }
+}

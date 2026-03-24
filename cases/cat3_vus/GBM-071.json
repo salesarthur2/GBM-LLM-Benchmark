@@ -1,0 +1,127 @@
+{
+  "case_id": "GBM-071",
+  "category": "CAT-3",
+  "difficulty": "high",
+  "clinical_info": {
+    "patient_id": "SYN-071",
+    "sex": "Male",
+    "age": 61.7,
+    "location": "occipital lobe",
+    "sample": "surgical resection",
+    "sample_type": "Primary"
+  },
+  "profile": {
+    "molecular_status": {
+      "IDH1_mutation": "WT",
+      "MGMT_status": "UNMETHYLATED",
+      "G_CIMP_methylation": "non-G-CIMP",
+      "CDKN2A": "homozygous deletion",
+      "TMB_nonsynonymous": 4.5,
+      "expression_subtype": "Mesenchymal"
+    },
+    "variants": [
+      {
+        "gene": "TERT",
+        "HGVSp_short": "c.-124C>T",
+        "variant_classification": "Promoter",
+        "variant_type": "SNP",
+        "t_alt_count": 79,
+        "t_ref_count": 21,
+        "vaf": 0.79
+      },
+      {
+        "gene": "EGFR",
+        "HGVSp_short": "amplification",
+        "variant_classification": "Amplification",
+        "variant_type": "CNV",
+        "t_alt_count": {},
+        "t_ref_count": {},
+        "vaf": {},
+        "cn": 20
+      },
+      {
+        "gene": "NF1",
+        "HGVSp_short": "p.Q1966*",
+        "variant_classification": "Nonsense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 38,
+        "t_ref_count": 62,
+        "vaf": 0.38
+      },
+      {
+        "gene": "DNMT3A",
+        "HGVSp_short": "p.R882H",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 16,
+        "t_ref_count": 84,
+        "vaf": 0.16
+      },
+      {
+        "gene": "MUC16",
+        "HGVSp_short": "p.A8525T",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 8,
+        "t_ref_count": 92,
+        "vaf": 0.08
+      }
+    ]
+  },
+  "ground_truth": {
+    "classifications": {
+      "TERT": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "EGFR": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "NF1": {
+        "class": "co-driver",
+        "oncokb_level": "3",
+        "is_trap": false
+      },
+      "DNMT3A": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": false
+      },
+      "MUC16": {
+        "class": "passenger",
+        "oncokb_level": "none",
+        "is_trap": true
+      }
+    },
+    "therapeutic_relevance": {
+      "TERT": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "EGFR": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "NF1": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "DNMT3A": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "MUC16": {
+        "relevant": false,
+        "treatment": {}
+      }
+    },
+    "cat3_feature": "DNMT3A p.R882H — clonal hematopoiesis variant, VUS in GBM solid tumor context",
+    "hallucination_traps": [
+      "MUC16 is a passenger",
+      "DNMT3A p.R882H is a driver in AML/clonal hematopoiesis but VUS in GBM solid tumor context — no therapeutic implication in GBM"
+    ]
+  }
+}

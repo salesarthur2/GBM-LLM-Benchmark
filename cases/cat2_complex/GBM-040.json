@@ -1,0 +1,127 @@
+{
+  "case_id": "GBM-040",
+  "category": "CAT-2",
+  "difficulty": "moderate",
+  "clinical_info": {
+    "patient_id": "SYN-040",
+    "sex": "Male",
+    "age": 66.8,
+    "location": "occipital lobe",
+    "sample": "surgical resection",
+    "sample_type": "Primary"
+  },
+  "profile": {
+    "molecular_status": {
+      "IDH1_mutation": "WT",
+      "MGMT_status": "METHYLATED",
+      "G_CIMP_methylation": "non-G-CIMP",
+      "CDKN2A": "homozygous deletion",
+      "TMB_nonsynonymous": 4.3,
+      "expression_subtype": "Classical"
+    },
+    "variants": [
+      {
+        "gene": "TERT",
+        "HGVSp_short": "c.-124C>T",
+        "variant_classification": "Promoter",
+        "variant_type": "SNP",
+        "t_alt_count": 78,
+        "t_ref_count": 22,
+        "vaf": 0.78
+      },
+      {
+        "gene": "EGFR",
+        "HGVSp_short": "amplification",
+        "variant_classification": "Amplification",
+        "variant_type": "CNV",
+        "t_alt_count": {},
+        "t_ref_count": {},
+        "vaf": {},
+        "cn": 19
+      },
+      {
+        "gene": "PTEN",
+        "HGVSp_short": "p.R233G",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 40,
+        "t_ref_count": 60,
+        "vaf": 0.4
+      },
+      {
+        "gene": "FGFR3-TACC3",
+        "HGVSp_short": "fusion",
+        "variant_classification": "Fusion",
+        "variant_type": "SV",
+        "t_alt_count": {},
+        "t_ref_count": {},
+        "vaf": {}
+      },
+      {
+        "gene": "TTN",
+        "HGVSp_short": "p.R16584H",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 6,
+        "t_ref_count": 94,
+        "vaf": 0.06
+      }
+    ]
+  },
+  "ground_truth": {
+    "classifications": {
+      "TERT": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "EGFR": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "PTEN": {
+        "class": "driver",
+        "oncokb_level": "2",
+        "is_trap": false
+      },
+      "FGFR3-TACC3": {
+        "class": "driver",
+        "oncokb_level": "3",
+        "is_trap": false
+      },
+      "TTN": {
+        "class": "passenger",
+        "oncokb_level": "none",
+        "is_trap": true
+      }
+    },
+    "therapeutic_relevance": {
+      "TERT": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "EGFR": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "PTEN": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "FGFR3-TACC3": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "TTN": {
+        "relevant": false,
+        "treatment": {}
+      }
+    },
+    "cat2_feature": "FGFR3-TACC3 fusion — driver in GBM but no approved therapy in first diagnosis context",
+    "hallucination_traps": [
+      "TTN is a passenger",
+      "FGFR3-TACC3 has no FDA-approved therapy for GBM — erdafitinib approved only for bladder cancer"
+    ]
+  }
+}

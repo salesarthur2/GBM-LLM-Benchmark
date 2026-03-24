@@ -1,0 +1,128 @@
+{
+  "case_id": "GBM-061",
+  "category": "CAT-3",
+  "difficulty": "high",
+  "clinical_info": {
+    "patient_id": "SYN-061",
+    "sex": "Male",
+    "age": 69.7,
+    "location": "frontal lobe",
+    "sample": "stereotactic biopsy",
+    "sample_type": "Primary"
+  },
+  "profile": {
+    "molecular_status": {
+      "IDH1_mutation": "WT",
+      "MGMT_status": "UNMETHYLATED",
+      "G_CIMP_methylation": "non-G-CIMP",
+      "CDKN2A": "homozygous deletion",
+      "TMB_nonsynonymous": 3.6,
+      "expression_subtype": "Classical"
+    },
+    "variants": [
+      {
+        "gene": "TERT",
+        "HGVSp_short": "c.-124C>T",
+        "variant_classification": "Promoter",
+        "variant_type": "SNP",
+        "t_alt_count": 80,
+        "t_ref_count": 20,
+        "vaf": 0.8
+      },
+      {
+        "gene": "EGFR",
+        "HGVSp_short": "amplification",
+        "variant_classification": "Amplification",
+        "variant_type": "CNV",
+        "t_alt_count": {},
+        "t_ref_count": {},
+        "vaf": {},
+        "cn": 17
+      },
+      {
+        "gene": "NOTCH2",
+        "HGVSp_short": "p.R2400C",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 16,
+        "t_ref_count": 84,
+        "vaf": 0.16
+      },
+      {
+        "gene": "PIK3CA",
+        "HGVSp_short": "p.H1047R",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 22,
+        "t_ref_count": 78,
+        "vaf": 0.22
+      },
+      {
+        "gene": "OBSCN",
+        "HGVSp_short": "p.T3821M",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 6,
+        "t_ref_count": 94,
+        "vaf": 0.06
+      }
+    ]
+  },
+  "ground_truth": {
+    "classifications": {
+      "TERT": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "EGFR": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "NOTCH2": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": false
+      },
+      "PIK3CA": {
+        "class": "co-driver",
+        "oncokb_level": "3",
+        "is_trap": false
+      },
+      "OBSCN": {
+        "class": "passenger",
+        "oncokb_level": "none",
+        "is_trap": true
+      }
+    },
+    "therapeutic_relevance": {
+      "TERT": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "EGFR": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "NOTCH2": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "PIK3CA": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "OBSCN": {
+        "relevant": false,
+        "treatment": {}
+      }
+    },
+    "cat3_feature": "NOTCH2 — Notch pathway, VUS in GBM IDH-wt context",
+    "hallucination_traps": [
+      "OBSCN is a passenger",
+      "NOTCH2 has no established therapeutic relevance in GBM",
+      "PIK3CA H1047R has no approved targeted therapy in GBM"
+    ]
+  }
+}

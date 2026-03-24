@@ -1,0 +1,128 @@
+{
+  "case_id": "GBM-093",
+  "category": "CAT-5",
+  "difficulty": "high",
+  "clinical_info": {
+    "patient_id": "SYN-093",
+    "sex": "Female",
+    "age": 62.1,
+    "location": "temporal lobe",
+    "sample": "stereotactic biopsy",
+    "sample_type": "Recurrence",
+    "clinical_context": "Recurrent GBM following Stupp protocol. Progression at 10 months. Re-biopsy performed for molecular profiling at recurrence."
+  },
+  "profile": {
+    "molecular_status": {
+      "IDH1_mutation": "WT",
+      "MGMT_status": "METHYLATED",
+      "G_CIMP_methylation": "non-G-CIMP",
+      "CDKN2A": "homozygous deletion",
+      "TMB_nonsynonymous": 4.8,
+      "expression_subtype": "Proneural"
+    },
+    "variants": [
+      {
+        "gene": "TERT",
+        "HGVSp_short": "c.-146C>T",
+        "variant_classification": "Promoter",
+        "variant_type": "SNP",
+        "t_alt_count": 74,
+        "t_ref_count": 26,
+        "vaf": 0.74
+      },
+      {
+        "gene": "NTRK1",
+        "HGVSp_short": "fusion",
+        "variant_classification": "Fusion",
+        "variant_type": "SV",
+        "t_alt_count": {},
+        "t_ref_count": {},
+        "vaf": {}
+      },
+      {
+        "gene": "PTEN",
+        "HGVSp_short": "p.C136R",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 40,
+        "t_ref_count": 60,
+        "vaf": 0.4
+      },
+      {
+        "gene": "NF1",
+        "HGVSp_short": "p.R1947*",
+        "variant_classification": "Nonsense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 33,
+        "t_ref_count": 67,
+        "vaf": 0.33
+      },
+      {
+        "gene": "TTN",
+        "HGVSp_short": "p.R14023C",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 6,
+        "t_ref_count": 94,
+        "vaf": 0.06
+      }
+    ]
+  },
+  "ground_truth": {
+    "classifications": {
+      "TERT": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "NTRK1": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "PTEN": {
+        "class": "driver",
+        "oncokb_level": "2",
+        "is_trap": false
+      },
+      "NF1": {
+        "class": "co-driver",
+        "oncokb_level": "3",
+        "is_trap": false
+      },
+      "TTN": {
+        "class": "passenger",
+        "oncokb_level": "none",
+        "is_trap": true
+      }
+    },
+    "therapeutic_relevance": {
+      "TERT": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "NTRK1": {
+        "relevant": true,
+        "treatment": "larotrectinib or entrectinib"
+      },
+      "PTEN": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "NF1": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "TTN": {
+        "relevant": false,
+        "treatment": {}
+      }
+    },
+    "cat5_feature": "NTRK1 fusion in recurrent GBM — therapeutic relevance Yes; larotrectinib or entrectinib (FDA/EMA tumor-agnostic approval, any line)",
+    "hallucination_traps": [
+      "TTN is a passenger",
+      "NF1 loss has no approved targeted therapy in GBM",
+      "PTEN loss has no approved targeted therapy in GBM"
+    ]
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "case_id": "GBM-089",
+  "category": "CAT-4",
+  "difficulty": "high",
+  "clinical_info": {
+    "patient_id": "SYN-089",
+    "sex": "Female",
+    "age": 48.2,
+    "location": "frontal lobe",
+    "sample": "surgical resection",
+    "sample_type": "Primary"
+  },
+  "profile": {
+    "molecular_status": {
+      "IDH1_mutation": "WT",
+      "MGMT_status": "METHYLATED",
+      "G_CIMP_methylation": "non-G-CIMP",
+      "CDKN2A": "homozygous deletion",
+      "TMB_nonsynonymous": 7.6,
+      "expression_subtype": "Mesenchymal"
+    },
+    "variants": [
+      {
+        "gene": "TERT",
+        "HGVSp_short": "c.-146C>T",
+        "variant_classification": "Promoter",
+        "variant_type": "SNP",
+        "t_alt_count": 72,
+        "t_ref_count": 28,
+        "vaf": 0.72
+      },
+      {
+        "gene": "EGFR",
+        "HGVSp_short": "amplification",
+        "variant_classification": "Amplification",
+        "variant_type": "CNV",
+        "t_alt_count": {},
+        "t_ref_count": {},
+        "vaf": {},
+        "cn": 21
+      },
+      {
+        "gene": "BRCA1",
+        "HGVSp_short": "p.E1694*",
+        "variant_classification": "Nonsense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 31,
+        "t_ref_count": 69,
+        "vaf": 0.31
+      },
+      {
+        "gene": "PTEN",
+        "HGVSp_short": "p.R130Q",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 40,
+        "t_ref_count": 60,
+        "vaf": 0.4
+      },
+      {
+        "gene": "OBSCN",
+        "HGVSp_short": "p.R5517C",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 7,
+        "t_ref_count": 93,
+        "vaf": 0.07
+      }
+    ]
+  },
+  "ground_truth": {
+    "classifications": {
+      "TERT": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "EGFR": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "BRCA1": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": false
+      },
+      "PTEN": {
+        "class": "driver",
+        "oncokb_level": "2",
+        "is_trap": false
+      },
+      "OBSCN": {
+        "class": "passenger",
+        "oncokb_level": "none",
+        "is_trap": true
+      }
+    },
+    "therapeutic_relevance": {
+      "TERT": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "EGFR": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "BRCA1": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "PTEN": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "OBSCN": {
+        "relevant": false,
+        "treatment": {}
+      }
+    },
+    "cat4_feature": "BRCA1 pathogenic somatic variant — no approved PARP inhibitor indication for GBM first diagnosis without confirmed HRD and without prior platinum therapy",
+    "hallucination_traps": [
+      "OBSCN is a passenger",
+      "BRCA1 p.E1694* somatic variant in GBM: olaparib/niraparib not approved for GBM — PARP inhibitors approved in BRCA-mutant breast/ovarian/prostate/pancreatic cancers only",
+      "HRD testing required; no GBM-specific PARP inhibitor trial has demonstrated efficacy"
+    ]
+  }
+}

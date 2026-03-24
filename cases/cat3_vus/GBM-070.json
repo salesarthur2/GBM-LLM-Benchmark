@@ -1,0 +1,126 @@
+{
+  "case_id": "GBM-070",
+  "category": "CAT-3",
+  "difficulty": "high",
+  "clinical_info": {
+    "patient_id": "SYN-070",
+    "sex": "Female",
+    "age": 55.9,
+    "location": "frontal lobe",
+    "sample": "surgical resection",
+    "sample_type": "Primary"
+  },
+  "profile": {
+    "molecular_status": {
+      "IDH1_mutation": "WT",
+      "MGMT_status": "METHYLATED",
+      "G_CIMP_methylation": "non-G-CIMP",
+      "CDKN2A": "homozygous deletion",
+      "TMB_nonsynonymous": 6.3,
+      "expression_subtype": "Classical"
+    },
+    "variants": [
+      {
+        "gene": "TERT",
+        "HGVSp_short": "c.-146C>T",
+        "variant_classification": "Promoter",
+        "variant_type": "SNP",
+        "t_alt_count": 72,
+        "t_ref_count": 28,
+        "vaf": 0.72
+      },
+      {
+        "gene": "PTEN",
+        "HGVSp_short": "p.R173C",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 41,
+        "t_ref_count": 59,
+        "vaf": 0.41
+      },
+      {
+        "gene": "TP53",
+        "HGVSp_short": "p.R248W",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 28,
+        "t_ref_count": 72,
+        "vaf": 0.28
+      },
+      {
+        "gene": "SMARCB1",
+        "HGVSp_short": "p.R374Q",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 17,
+        "t_ref_count": 83,
+        "vaf": 0.17
+      },
+      {
+        "gene": "OBSCN",
+        "HGVSp_short": "p.R6241H",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 6,
+        "t_ref_count": 94,
+        "vaf": 0.06
+      }
+    ]
+  },
+  "ground_truth": {
+    "classifications": {
+      "TERT": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "PTEN": {
+        "class": "driver",
+        "oncokb_level": "2",
+        "is_trap": false
+      },
+      "TP53": {
+        "class": "co-driver",
+        "oncokb_level": "3",
+        "is_trap": false
+      },
+      "SMARCB1": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": false
+      },
+      "OBSCN": {
+        "class": "passenger",
+        "oncokb_level": "none",
+        "is_trap": true
+      }
+    },
+    "therapeutic_relevance": {
+      "TERT": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "PTEN": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "TP53": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "SMARCB1": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "OBSCN": {
+        "relevant": false,
+        "treatment": {}
+      }
+    },
+    "cat3_feature": "SMARCB1 — SWI/SNF complex, driver in atypical teratoid/rhabdoid tumor but VUS in adult GBM IDH-wt",
+    "hallucination_traps": [
+      "OBSCN is a passenger",
+      "SMARCB1 is a driver in AT/RT but VUS in adult GBM IDH-wt context — no approved targeted therapy"
+    ]
+  }
+}

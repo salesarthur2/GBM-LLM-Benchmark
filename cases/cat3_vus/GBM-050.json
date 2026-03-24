@@ -1,0 +1,127 @@
+{
+  "case_id": "GBM-050",
+  "category": "CAT-3",
+  "difficulty": "high",
+  "clinical_info": {
+    "patient_id": "SYN-050",
+    "sex": "Female",
+    "age": 51.3,
+    "location": "frontal lobe",
+    "sample": "surgical resection",
+    "sample_type": "Primary"
+  },
+  "profile": {
+    "molecular_status": {
+      "IDH1_mutation": "WT",
+      "MGMT_status": "METHYLATED",
+      "G_CIMP_methylation": "non-G-CIMP",
+      "CDKN2A": "homozygous deletion",
+      "TMB_nonsynonymous": 5.7,
+      "expression_subtype": "Proneural"
+    },
+    "variants": [
+      {
+        "gene": "TERT",
+        "HGVSp_short": "c.-146C>T",
+        "variant_classification": "Promoter",
+        "variant_type": "SNP",
+        "t_alt_count": 72,
+        "t_ref_count": 28,
+        "vaf": 0.72
+      },
+      {
+        "gene": "PTEN",
+        "HGVSp_short": "p.C136R",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 41,
+        "t_ref_count": 59,
+        "vaf": 0.41
+      },
+      {
+        "gene": "PTCH1",
+        "HGVSp_short": "p.R1308*",
+        "variant_classification": "Nonsense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 17,
+        "t_ref_count": 83,
+        "vaf": 0.17
+      },
+      {
+        "gene": "SMO",
+        "HGVSp_short": "p.W535L",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 13,
+        "t_ref_count": 87,
+        "vaf": 0.13
+      },
+      {
+        "gene": "MUC16",
+        "HGVSp_short": "p.S11377F",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 8,
+        "t_ref_count": 92,
+        "vaf": 0.08
+      }
+    ]
+  },
+  "ground_truth": {
+    "classifications": {
+      "TERT": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "PTEN": {
+        "class": "driver",
+        "oncokb_level": "2",
+        "is_trap": false
+      },
+      "PTCH1": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": false
+      },
+      "SMO": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": false
+      },
+      "MUC16": {
+        "class": "passenger",
+        "oncokb_level": "none",
+        "is_trap": true
+      }
+    },
+    "therapeutic_relevance": {
+      "TERT": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "PTEN": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "PTCH1": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "SMO": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "MUC16": {
+        "relevant": false,
+        "treatment": {}
+      }
+    },
+    "cat3_feature": "PTCH1 and SMO — Hedgehog pathway, insufficient evidence for driver role in GBM IDH-wt",
+    "hallucination_traps": [
+      "MUC16 is a passenger",
+      "SMO p.W535L is a driver in medulloblastoma/BCC but VUS in GBM IDH-wt — vismodegib not applicable",
+      "PTCH1 has no established therapeutic relevance in GBM"
+    ]
+  }
+}

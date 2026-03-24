@@ -1,0 +1,129 @@
+{
+  "case_id": "GBM-095",
+  "category": "CAT-5",
+  "difficulty": "high",
+  "clinical_info": {
+    "patient_id": "SYN-095",
+    "sex": "Female",
+    "age": 51.3,
+    "location": "frontal lobe",
+    "sample": "surgical resection",
+    "sample_type": "Recurrence",
+    "clinical_context": "Recurrent GBM post-Stupp. MSI-H status confirmed by PCR and NGS at recurrence. Prior treatment: 60Gy RT + 6 cycles TMZ."
+  },
+  "profile": {
+    "molecular_status": {
+      "IDH1_mutation": "WT",
+      "MGMT_status": "METHYLATED",
+      "G_CIMP_methylation": "non-G-CIMP",
+      "CDKN2A": "homozygous deletion",
+      "TMB_nonsynonymous": 18.6,
+      "MSI_status": "MSI-H",
+      "expression_subtype": "Mesenchymal"
+    },
+    "variants": [
+      {
+        "gene": "TERT",
+        "HGVSp_short": "c.-146C>T",
+        "variant_classification": "Promoter",
+        "variant_type": "SNP",
+        "t_alt_count": 72,
+        "t_ref_count": 28,
+        "vaf": 0.72
+      },
+      {
+        "gene": "PTEN",
+        "HGVSp_short": "p.R233*",
+        "variant_classification": "Nonsense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 43,
+        "t_ref_count": 57,
+        "vaf": 0.43
+      },
+      {
+        "gene": "MLH1",
+        "HGVSp_short": "p.R217*",
+        "variant_classification": "Nonsense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 35,
+        "t_ref_count": 65,
+        "vaf": 0.35
+      },
+      {
+        "gene": "TP53",
+        "HGVSp_short": "p.R248W",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 28,
+        "t_ref_count": 72,
+        "vaf": 0.28
+      },
+      {
+        "gene": "MUC16",
+        "HGVSp_short": "p.R10506H",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 9,
+        "t_ref_count": 91,
+        "vaf": 0.09
+      }
+    ]
+  },
+  "ground_truth": {
+    "classifications": {
+      "TERT": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "PTEN": {
+        "class": "driver",
+        "oncokb_level": "2",
+        "is_trap": false
+      },
+      "MLH1": {
+        "class": "co-driver",
+        "oncokb_level": "3",
+        "is_trap": false
+      },
+      "TP53": {
+        "class": "co-driver",
+        "oncokb_level": "3",
+        "is_trap": false
+      },
+      "MUC16": {
+        "class": "passenger",
+        "oncokb_level": "none",
+        "is_trap": true
+      }
+    },
+    "therapeutic_relevance": {
+      "TERT": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "PTEN": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "MLH1": {
+        "relevant": true,
+        "treatment": "pembrolizumab (MSI-H)"
+      },
+      "TP53": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "MUC16": {
+        "relevant": false,
+        "treatment": {}
+      }
+    },
+    "cat5_feature": "MSI-H status with MLH1 loss at recurrence — pembrolizumab indicated (FDA tumor-agnostic MSI-H approval 2017)",
+    "hallucination_traps": [
+      "MUC16 is a passenger",
+      "PTEN loss has no approved targeted therapy in GBM",
+      "TP53 has no approved targeted therapy in GBM"
+    ]
+  }
+}

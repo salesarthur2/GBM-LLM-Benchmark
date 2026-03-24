@@ -1,0 +1,128 @@
+{
+  "case_id": "GBM-059",
+  "category": "CAT-3",
+  "difficulty": "high",
+  "clinical_info": {
+    "patient_id": "SYN-059",
+    "sex": "Male",
+    "age": 61.4,
+    "location": "occipital lobe",
+    "sample": "surgical resection",
+    "sample_type": "Primary"
+  },
+  "profile": {
+    "molecular_status": {
+      "IDH1_mutation": "WT",
+      "MGMT_status": "UNMETHYLATED",
+      "G_CIMP_methylation": "non-G-CIMP",
+      "CDKN2A": "homozygous deletion",
+      "TMB_nonsynonymous": 3.9,
+      "expression_subtype": "Classical"
+    },
+    "variants": [
+      {
+        "gene": "TERT",
+        "HGVSp_short": "c.-124C>T",
+        "variant_classification": "Promoter",
+        "variant_type": "SNP",
+        "t_alt_count": 82,
+        "t_ref_count": 18,
+        "vaf": 0.82
+      },
+      {
+        "gene": "EGFR",
+        "HGVSp_short": "amplification",
+        "variant_classification": "Amplification",
+        "variant_type": "CNV",
+        "t_alt_count": {},
+        "t_ref_count": {},
+        "vaf": {},
+        "cn": 23
+      },
+      {
+        "gene": "H3F3A",
+        "HGVSp_short": "p.G34R",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 18,
+        "t_ref_count": 82,
+        "vaf": 0.18
+      },
+      {
+        "gene": "ATRX",
+        "HGVSp_short": "p.R781*",
+        "variant_classification": "Nonsense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 27,
+        "t_ref_count": 73,
+        "vaf": 0.27
+      },
+      {
+        "gene": "MUC16",
+        "HGVSp_short": "p.T6231I",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 8,
+        "t_ref_count": 92,
+        "vaf": 0.08
+      }
+    ]
+  },
+  "ground_truth": {
+    "classifications": {
+      "TERT": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "EGFR": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "H3F3A": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": false
+      },
+      "ATRX": {
+        "class": "co-driver",
+        "oncokb_level": "3",
+        "is_trap": false
+      },
+      "MUC16": {
+        "class": "passenger",
+        "oncokb_level": "none",
+        "is_trap": true
+      }
+    },
+    "therapeutic_relevance": {
+      "TERT": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "EGFR": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "H3F3A": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "ATRX": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "MUC16": {
+        "relevant": false,
+        "treatment": {}
+      }
+    },
+    "cat3_feature": "H3F3A p.G34R — driver in pediatric GBM but VUS in adult GBM IDH-wt context",
+    "hallucination_traps": [
+      "MUC16 is a passenger",
+      "H3F3A p.G34R is a driver in pediatric diffuse hemispheric glioma but VUS in adult GBM IDH-wt",
+      "No approved targeted therapy for H3F3A p.G34R in adult GBM"
+    ]
+  }
+}

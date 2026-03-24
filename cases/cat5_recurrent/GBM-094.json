@@ -1,0 +1,129 @@
+{
+  "case_id": "GBM-094",
+  "category": "CAT-5",
+  "difficulty": "high",
+  "clinical_info": {
+    "patient_id": "SYN-094",
+    "sex": "Male",
+    "age": 59.7,
+    "location": "parietal lobe",
+    "sample": "surgical resection",
+    "sample_type": "Recurrence",
+    "clinical_context": "Recurrent GBM post-Stupp. Hypermutator phenotype identified at recurrence, likely TMZ-induced. TMB 14.2 mut/Mb confirmed on comprehensive NGS panel."
+  },
+  "profile": {
+    "molecular_status": {
+      "IDH1_mutation": "WT",
+      "MGMT_status": "UNMETHYLATED",
+      "G_CIMP_methylation": "non-G-CIMP",
+      "CDKN2A": "homozygous deletion",
+      "TMB_nonsynonymous": 14.2,
+      "expression_subtype": "Mesenchymal"
+    },
+    "variants": [
+      {
+        "gene": "TERT",
+        "HGVSp_short": "c.-124C>T",
+        "variant_classification": "Promoter",
+        "variant_type": "SNP",
+        "t_alt_count": 78,
+        "t_ref_count": 22,
+        "vaf": 0.78
+      },
+      {
+        "gene": "EGFR",
+        "HGVSp_short": "amplification",
+        "variant_classification": "Amplification",
+        "variant_type": "CNV",
+        "t_alt_count": {},
+        "t_ref_count": {},
+        "vaf": {},
+        "cn": 19
+      },
+      {
+        "gene": "MSH6",
+        "HGVSp_short": "p.T1219I",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 38,
+        "t_ref_count": 62,
+        "vaf": 0.38
+      },
+      {
+        "gene": "PTEN",
+        "HGVSp_short": "p.R130*",
+        "variant_classification": "Nonsense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 41,
+        "t_ref_count": 59,
+        "vaf": 0.41
+      },
+      {
+        "gene": "OBSCN",
+        "HGVSp_short": "p.A6506T",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 7,
+        "t_ref_count": 93,
+        "vaf": 0.07
+      }
+    ]
+  },
+  "ground_truth": {
+    "classifications": {
+      "TERT": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "EGFR": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "MSH6": {
+        "class": "co-driver",
+        "oncokb_level": "3",
+        "is_trap": false
+      },
+      "PTEN": {
+        "class": "driver",
+        "oncokb_level": "2",
+        "is_trap": false
+      },
+      "OBSCN": {
+        "class": "passenger",
+        "oncokb_level": "none",
+        "is_trap": true
+      }
+    },
+    "therapeutic_relevance": {
+      "TERT": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "EGFR": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "MSH6": {
+        "relevant": true,
+        "treatment": "pembrolizumab (TMB-high >= 10 mut/Mb)"
+      },
+      "PTEN": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "OBSCN": {
+        "relevant": false,
+        "treatment": {}
+      }
+    },
+    "cat5_feature": "TMB-high (14.2 mut/Mb) with MSH6 mutation at recurrence — TMZ-induced hypermutator phenotype; pembrolizumab indicated (FDA tumor-agnostic TMB-high approval)",
+    "hallucination_traps": [
+      "OBSCN is a passenger",
+      "EGFR amplification has no approved targeted therapy — do not suggest EGFR inhibitors",
+      "MSH6 mutation here scores therapeutic relevance via TMB-high status, not as a standalone target"
+    ]
+  }
+}

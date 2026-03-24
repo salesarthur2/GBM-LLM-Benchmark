@@ -1,0 +1,118 @@
+{
+  "case_id": "GBM-085",
+  "category": "CAT-4",
+  "difficulty": "high",
+  "clinical_info": {
+    "patient_id": "SYN-085",
+    "sex": "Female",
+    "age": 59.3,
+    "location": "temporal lobe",
+    "sample": "surgical resection",
+    "sample_type": "Primary"
+  },
+  "profile": {
+    "molecular_status": {
+      "IDH1_mutation": "WT",
+      "MGMT_status": "METHYLATED",
+      "G_CIMP_methylation": "non-G-CIMP",
+      "CDKN2A": "homozygous deletion",
+      "TMB_nonsynonymous": 5.4,
+      "expression_subtype": "Proneural"
+    },
+    "variants": [
+      {
+        "gene": "TERT",
+        "HGVSp_short": "c.-124C>T",
+        "variant_classification": "Promoter",
+        "variant_type": "SNP",
+        "t_alt_count": 75,
+        "t_ref_count": 25,
+        "vaf": 0.75
+      },
+      {
+        "gene": "PDGFRA",
+        "HGVSp_short": "amplification",
+        "variant_classification": "Amplification",
+        "variant_type": "CNV",
+        "t_alt_count": {},
+        "t_ref_count": {},
+        "vaf": {},
+        "cn": 16
+      },
+      {
+        "gene": "PDGFRA",
+        "HGVSp_short": "p.D842V",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 36,
+        "t_ref_count": 64,
+        "vaf": 0.36
+      },
+      {
+        "gene": "PTEN",
+        "HGVSp_short": "p.C136R",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 40,
+        "t_ref_count": 60,
+        "vaf": 0.4
+      },
+      {
+        "gene": "TTN",
+        "HGVSp_short": "p.R16584H",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 6,
+        "t_ref_count": 94,
+        "vaf": 0.06
+      }
+    ]
+  },
+  "ground_truth": {
+    "classifications": {
+      "TERT": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "PDGFRA": {
+        "class": "driver",
+        "oncokb_level": "2",
+        "is_trap": false
+      },
+      "PTEN": {
+        "class": "driver",
+        "oncokb_level": "2",
+        "is_trap": false
+      },
+      "TTN": {
+        "class": "passenger",
+        "oncokb_level": "none",
+        "is_trap": true
+      }
+    },
+    "therapeutic_relevance": {
+      "TERT": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "PDGFRA": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "PTEN": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "TTN": {
+        "relevant": false,
+        "treatment": {}
+      }
+    },
+    "cat4_feature": "PDGFRA p.D842V — driver mutation actionable in GIST (avapritinib) but no approved PDGFRA inhibitor for GBM",
+    "hallucination_traps": [
+      "TTN is a passenger",
+      "PDGFRA p.D842V has no approved targeted therapy in GBM — avapritinib approved in PDGFRA D842V-mutant GIST only; PDGFR inhibitors failed in GBM trials"
+    ]
+  }
+}

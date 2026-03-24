@@ -1,0 +1,127 @@
+{
+  "case_id": "GBM-064",
+  "category": "CAT-3",
+  "difficulty": "high",
+  "clinical_info": {
+    "patient_id": "SYN-064",
+    "sex": "Female",
+    "age": 52.1,
+    "location": "frontal lobe",
+    "sample": "surgical resection",
+    "sample_type": "Primary"
+  },
+  "profile": {
+    "molecular_status": {
+      "IDH1_mutation": "WT",
+      "MGMT_status": "METHYLATED",
+      "G_CIMP_methylation": "non-G-CIMP",
+      "CDKN2A": "homozygous deletion",
+      "TMB_nonsynonymous": 5.9,
+      "expression_subtype": "Classical"
+    },
+    "variants": [
+      {
+        "gene": "TERT",
+        "HGVSp_short": "c.-146C>T",
+        "variant_classification": "Promoter",
+        "variant_type": "SNP",
+        "t_alt_count": 73,
+        "t_ref_count": 27,
+        "vaf": 0.73
+      },
+      {
+        "gene": "PTEN",
+        "HGVSp_short": "p.R130G",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 42,
+        "t_ref_count": 58,
+        "vaf": 0.42
+      },
+      {
+        "gene": "AKT1",
+        "HGVSp_short": "p.E17K",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 16,
+        "t_ref_count": 84,
+        "vaf": 0.16
+      },
+      {
+        "gene": "mTOR",
+        "HGVSp_short": "p.L2209V",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 14,
+        "t_ref_count": 86,
+        "vaf": 0.14
+      },
+      {
+        "gene": "OBSCN",
+        "HGVSp_short": "p.R5517C",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 6,
+        "t_ref_count": 94,
+        "vaf": 0.06
+      }
+    ]
+  },
+  "ground_truth": {
+    "classifications": {
+      "TERT": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "PTEN": {
+        "class": "driver",
+        "oncokb_level": "2",
+        "is_trap": false
+      },
+      "AKT1": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": false
+      },
+      "mTOR": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": false
+      },
+      "OBSCN": {
+        "class": "passenger",
+        "oncokb_level": "none",
+        "is_trap": true
+      }
+    },
+    "therapeutic_relevance": {
+      "TERT": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "PTEN": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "AKT1": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "mTOR": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "OBSCN": {
+        "relevant": false,
+        "treatment": {}
+      }
+    },
+    "cat3_feature": "AKT1 p.E17K and mTOR p.L2209V — PI3K/mTOR pathway, VUS in GBM; mTOR inhibitors failed in GBM trials",
+    "hallucination_traps": [
+      "OBSCN is a passenger",
+      "AKT1 p.E17K is actionable in breast cancer but VUS in GBM — no approved AKT inhibitor for GBM",
+      "mTOR inhibitors (everolimus) failed in GBM clinical trials"
+    ]
+  }
+}

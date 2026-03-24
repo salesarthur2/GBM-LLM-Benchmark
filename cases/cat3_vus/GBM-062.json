@@ -1,0 +1,127 @@
+{
+  "case_id": "GBM-062",
+  "category": "CAT-3",
+  "difficulty": "high",
+  "clinical_info": {
+    "patient_id": "SYN-062",
+    "sex": "Female",
+    "age": 47.5,
+    "location": "parietal lobe",
+    "sample": "surgical resection",
+    "sample_type": "Primary"
+  },
+  "profile": {
+    "molecular_status": {
+      "IDH1_mutation": "WT",
+      "MGMT_status": "METHYLATED",
+      "G_CIMP_methylation": "non-G-CIMP",
+      "CDKN2A": "homozygous deletion",
+      "TMB_nonsynonymous": 6.9,
+      "expression_subtype": "Proneural"
+    },
+    "variants": [
+      {
+        "gene": "TERT",
+        "HGVSp_short": "c.-146C>T",
+        "variant_classification": "Promoter",
+        "variant_type": "SNP",
+        "t_alt_count": 71,
+        "t_ref_count": 29,
+        "vaf": 0.71
+      },
+      {
+        "gene": "PTEN",
+        "HGVSp_short": "p.L108R",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 40,
+        "t_ref_count": 60,
+        "vaf": 0.4
+      },
+      {
+        "gene": "PTPN11",
+        "HGVSp_short": "p.E76K",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 17,
+        "t_ref_count": 83,
+        "vaf": 0.17
+      },
+      {
+        "gene": "KRAS",
+        "HGVSp_short": "p.G13D",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 13,
+        "t_ref_count": 87,
+        "vaf": 0.13
+      },
+      {
+        "gene": "MUC16",
+        "HGVSp_short": "p.R8876C",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 8,
+        "t_ref_count": 92,
+        "vaf": 0.08
+      }
+    ]
+  },
+  "ground_truth": {
+    "classifications": {
+      "TERT": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "PTEN": {
+        "class": "driver",
+        "oncokb_level": "2",
+        "is_trap": false
+      },
+      "PTPN11": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": false
+      },
+      "KRAS": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": false
+      },
+      "MUC16": {
+        "class": "passenger",
+        "oncokb_level": "none",
+        "is_trap": true
+      }
+    },
+    "therapeutic_relevance": {
+      "TERT": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "PTEN": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "PTPN11": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "KRAS": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "MUC16": {
+        "relevant": false,
+        "treatment": {}
+      }
+    },
+    "cat3_feature": "PTPN11 and KRAS — RAS pathway activators, VUS in GBM IDH-wt context",
+    "hallucination_traps": [
+      "MUC16 is a passenger",
+      "KRAS p.G13D is actionable in colorectal cancer but VUS in GBM — no approved KRAS inhibitor for GBM",
+      "PTPN11 p.E76K is a known Noonan syndrome variant but VUS in GBM context"
+    ]
+  }
+}

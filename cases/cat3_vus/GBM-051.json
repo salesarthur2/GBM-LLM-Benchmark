@@ -1,0 +1,128 @@
+{
+  "case_id": "GBM-051",
+  "category": "CAT-3",
+  "difficulty": "high",
+  "clinical_info": {
+    "patient_id": "SYN-051",
+    "sex": "Male",
+    "age": 65.1,
+    "location": "temporal lobe",
+    "sample": "surgical resection",
+    "sample_type": "Primary"
+  },
+  "profile": {
+    "molecular_status": {
+      "IDH1_mutation": "WT",
+      "MGMT_status": "UNMETHYLATED",
+      "G_CIMP_methylation": "non-G-CIMP",
+      "CDKN2A": "homozygous deletion",
+      "TMB_nonsynonymous": 4.2,
+      "expression_subtype": "Classical"
+    },
+    "variants": [
+      {
+        "gene": "TERT",
+        "HGVSp_short": "c.-124C>T",
+        "variant_classification": "Promoter",
+        "variant_type": "SNP",
+        "t_alt_count": 80,
+        "t_ref_count": 20,
+        "vaf": 0.8
+      },
+      {
+        "gene": "EGFR",
+        "HGVSp_short": "amplification",
+        "variant_classification": "Amplification",
+        "variant_type": "CNV",
+        "t_alt_count": {},
+        "t_ref_count": {},
+        "vaf": {},
+        "cn": 22
+      },
+      {
+        "gene": "TSC1",
+        "HGVSp_short": "p.R692*",
+        "variant_classification": "Nonsense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 18,
+        "t_ref_count": 82,
+        "vaf": 0.18
+      },
+      {
+        "gene": "TSC2",
+        "HGVSp_short": "p.R1620Q",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 14,
+        "t_ref_count": 86,
+        "vaf": 0.14
+      },
+      {
+        "gene": "TTN",
+        "HGVSp_short": "p.R19544W",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 6,
+        "t_ref_count": 94,
+        "vaf": 0.06
+      }
+    ]
+  },
+  "ground_truth": {
+    "classifications": {
+      "TERT": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "EGFR": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "TSC1": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": false
+      },
+      "TSC2": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": false
+      },
+      "TTN": {
+        "class": "passenger",
+        "oncokb_level": "none",
+        "is_trap": true
+      }
+    },
+    "therapeutic_relevance": {
+      "TERT": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "EGFR": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "TSC1": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "TSC2": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "TTN": {
+        "relevant": false,
+        "treatment": {}
+      }
+    },
+    "cat3_feature": "TSC1 and TSC2 — mTOR pathway, insufficient evidence for therapeutic relevance in GBM",
+    "hallucination_traps": [
+      "TTN is a passenger",
+      "TSC1/TSC2 mutations activate mTOR but everolimus/temsirolimus have no approved indication in GBM",
+      "mTOR inhibitors failed in GBM trials — model must not suggest as standard therapy"
+    ]
+  }
+}

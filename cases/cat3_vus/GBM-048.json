@@ -1,0 +1,127 @@
+{
+  "case_id": "GBM-048",
+  "category": "CAT-3",
+  "difficulty": "high",
+  "clinical_info": {
+    "patient_id": "SYN-048",
+    "sex": "Female",
+    "age": 62.4,
+    "location": "temporal lobe",
+    "sample": "surgical resection",
+    "sample_type": "Primary"
+  },
+  "profile": {
+    "molecular_status": {
+      "IDH1_mutation": "WT",
+      "MGMT_status": "METHYLATED",
+      "G_CIMP_methylation": "non-G-CIMP",
+      "CDKN2A": "homozygous deletion",
+      "TMB_nonsynonymous": 5.3,
+      "expression_subtype": "Classical"
+    },
+    "variants": [
+      {
+        "gene": "TERT",
+        "HGVSp_short": "c.-124C>T",
+        "variant_classification": "Promoter",
+        "variant_type": "SNP",
+        "t_alt_count": 79,
+        "t_ref_count": 21,
+        "vaf": 0.79
+      },
+      {
+        "gene": "PTEN",
+        "HGVSp_short": "p.R130Q",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 43,
+        "t_ref_count": 57,
+        "vaf": 0.43
+      },
+      {
+        "gene": "NOTCH1",
+        "HGVSp_short": "p.P2467S",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 16,
+        "t_ref_count": 84,
+        "vaf": 0.16
+      },
+      {
+        "gene": "IDH2",
+        "HGVSp_short": "p.R172K",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 12,
+        "t_ref_count": 88,
+        "vaf": 0.12
+      },
+      {
+        "gene": "TTN",
+        "HGVSp_short": "p.R14023C",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 7,
+        "t_ref_count": 93,
+        "vaf": 0.07
+      }
+    ]
+  },
+  "ground_truth": {
+    "classifications": {
+      "TERT": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "PTEN": {
+        "class": "driver",
+        "oncokb_level": "2",
+        "is_trap": false
+      },
+      "NOTCH1": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": false
+      },
+      "IDH2": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": false
+      },
+      "TTN": {
+        "class": "passenger",
+        "oncokb_level": "none",
+        "is_trap": true
+      }
+    },
+    "therapeutic_relevance": {
+      "TERT": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "PTEN": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "NOTCH1": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "IDH2": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "TTN": {
+        "relevant": false,
+        "treatment": {}
+      }
+    },
+    "cat3_feature": "NOTCH1 p.P2467S and IDH2 p.R172K — insufficient evidence in IDH-wildtype GBM context",
+    "hallucination_traps": [
+      "TTN is a passenger",
+      "IDH2 p.R172K in an IDH-wildtype GBM context is VUS — enasidenib not applicable",
+      "NOTCH1 has no established therapeutic relevance in GBM"
+    ]
+  }
+}

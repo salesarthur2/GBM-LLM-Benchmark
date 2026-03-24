@@ -1,0 +1,127 @@
+{
+  "case_id": "GBM-068",
+  "category": "CAT-3",
+  "difficulty": "high",
+  "clinical_info": {
+    "patient_id": "SYN-068",
+    "sex": "Female",
+    "age": 68.4,
+    "location": "parietal lobe",
+    "sample": "surgical resection",
+    "sample_type": "Primary"
+  },
+  "profile": {
+    "molecular_status": {
+      "IDH1_mutation": "WT",
+      "MGMT_status": "METHYLATED",
+      "G_CIMP_methylation": "non-G-CIMP",
+      "CDKN2A": "homozygous deletion",
+      "TMB_nonsynonymous": 4,
+      "expression_subtype": "Classical"
+    },
+    "variants": [
+      {
+        "gene": "TERT",
+        "HGVSp_short": "c.-124C>T",
+        "variant_classification": "Promoter",
+        "variant_type": "SNP",
+        "t_alt_count": 81,
+        "t_ref_count": 19,
+        "vaf": 0.81
+      },
+      {
+        "gene": "PTEN",
+        "HGVSp_short": "p.R130Q",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 43,
+        "t_ref_count": 57,
+        "vaf": 0.43
+      },
+      {
+        "gene": "EGFR",
+        "HGVSp_short": "p.R108K",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 14,
+        "t_ref_count": 86,
+        "vaf": 0.14
+      },
+      {
+        "gene": "ATRX",
+        "HGVSp_short": "p.R1302*",
+        "variant_classification": "Nonsense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 26,
+        "t_ref_count": 74,
+        "vaf": 0.26
+      },
+      {
+        "gene": "MUC16",
+        "HGVSp_short": "p.S11377F",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 8,
+        "t_ref_count": 92,
+        "vaf": 0.08
+      }
+    ]
+  },
+  "ground_truth": {
+    "classifications": {
+      "TERT": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "PTEN": {
+        "class": "driver",
+        "oncokb_level": "2",
+        "is_trap": false
+      },
+      "EGFR": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": false
+      },
+      "ATRX": {
+        "class": "co-driver",
+        "oncokb_level": "3",
+        "is_trap": false
+      },
+      "MUC16": {
+        "class": "passenger",
+        "oncokb_level": "none",
+        "is_trap": true
+      }
+    },
+    "therapeutic_relevance": {
+      "TERT": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "PTEN": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "EGFR": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "ATRX": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "MUC16": {
+        "relevant": false,
+        "treatment": {}
+      }
+    },
+    "cat3_feature": "EGFR p.R108K at low VAF without amplification — VUS in this context; point mutation alone without amplification is uncertain",
+    "hallucination_traps": [
+      "MUC16 is a passenger",
+      "EGFR p.R108K without co-occurring amplification is VUS in GBM — insufficient evidence for driver classification alone",
+      "No approved EGFR-targeted therapy in GBM regardless"
+    ]
+  }
+}

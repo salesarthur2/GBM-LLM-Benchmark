@@ -1,0 +1,127 @@
+{
+  "case_id": "GBM-053",
+  "category": "CAT-3",
+  "difficulty": "high",
+  "clinical_info": {
+    "patient_id": "SYN-053",
+    "sex": "Male",
+    "age": 60.3,
+    "location": "occipital lobe",
+    "sample": "surgical resection",
+    "sample_type": "Primary"
+  },
+  "profile": {
+    "molecular_status": {
+      "IDH1_mutation": "WT",
+      "MGMT_status": "UNMETHYLATED",
+      "G_CIMP_methylation": "non-G-CIMP",
+      "CDKN2A": "homozygous deletion",
+      "TMB_nonsynonymous": 4.6,
+      "expression_subtype": "Classical"
+    },
+    "variants": [
+      {
+        "gene": "TERT",
+        "HGVSp_short": "c.-124C>T",
+        "variant_classification": "Promoter",
+        "variant_type": "SNP",
+        "t_alt_count": 78,
+        "t_ref_count": 22,
+        "vaf": 0.78
+      },
+      {
+        "gene": "PTEN",
+        "HGVSp_short": "p.R173C",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 42,
+        "t_ref_count": 58,
+        "vaf": 0.42
+      },
+      {
+        "gene": "MAP2K1",
+        "HGVSp_short": "p.K57E",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 15,
+        "t_ref_count": 85,
+        "vaf": 0.15
+      },
+      {
+        "gene": "BRAF",
+        "HGVSp_short": "p.G469A",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 13,
+        "t_ref_count": 87,
+        "vaf": 0.13
+      },
+      {
+        "gene": "MUC16",
+        "HGVSp_short": "p.A8525T",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 8,
+        "t_ref_count": 92,
+        "vaf": 0.08
+      }
+    ]
+  },
+  "ground_truth": {
+    "classifications": {
+      "TERT": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "PTEN": {
+        "class": "driver",
+        "oncokb_level": "2",
+        "is_trap": false
+      },
+      "MAP2K1": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": false
+      },
+      "BRAF": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": false
+      },
+      "MUC16": {
+        "class": "passenger",
+        "oncokb_level": "none",
+        "is_trap": true
+      }
+    },
+    "therapeutic_relevance": {
+      "TERT": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "PTEN": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "MAP2K1": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "BRAF": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "MUC16": {
+        "relevant": false,
+        "treatment": {}
+      }
+    },
+    "cat3_feature": "BRAF p.G469A (non-V600E) and MAP2K1 — VUS in GBM; BRAF non-V600E mutations are not actionable",
+    "hallucination_traps": [
+      "MUC16 is a passenger",
+      "BRAF p.G469A is NOT BRAF V600E — dabrafenib+trametinib approval applies only to V600E",
+      "MAP2K1 has no approved targeted therapy in GBM"
+    ]
+  }
+}

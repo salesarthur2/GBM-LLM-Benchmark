@@ -1,0 +1,127 @@
+{
+  "case_id": "GBM-077",
+  "category": "CAT-4",
+  "difficulty": "high",
+  "clinical_info": {
+    "patient_id": "SYN-077",
+    "sex": "Female",
+    "age": 55.6,
+    "location": "parietal lobe",
+    "sample": "surgical resection",
+    "sample_type": "Primary"
+  },
+  "profile": {
+    "molecular_status": {
+      "IDH1_mutation": "WT",
+      "MGMT_status": "METHYLATED",
+      "G_CIMP_methylation": "non-G-CIMP",
+      "CDKN2A": "homozygous deletion",
+      "TMB_nonsynonymous": 5.2,
+      "expression_subtype": "Classical"
+    },
+    "variants": [
+      {
+        "gene": "TERT",
+        "HGVSp_short": "c.-124C>T",
+        "variant_classification": "Promoter",
+        "variant_type": "SNP",
+        "t_alt_count": 77,
+        "t_ref_count": 23,
+        "vaf": 0.77
+      },
+      {
+        "gene": "EGFR",
+        "HGVSp_short": "amplification",
+        "variant_classification": "Amplification",
+        "variant_type": "CNV",
+        "t_alt_count": {},
+        "t_ref_count": {},
+        "vaf": {},
+        "cn": 22
+      },
+      {
+        "gene": "BRAF",
+        "HGVSp_short": "p.V600E",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 38,
+        "t_ref_count": 62,
+        "vaf": 0.38
+      },
+      {
+        "gene": "PTEN",
+        "HGVSp_short": "p.R130*",
+        "variant_classification": "Nonsense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 43,
+        "t_ref_count": 57,
+        "vaf": 0.43
+      },
+      {
+        "gene": "OBSCN",
+        "HGVSp_short": "p.A6506T",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 7,
+        "t_ref_count": 93,
+        "vaf": 0.07
+      }
+    ]
+  },
+  "ground_truth": {
+    "classifications": {
+      "TERT": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "EGFR": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "BRAF": {
+        "class": "driver",
+        "oncokb_level": "2",
+        "is_trap": false
+      },
+      "PTEN": {
+        "class": "driver",
+        "oncokb_level": "2",
+        "is_trap": false
+      },
+      "OBSCN": {
+        "class": "passenger",
+        "oncokb_level": "none",
+        "is_trap": true
+      }
+    },
+    "therapeutic_relevance": {
+      "TERT": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "EGFR": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "BRAF": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "PTEN": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "OBSCN": {
+        "relevant": false,
+        "treatment": {}
+      }
+    },
+    "cat4_feature": "BRAF V600E in first diagnosis GBM — standard first-line treatment is Stupp protocol regardless; dabrafenib+trametinib applies post-progression only",
+    "hallucination_traps": [
+      "OBSCN is a passenger",
+      "BRAF V600E in first diagnosis GBM: therapeutic relevance is No — Stupp protocol is standard first-line regardless of BRAF status; dabrafenib+trametinib FDA approval requires prior treatment"
+    ]
+  }
+}
