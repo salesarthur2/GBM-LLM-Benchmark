@@ -1,0 +1,126 @@
+{
+  "case_id": "GBM-016",
+  "category": "CAT-1",
+  "difficulty": "low",
+  "clinical_info": {
+    "patient_id": "SYN-016",
+    "sex": "Male",
+    "age": 61.8,
+    "location": "temporal lobe",
+    "sample": "stereotactic biopsy",
+    "sample_type": "Primary"
+  },
+  "profile": {
+    "molecular_status": {
+      "IDH1_mutation": "WT",
+      "MGMT_status": "METHYLATED",
+      "G_CIMP_methylation": "non-G-CIMP",
+      "CDKN2A": "homozygous deletion",
+      "TMB_nonsynonymous": 5.3,
+      "expression_subtype": "Mesenchymal"
+    },
+    "variants": [
+      {
+        "gene": "TERT",
+        "HGVSp_short": "c.-146C>T",
+        "variant_classification": "Promoter",
+        "variant_type": "SNP",
+        "t_alt_count": 75,
+        "t_ref_count": 25,
+        "vaf": 0.75
+      },
+      {
+        "gene": "EGFR",
+        "HGVSp_short": "amplification",
+        "variant_classification": "Amplification",
+        "variant_type": "CNV",
+        "t_alt_count": {},
+        "t_ref_count": {},
+        "vaf": {},
+        "cn": 23
+      },
+      {
+        "gene": "NF1",
+        "HGVSp_short": "p.R1534*",
+        "variant_classification": "Nonsense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 44,
+        "t_ref_count": 56,
+        "vaf": 0.44
+      },
+      {
+        "gene": "TP53",
+        "HGVSp_short": "p.R248W",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 33,
+        "t_ref_count": 67,
+        "vaf": 0.33
+      },
+      {
+        "gene": "TTN",
+        "HGVSp_short": "p.G22391R",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 7,
+        "t_ref_count": 93,
+        "vaf": 0.07
+      }
+    ]
+  },
+  "ground_truth": {
+    "classifications": {
+      "TERT": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "EGFR": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "NF1": {
+        "class": "co-driver",
+        "oncokb_level": "3",
+        "is_trap": false
+      },
+      "TP53": {
+        "class": "co-driver",
+        "oncokb_level": "3",
+        "is_trap": false
+      },
+      "TTN": {
+        "class": "passenger",
+        "oncokb_level": "none",
+        "is_trap": true
+      }
+    },
+    "therapeutic_relevance": {
+      "TERT": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "EGFR": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "NF1": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "TP53": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "TTN": {
+        "relevant": false,
+        "treatment": {}
+      }
+    },
+    "hallucination_traps": [
+      "TTN is a passenger mutation",
+      "NF1 loss has no approved targeted therapy in GBM"
+    ]
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "case_id": "GBM-013",
+  "category": "CAT-1",
+  "difficulty": "low",
+  "clinical_info": {
+    "patient_id": "SYN-013",
+    "sex": "Female",
+    "age": 57.4,
+    "location": "temporal lobe",
+    "sample": "surgical resection",
+    "sample_type": "Primary"
+  },
+  "profile": {
+    "molecular_status": {
+      "IDH1_mutation": "WT",
+      "MGMT_status": "UNMETHYLATED",
+      "G_CIMP_methylation": "non-G-CIMP",
+      "CDKN2A": "homozygous deletion",
+      "TMB_nonsynonymous": 3.5,
+      "expression_subtype": "Mesenchymal"
+    },
+    "variants": [
+      {
+        "gene": "TERT",
+        "HGVSp_short": "c.-146C>T",
+        "variant_classification": "Promoter",
+        "variant_type": "SNP",
+        "t_alt_count": 71,
+        "t_ref_count": 29,
+        "vaf": 0.71
+      },
+      {
+        "gene": "EGFR",
+        "HGVSp_short": "amplification",
+        "variant_classification": "Amplification",
+        "variant_type": "CNV",
+        "t_alt_count": {},
+        "t_ref_count": {},
+        "vaf": {},
+        "cn": 17
+      },
+      {
+        "gene": "NF1",
+        "HGVSp_short": "p.R2450*",
+        "variant_classification": "Nonsense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 38,
+        "t_ref_count": 62,
+        "vaf": 0.38
+      },
+      {
+        "gene": "RB1",
+        "HGVSp_short": "p.R698*",
+        "variant_classification": "Nonsense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 27,
+        "t_ref_count": 73,
+        "vaf": 0.27
+      },
+      {
+        "gene": "TTN",
+        "HGVSp_short": "p.T28615I",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 8,
+        "t_ref_count": 92,
+        "vaf": 0.08
+      }
+    ]
+  },
+  "ground_truth": {
+    "classifications": {
+      "TERT": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "EGFR": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "NF1": {
+        "class": "co-driver",
+        "oncokb_level": "3",
+        "is_trap": false
+      },
+      "RB1": {
+        "class": "co-driver",
+        "oncokb_level": "3",
+        "is_trap": false
+      },
+      "TTN": {
+        "class": "passenger",
+        "oncokb_level": "none",
+        "is_trap": true
+      }
+    },
+    "therapeutic_relevance": {
+      "TERT": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "EGFR": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "NF1": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "RB1": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "TTN": {
+        "relevant": false,
+        "treatment": {}
+      }
+    },
+    "hallucination_traps": [
+      "TTN is a large gene mutated by chance",
+      "NF1 and RB1 have no approved targeted therapy in GBM"
+    ]
+  }
+}

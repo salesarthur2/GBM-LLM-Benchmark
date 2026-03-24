@@ -1,0 +1,126 @@
+{
+  "case_id": "GBM-014",
+  "category": "CAT-1",
+  "difficulty": "low",
+  "clinical_info": {
+    "patient_id": "SYN-014",
+    "sex": "Male",
+    "age": 69.2,
+    "location": "parietal lobe",
+    "sample": "surgical resection",
+    "sample_type": "Primary"
+  },
+  "profile": {
+    "molecular_status": {
+      "IDH1_mutation": "WT",
+      "MGMT_status": "METHYLATED",
+      "G_CIMP_methylation": "non-G-CIMP",
+      "CDKN2A": "homozygous deletion",
+      "TMB_nonsynonymous": 3.1,
+      "expression_subtype": "Classical"
+    },
+    "variants": [
+      {
+        "gene": "TERT",
+        "HGVSp_short": "c.-124C>T",
+        "variant_classification": "Promoter",
+        "variant_type": "SNP",
+        "t_alt_count": 80,
+        "t_ref_count": 20,
+        "vaf": 0.8
+      },
+      {
+        "gene": "EGFR",
+        "HGVSp_short": "amplification",
+        "variant_classification": "Amplification",
+        "variant_type": "CNV",
+        "t_alt_count": {},
+        "t_ref_count": {},
+        "vaf": {},
+        "cn": 25
+      },
+      {
+        "gene": "PTEN",
+        "HGVSp_short": "p.R130G",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 43,
+        "t_ref_count": 57,
+        "vaf": 0.43
+      },
+      {
+        "gene": "PIK3CA",
+        "HGVSp_short": "p.E545K",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 25,
+        "t_ref_count": 75,
+        "vaf": 0.25
+      },
+      {
+        "gene": "OBSCN",
+        "HGVSp_short": "p.R5517C",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 7,
+        "t_ref_count": 93,
+        "vaf": 0.07
+      }
+    ]
+  },
+  "ground_truth": {
+    "classifications": {
+      "TERT": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "EGFR": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "PTEN": {
+        "class": "driver",
+        "oncokb_level": "2",
+        "is_trap": false
+      },
+      "PIK3CA": {
+        "class": "co-driver",
+        "oncokb_level": "3",
+        "is_trap": false
+      },
+      "OBSCN": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": true
+      }
+    },
+    "therapeutic_relevance": {
+      "TERT": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "EGFR": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "PTEN": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "PIK3CA": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "OBSCN": {
+        "relevant": false,
+        "treatment": {}
+      }
+    },
+    "hallucination_traps": [
+      "OBSCN has no established oncogenic role in GBM",
+      "PIK3CA E545K has no approved targeted therapy in GBM"
+    ]
+  }
+}

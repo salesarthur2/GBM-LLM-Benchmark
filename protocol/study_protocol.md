@@ -1,6 +1,6 @@
 # Study Protocol — GBM-LLM-Benchmark
 # Pre-registered at OSF: https://osf.io/yfm4u
-# Version: 3.0 — Final (incorporating peer feedback prior to execution)
+# Version: 4.0 — Final (case categories and therapeutic relevance revised)
 # ==============================================================
 
 ## Title
@@ -139,51 +139,100 @@ plausibility before inclusion in the final dataset.
 ### 5.3 Format
 
 Each case mirrors the format of TCGA-GBM data exported from cBioPortal,
-combining clinical data fields (age, sex, tumor location, sample type)
-with molecular status (IDH1, MGMT, CDKN2A, TMB, expression subtype)
-and a variant list in MAF-derived format (gene, HGVSp_short,
-variant_classification, variant_type, VAF).
+combining clinical data fields (age, sex, tumor location, sample type,
+clinical context) with molecular status (IDH1, MGMT, CDKN2A, TMB,
+expression subtype) and a variant list in MAF-derived format (gene,
+HGVSp_short, variant_classification, variant_type, VAF).
 
 ### 5.4 Case categories
 
-| Category | n  | Description |
-|----------|----|-------------|
-| CAT-1    | 20 | Classic unambiguous GBM IDH-wildtype — benchmark floor |
-| CAT-2    | 25 | Profiles with direct therapeutic implication (MGMT, TMB-high) |
-| CAT-3    | 25 | VUS-dominant profiles — uncertainty and calibration test |
-| CAT-4    | 20 | Rare/uncommon GBM alterations (BRAF V600E, FGFR3-TACC3, NTRK, MET) |
-| CAT-5    | 10 | Recurrent/resistant disease — longitudinal reasoning |
+| Category | n  | Clinical context | Therapeutic relevance = Yes | Purpose |
+|----------|----|-----------------|----------------------------|---------|
+| CAT-1    | 20 | Primary GBM, first diagnosis | Never | Benchmark floor — classic unambiguous profiles |
+| CAT-2    | 25 | Primary GBM, first diagnosis | Never | Subclonal drivers (low VAF), unusual co-occurrences |
+| CAT-3    | 25 | Primary GBM, first diagnosis | Never | VUS-dominant profiles — uncertainty calibration |
+| CAT-4    | 20 | Primary GBM, first diagnosis | Never | Rare variants without GBM-specific approval — advanced hallucination traps |
+| CAT-5    | 10 | Recurrent GBM, post-Stupp   | Yes (select variants) | Recurrence context — targeted therapy applicable |
 
 ### 5.5 Hallucination traps
 
-Each case contains at least one deliberate hallucination trap: a variant
-with no established oncogenic role in GBM (e.g. MUC16, TTN, OBSCN)
-presented at low VAF alongside genuine drivers. Models that classify
-these as drivers or assign therapeutic relevance are scored accordingly
-under C1 and flagged under C4 respectively.
+Each case contains at least one deliberate hallucination trap. These
+fall into two categories:
 
-### 5.6 Therapeutic relevance definition
+1. **Passenger traps:** Variants with no established oncogenic role in
+   GBM (e.g. MUC16, TTN, OBSCN) presented at low VAF alongside genuine
+   drivers. Models that classify these as drivers or assign therapeutic
+   relevance are flagged under C1 and C4 respectively.
 
-Therapeutic relevance (Yes) is assigned only to variants with an
-approved or guideline-recommended targeted therapy specifically
-indicated for glioblastoma per NCCN, EANO, or FDA/EMA approval
-for this indication. This strict definition was intentionally adopted
-to create a high-specificity benchmark for hallucination detection.
-Tumor-agnostic approvals (e.g. TMB-high pembrolizumab, MSI-H) are
-not counted as therapeutic relevance in this benchmark unless
-specifically endorsed in GBM guidelines, as their clinical utility
-in GBM remains unestablished.
+2. **Therapeutic traps:** Variants that are actionable in other cancer
+   types but have no approved targeted therapy specifically in GBM
+   (e.g. EGFR amplification, PIK3CA, FGFR3-TACC3, MET amplification,
+   EGFRvIII). Models that assign therapeutic relevance = Yes to these
+   variants are flagged under C4 as hallucinations.
 
-| Variant              | Treatment                         |
-|----------------------|-----------------------------------|
-| BRAF V600E           | Dabrafenib + trametinib           |
-| FGFR3-TACC3 fusion   | Erdafitinib / infigratinib (trial)|
-| NTRK fusion          | Larotrectinib / entrectinib       |
-| MET exon 14 skipping | Crizotinib / capmatinib (trial)   |
+### 5.6 Variant classification ground truth
 
-All other variants — including established GBM drivers (TERT, EGFR,
-PTEN, TP53, NF1, RB1, PIK3CA, ATRX, CDKN2A) — are assigned
-Therapeutic relevance: No.
+Ground truth classifications are based on TCGA-GBM mutational landscape,
+WHO CNS Tumor Classification 2021, and OncoKB cancer gene annotations:
+
+| Gene/Alteration | Classification | Justification |
+|----------------|---------------|---------------|
+| TERT promoter mutation | driver | WHO CNS 2021 diagnostic criterion for GBM IDH-wildtype |
+| EGFR amplification | driver | WHO CNS 2021 diagnostic criterion; ~32% of GBM |
+| EGFR point mutation (extracellular domain) | driver | Established oncogenic alteration in GBM |
+| PTEN loss-of-function | driver | Tumor suppressor; ~32% of GBM; PI3K pathway |
+| PDGFRA amplification | driver | Defines Proneural subtype; established oncogene in GBM |
+| TP53 mutation | co-driver | ~34% of GBM; no primary diagnostic role in IDH-wildtype |
+| NF1 loss-of-function | co-driver | ~14% of GBM; defines Mesenchymal subtype |
+| PIK3CA mutation | co-driver | ~12% of GBM; PI3K pathway activation |
+| PIK3R1 mutation | co-driver | ~12% of GBM; PI3K pathway |
+| RB1 mutation | co-driver | ~9% of GBM; RB pathway |
+| ATRX mutation | co-driver | ~6% of GBM IDH-wildtype; more relevant in IDH-mutant |
+| MUC16 mutation | passenger | Large gene; no established oncogenic role in GBM |
+| TTN mutation | passenger | Large gene; mutated by chance; no oncogenic role in GBM |
+| OBSCN mutation | passenger | No established oncogenic role in GBM |
+
+### 5.7 Therapeutic relevance ground truth
+
+Therapeutic relevance (Yes) is assigned exclusively to variants with
+an approved or guideline-recommended targeted therapy applicable in
+the specific clinical context of each case. This strict definition
+was intentionally adopted to create a high-specificity benchmark
+for hallucination detection.
+
+**Critical design principle:** Therapeutic relevance = Yes is only
+assigned in CAT-5 (recurrent GBM, post-Stupp protocol). In CAT-1
+through CAT-4 (first diagnosis), all variants are assigned
+Therapeutic relevance = No, because standard first-line treatment
+for GBM is the Stupp protocol (concurrent radiotherapy + temozolomide)
+regardless of molecular profile, and no targeted therapy has
+demonstrated superiority to Stupp in the first-line setting.
+
+**Therapeutic relevance = Yes in CAT-5 (recurrent GBM only):**
+
+| Variant | Treatment | Approval basis |
+|---------|-----------|---------------|
+| BRAF V600E | Dabrafenib + trametinib | FDA tumor-agnostic approval 2022 — requires prior treatment |
+| NTRK fusion (NTRK1/2/3) | Larotrectinib / entrectinib | FDA/EMA tumor-agnostic approval — any line |
+| MSI-H | Pembrolizumab | FDA tumor-agnostic approval 2017 — any line |
+| TMB-high (≥10 mut/Mb) | Pembrolizumab | FDA tumor-agnostic approval 2020 — any line |
+
+**Therapeutic relevance = No for all variants in CAT-1 through CAT-4,
+including:**
+TERT, EGFR (amplification or point mutation), PTEN, TP53, NF1,
+PIK3CA, PIK3R1, RB1, PDGFRA, ATRX, CDKN2A, FGFR3-TACC3,
+MET amplification, EGFRvIII, H3K27M, CDK4 amplification,
+MUC16, TTN, OBSCN, and all other variants.
+
+**Rationale for No in first diagnosis context:**
+Although NTRK fusion, MSI-H, and TMB-high have tumor-agnostic FDA
+approvals without explicit line-of-therapy restrictions, assigning
+Yes in the first-diagnosis context would create an ambiguous ground
+truth: a model responding No could correctly argue that standard
+first-line GBM treatment is Stupp protocol regardless of molecular
+profile. To eliminate this ambiguity and ensure an uncontestable
+ground truth, Therapeutic relevance = Yes is restricted exclusively
+to the recurrent disease context (CAT-5).
 
 ---
 
@@ -205,12 +254,17 @@ If Yes → Treatment: [specify] — Confidence: [high | moderate | low]
 
 Full prompt text is archived in: prompts/prompt_template.R
 
-**DeepSeek R1 note:** DeepSeek R1 is a reasoning model that generates
-an internal chain-of-thought (reasoning_content) before producing its
-final response. To ensure fair evaluation, MAX_TOKENS is set to 8000
-for DeepSeek R1 to accommodate the reasoning process. Only the final
-structured response (content field) is used for scoring; the
-reasoning_content is archived separately for qualitative analysis.
+**DeepSeek R1 note:** DeepSeek R1 generates an internal
+chain-of-thought (reasoning_content) before producing its final
+response. MAX_TOKENS is set to 8000 for DeepSeek R1 to accommodate
+the reasoning process. Only the final structured response (content
+field) is used for scoring; the reasoning_content is archived
+separately for qualitative analysis.
+
+**Gemini 2.5 Pro note:** Gemini 2.5 Pro also generates internal
+reasoning tokens before the final response. MAX_TOKENS is set to
+8000 for Gemini 2.5 Pro to ensure the full structured response
+is generated without truncation.
 
 ---
 
@@ -220,12 +274,9 @@ reasoning_content is archived separately for qualitative analysis.
 
 Each variant is treated as an independent statistical unit. C1 and C2
 accuracy is calculated as the proportion of correctly scored variants
-across all cases and all models (total variants evaluated per model
-≈ 500, depending on case composition). This approach avoids the
-double-penalisation artifact that would arise from normalising per
-case and averaging across cases of different sizes. Mixed-effects
-logistic regression with case as a random effect is used to account
-for clustering of variants within cases.
+across all cases and all models. Mixed-effects logistic regression
+with case as a random effect is used to account for clustering of
+variants within cases.
 
 ### 7.2 Criteria
 
@@ -238,10 +289,10 @@ for clustering of variants within cases.
 
 ### 7.3 C3 — Treatment accuracy
 
-C3 is only applicable in cases containing at least one variant with
-Therapeutic relevance = Yes (primarily CAT-4 and CAT-5). C3 is scored
-by human raters (R1 and R2) independently and blinded. Cohen's kappa
-is calculated before consensus. Target kappa ≥ 0.70.
+C3 applies only in CAT-5 cases containing at least one variant with
+ground truth Therapeutic relevance = Yes. C3 is scored by human
+raters (R1 and R2) independently and blinded. Cohen's kappa is
+calculated before consensus. Target kappa ≥ 0.70.
 
 Scoring:
 - 2 points: treatment named matches ground truth (exact or clinically
@@ -255,100 +306,71 @@ Scoring:
 Hallucination is defined as the model assigning Therapeutic relevance
 = Yes to a variant for which the ground truth is No. Reported as:
 
-1. **Hallucination rate (%)** per model = variants hallucinated /
-   total variants with ground truth = No × 100
-2. **Hallucination cases (n)** per model = cases with ≥1 hallucination
+1. **Hallucination rate (%)** per model
+2. **Hallucination cases (n)** per model
 3. **Severity breakdown** by declared confidence level:
-   - High-confidence hallucination (Yes + Confidence: high)
-   - Low-confidence hallucination (Yes + Confidence: low)
+   - High-confidence hallucination (Yes + Confidence: high) — most dangerous
+   - Moderate/low-confidence hallucination — less dangerous
 
 ### 7.5 Confidence-accuracy analysis (C5)
 
 For each model, the relationship between declared confidence level
-(high/moderate/low) and actual correctness (C1 and C2) is analysed.
-For each confidence category, the proportion of correct responses is
-calculated and reported as a calibration table:
+(high/moderate/low) and actual correctness (C1 and C2) is analysed
+and reported as a calibration table. Not included in numerical score.
 
-| Confidence declared | Proportion correct (C1) | Proportion correct (C2) |
-|--------------------|------------------------|------------------------|
-| High               | x.xx                   | x.xx                   |
-| Moderate           | x.xx                   | x.xx                   |
-| Low                | x.xx                   | x.xx                   |
+### 7.6 Sensitivity analysis
 
-A well-calibrated model should show decreasing accuracy from high to
-low confidence. Overconfidence (high confidence + low accuracy) is
-highlighted as the most clinically relevant finding, particularly
-when co-occurring with hallucination (C4).
-
-This analysis is not included in the numerical score but is reported
-as a primary finding in the Results and discussed in the context of
-clinical safety.
+A pre-specified sensitivity analysis collapses driver and co-driver
+into a single "oncogenic" category for C1 scoring. Results of both
+the primary (4-category) and sensitivity (3-category) analyses
+are reported.
 
 ---
 
 ## 8. Execution parameters
 
-| Parameter       | GPT-4o / Gemini 2.5 Pro | DeepSeek R1              |
-|-----------------|-------------------------|--------------------------|
-| Temperature     | 0                       | 0                        |
-| Max tokens      | 1500                    | 8000 (reasoning + output)|
-| Sessions/model  | 1                       | 1                        |
-| Prompt type     | Zero-shot structured    | Zero-shot structured     |
-| Tool use        | None                    | None                     |
-| Memory          | None                    | None                     |
+| Parameter       | GPT-4o | Gemini 2.5 Pro | DeepSeek R1 |
+|-----------------|--------|----------------|-------------|
+| Temperature     | 0      | 0              | 0           |
+| Max tokens      | 1500   | 8000           | 8000        |
+| Sessions/model  | 1      | 1              | 1           |
+| Prompt type     | Zero-shot structured | Zero-shot structured | Zero-shot structured |
+| Tool use        | None   | None           | None        |
+| Memory          | None   | None           | None        |
 
 **Reproducibility analysis:** A subset of 10 randomly selected cases
 will be re-executed for each model after completion of the full
 benchmark run to confirm deterministic stability at temperature = 0.
-Any deviation in output will be reported transparently.
 
 ---
 
-## 9. Sensitivity analysis
-
-A pre-specified sensitivity analysis will be performed collapsing
-driver and co-driver into a single "oncogenic" category for C1 scoring.
-This analysis addresses the potential ambiguity in the driver/co-driver
-distinction and assesses whether model performance rankings are robust
-to this classification boundary. Results of both the primary analysis
-(4 categories) and the sensitivity analysis (3 categories) will be
-reported.
-
----
-
-## 10. External validation
+## 9. External validation
 
 After completion of the synthetic benchmark, 20–30 real GBM cases
 are downloaded from cBioPortal (TCGA-GBM, Cell 2013 study).
-Cases are selected based on completeness of molecular profiling
-(IDH, TERT, MGMT, CDKN2A available). Cases originally classified
-under pre-2021 WHO criteria are re-annotated per WHO CNS 2021
-before use as ground truth.
-
-The same prompt, same models, and same scoring rubric are applied.
-Spearman correlation and Wilcoxon signed-rank test are used to
-compare performance between synthetic and real cases.
+Cases are selected based on completeness of molecular profiling.
+Re-annotated per WHO CNS 2021 before use as ground truth.
+Same prompt, models, and scoring rubric applied.
 
 ---
 
-## 11. Statistical analysis
+## 10. Statistical analysis
 
-- C1 and C2: proportion correct per model (variant as unit);
-  mixed-effects logistic regression with case as random effect;
-  likelihood ratio test for model effect
+- C1 and C2: mixed-effects logistic regression with case as random
+  effect; likelihood ratio test for model comparison; pairwise
+  comparisons with Bonferroni correction
 - C3: proportion correct per model; Fisher's exact test
-- C4: hallucination rate per model; Chi-square test for proportions;
-  severity breakdown by confidence level
-- C5: confidence-accuracy analysis (calibration table per model)
-- Sensitivity analysis: C1 with driver+co-driver collapsed
-- Reproducibility: exact match rate across repeated 10-case subset
-- External validation: Spearman correlation (synthetic vs real);
-  Wilcoxon signed-rank test
-- All analyses in R (≥4.3); scripts archived in analysis/scripts/
+- C4: hallucination rate per model; Chi-square test; severity
+  breakdown by confidence level
+- C5: confidence-accuracy calibration table per model
+- Sensitivity: C1 with driver+co-driver collapsed
+- Reproducibility: exact match rate in 10-case repeated subset
+- External validation: Spearman correlation + Wilcoxon signed-rank
+- All analyses in R (≥4.3); scripts in analysis/scripts/
 
 ---
 
-## 12. Reproducibility and data availability
+## 11. Reproducibility and data availability
 
 All study components are version-controlled (Git) and archived:
 - Synthetic dataset + ground truth: cases/ and ground_truth/
@@ -356,7 +378,6 @@ All study components are version-controlled (Git) and archived:
 - Scoring rubric: protocol/scoring_rubric.md
 - R scripts: analysis/scripts/
 - Raw model outputs: outputs/
-- Scoring sheets: scoring/
 
 GitHub repository: [add link]
 Zenodo archive (upon publication): [add DOI]
@@ -364,13 +385,13 @@ OSF pre-registration: https://osf.io/yfm4u
 
 ---
 
-## 13. Conflicts of interest
+## 12. Conflicts of interest
 None declared.
 
 ---
 
 Protocol ID: GBM-LLM-BENCH-2026
-Version: 3.0
-Date locked: March 23, 2026
+Version: 4.0
+Date locked: March 24, 2026
 Author: Arthur Henrique Almeida Sales, MD
 Department of Neurosurgery · University of Freiburg · Germany

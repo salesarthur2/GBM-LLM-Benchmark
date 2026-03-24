@@ -1,0 +1,144 @@
+{
+  "case_id": "GBM-018",
+  "category": "CAT-1",
+  "difficulty": "low",
+  "clinical_info": {
+    "patient_id": "SYN-018",
+    "sex": "Male",
+    "age": 47.2,
+    "location": "frontal lobe",
+    "sample": "surgical resection",
+    "sample_type": "Primary"
+  },
+  "profile": {
+    "molecular_status": {
+      "IDH1_mutation": "WT",
+      "MGMT_status": "UNMETHYLATED",
+      "G_CIMP_methylation": "non-G-CIMP",
+      "CDKN2A": "homozygous deletion",
+      "TMB_nonsynonymous": 6.8,
+      "expression_subtype": "Mesenchymal"
+    },
+    "variants": [
+      {
+        "gene": "TERT",
+        "HGVSp_short": "c.-146C>T",
+        "variant_classification": "Promoter",
+        "variant_type": "SNP",
+        "t_alt_count": 70,
+        "t_ref_count": 30,
+        "vaf": 0.7
+      },
+      {
+        "gene": "EGFR",
+        "HGVSp_short": "amplification",
+        "variant_classification": "Amplification",
+        "variant_type": "CNV",
+        "t_alt_count": {},
+        "t_ref_count": {},
+        "vaf": {},
+        "cn": 22
+      },
+      {
+        "gene": "PTEN",
+        "HGVSp_short": "p.R130*",
+        "variant_classification": "Nonsense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 46,
+        "t_ref_count": 54,
+        "vaf": 0.46
+      },
+      {
+        "gene": "NF1",
+        "HGVSp_short": "p.K1692*",
+        "variant_classification": "Nonsense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 35,
+        "t_ref_count": 65,
+        "vaf": 0.35
+      },
+      {
+        "gene": "PIK3R1",
+        "HGVSp_short": "p.R574*",
+        "variant_classification": "Nonsense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 21,
+        "t_ref_count": 79,
+        "vaf": 0.21
+      },
+      {
+        "gene": "MUC16",
+        "HGVSp_short": "p.T6231I",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 8,
+        "t_ref_count": 92,
+        "vaf": 0.08
+      }
+    ]
+  },
+  "ground_truth": {
+    "classifications": {
+      "TERT": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "EGFR": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "PTEN": {
+        "class": "driver",
+        "oncokb_level": "2",
+        "is_trap": false
+      },
+      "NF1": {
+        "class": "co-driver",
+        "oncokb_level": "3",
+        "is_trap": false
+      },
+      "PIK3R1": {
+        "class": "co-driver",
+        "oncokb_level": "3",
+        "is_trap": false
+      },
+      "MUC16": {
+        "class": "passenger",
+        "oncokb_level": "none",
+        "is_trap": true
+      }
+    },
+    "therapeutic_relevance": {
+      "TERT": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "EGFR": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "PTEN": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "NF1": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "PIK3R1": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "MUC16": {
+        "relevant": false,
+        "treatment": {}
+      }
+    },
+    "hallucination_traps": [
+      "MUC16 is a passenger in GBM",
+      "PIK3R1 + NF1 co-mutation has no approved combination therapy in GBM"
+    ]
+  }
+}
