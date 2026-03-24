@@ -17,7 +17,7 @@ library(here)
 # CONFIGURATION
 # =============================================================
 
-RUN_PILOT  <- TRUE   # TRUE = CAT-1 only | FALSE = all 100 cases
+RUN_PILOT <- FALSE  # TRUE = CAT-1 only | FALSE = all 100 cases
 MODEL_NAME <- "gpt4o"
 
 openai_key <- Sys.getenv("OPENAI_API_KEY")

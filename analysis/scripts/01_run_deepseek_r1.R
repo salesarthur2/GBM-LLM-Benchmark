@@ -20,7 +20,7 @@ library(here)
 # CONFIGURATION
 # =============================================================
 
-RUN_PILOT  <- TRUE   # TRUE = CAT-1 only | FALSE = all 100 cases
+RUN_PILOT <- FALSE  # TRUE = CAT-1 only | FALSE = all 100 cases
 MODEL_NAME <- "deepseek_r1"
 
 deepseek_key <- Sys.getenv("DEEPSEEK_API_KEY")

@@ -12,7 +12,7 @@ library(here)
 # CONFIGURATION
 # =============================================================
 
-RUN_PILOT  <- TRUE
+RUN_PILOT <- FALSE
 MODEL_NAME <- "gemini25"
 
 gemini_key <- Sys.getenv("GEMINI_API_KEY")
