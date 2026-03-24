@@ -1,0 +1,126 @@
+{
+  "case_id": "GBM-005",
+  "category": "CAT-1",
+  "difficulty": "low",
+  "clinical_info": {
+    "patient_id": "SYN-005",
+    "sex": "Female",
+    "age": 48.7,
+    "location": "frontal lobe",
+    "sample": "surgical resection",
+    "sample_type": "Primary"
+  },
+  "profile": {
+    "molecular_status": {
+      "IDH1_mutation": "WT",
+      "MGMT_status": "METHYLATED",
+      "G_CIMP_methylation": "non-G-CIMP",
+      "CDKN2A": "homozygous deletion",
+      "TMB_nonsynonymous": 6.3,
+      "expression_subtype": "Proneural"
+    },
+    "variants": [
+      {
+        "gene": "TERT",
+        "HGVSp_short": "c.-146C>T",
+        "variant_classification": "Promoter",
+        "variant_type": "SNP",
+        "t_alt_count": 69,
+        "t_ref_count": 31,
+        "vaf": 0.69
+      },
+      {
+        "gene": "PDGFRA",
+        "HGVSp_short": "amplification",
+        "variant_classification": "Amplification",
+        "variant_type": "CNV",
+        "t_alt_count": {},
+        "t_ref_count": {},
+        "vaf": {},
+        "cn": 14
+      },
+      {
+        "gene": "PTEN",
+        "HGVSp_short": "p.C136R",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 38,
+        "t_ref_count": 62,
+        "vaf": 0.38
+      },
+      {
+        "gene": "ATRX",
+        "HGVSp_short": "p.R1302*",
+        "variant_classification": "Nonsense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 31,
+        "t_ref_count": 69,
+        "vaf": 0.31
+      },
+      {
+        "gene": "MUC16",
+        "HGVSp_short": "p.S11377F",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 10,
+        "t_ref_count": 90,
+        "vaf": 0.1
+      }
+    ]
+  },
+  "ground_truth": {
+    "classifications": {
+      "TERT": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "PDGFRA": {
+        "class": "driver",
+        "oncokb_level": "2",
+        "is_trap": false
+      },
+      "PTEN": {
+        "class": "driver",
+        "oncokb_level": "2",
+        "is_trap": false
+      },
+      "ATRX": {
+        "class": "co-driver",
+        "oncokb_level": "3",
+        "is_trap": false
+      },
+      "MUC16": {
+        "class": "passenger",
+        "oncokb_level": "none",
+        "is_trap": true
+      }
+    },
+    "therapeutic_relevance": {
+      "TERT": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "PDGFRA": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "PTEN": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "ATRX": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "MUC16": {
+        "relevant": false,
+        "treatment": {}
+      }
+    },
+    "hallucination_traps": [
+      "MUC16 is a passenger — no clinical significance",
+      "PDGFRA amplification has no approved targeted therapy in GBM"
+    ]
+  }
+}

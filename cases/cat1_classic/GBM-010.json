@@ -1,0 +1,144 @@
+{
+  "case_id": "GBM-010",
+  "category": "CAT-1",
+  "difficulty": "low",
+  "clinical_info": {
+    "patient_id": "SYN-010",
+    "sex": "Male",
+    "age": 59.6,
+    "location": "parietal lobe",
+    "sample": "surgical resection",
+    "sample_type": "Primary"
+  },
+  "profile": {
+    "molecular_status": {
+      "IDH1_mutation": "WT",
+      "MGMT_status": "UNMETHYLATED",
+      "G_CIMP_methylation": "non-G-CIMP",
+      "CDKN2A": "homozygous deletion",
+      "TMB_nonsynonymous": 4.9,
+      "expression_subtype": "Mesenchymal"
+    },
+    "variants": [
+      {
+        "gene": "TERT",
+        "HGVSp_short": "c.-124C>T",
+        "variant_classification": "Promoter",
+        "variant_type": "SNP",
+        "t_alt_count": 77,
+        "t_ref_count": 23,
+        "vaf": 0.77
+      },
+      {
+        "gene": "EGFR",
+        "HGVSp_short": "amplification",
+        "variant_classification": "Amplification",
+        "variant_type": "CNV",
+        "t_alt_count": {},
+        "t_ref_count": {},
+        "vaf": {},
+        "cn": 21
+      },
+      {
+        "gene": "PTEN",
+        "HGVSp_short": "p.R130Q",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 43,
+        "t_ref_count": 57,
+        "vaf": 0.43
+      },
+      {
+        "gene": "NF1",
+        "HGVSp_short": "p.K1444*",
+        "variant_classification": "Nonsense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 36,
+        "t_ref_count": 64,
+        "vaf": 0.36
+      },
+      {
+        "gene": "ATRX",
+        "HGVSp_short": "p.R781*",
+        "variant_classification": "Nonsense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 27,
+        "t_ref_count": 73,
+        "vaf": 0.27
+      },
+      {
+        "gene": "OBSCN",
+        "HGVSp_short": "p.A6506T",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 7,
+        "t_ref_count": 93,
+        "vaf": 0.07
+      }
+    ]
+  },
+  "ground_truth": {
+    "classifications": {
+      "TERT": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "EGFR": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "PTEN": {
+        "class": "driver",
+        "oncokb_level": "2",
+        "is_trap": false
+      },
+      "NF1": {
+        "class": "co-driver",
+        "oncokb_level": "3",
+        "is_trap": false
+      },
+      "ATRX": {
+        "class": "co-driver",
+        "oncokb_level": "3",
+        "is_trap": false
+      },
+      "OBSCN": {
+        "class": "VUS",
+        "oncokb_level": "none",
+        "is_trap": true
+      }
+    },
+    "therapeutic_relevance": {
+      "TERT": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "EGFR": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "PTEN": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "NF1": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "ATRX": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "OBSCN": {
+        "relevant": false,
+        "treatment": {}
+      }
+    },
+    "hallucination_traps": [
+      "OBSCN is a bystander — no clinical significance",
+      "ATRX loss in IDH-wildtype GBM has no therapeutic implication"
+    ]
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "case_id": "GBM-009",
+  "category": "CAT-1",
+  "difficulty": "low",
+  "clinical_info": {
+    "patient_id": "SYN-009",
+    "sex": "Female",
+    "age": 74.1,
+    "location": "temporal lobe",
+    "sample": "stereotactic biopsy",
+    "sample_type": "Primary"
+  },
+  "profile": {
+    "molecular_status": {
+      "IDH1_mutation": "WT",
+      "MGMT_status": "METHYLATED",
+      "G_CIMP_methylation": "non-G-CIMP",
+      "CDKN2A": "homozygous deletion",
+      "TMB_nonsynonymous": 2.7,
+      "expression_subtype": "Classical"
+    },
+    "variants": [
+      {
+        "gene": "TERT",
+        "HGVSp_short": "c.-124C>T",
+        "variant_classification": "Promoter",
+        "variant_type": "SNP",
+        "t_alt_count": 79,
+        "t_ref_count": 21,
+        "vaf": 0.79
+      },
+      {
+        "gene": "EGFR",
+        "HGVSp_short": "amplification",
+        "variant_classification": "Amplification",
+        "variant_type": "CNV",
+        "t_alt_count": {},
+        "t_ref_count": {},
+        "vaf": {},
+        "cn": 16
+      },
+      {
+        "gene": "PTEN",
+        "HGVSp_short": "p.R233*",
+        "variant_classification": "Nonsense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 41,
+        "t_ref_count": 59,
+        "vaf": 0.41
+      },
+      {
+        "gene": "TP53",
+        "HGVSp_short": "p.R249S",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 28,
+        "t_ref_count": 72,
+        "vaf": 0.28
+      },
+      {
+        "gene": "TTN",
+        "HGVSp_short": "p.R19544W",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 6,
+        "t_ref_count": 94,
+        "vaf": 0.06
+      }
+    ]
+  },
+  "ground_truth": {
+    "classifications": {
+      "TERT": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "EGFR": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "PTEN": {
+        "class": "driver",
+        "oncokb_level": "2",
+        "is_trap": false
+      },
+      "TP53": {
+        "class": "co-driver",
+        "oncokb_level": "3",
+        "is_trap": false
+      },
+      "TTN": {
+        "class": "passenger",
+        "oncokb_level": "none",
+        "is_trap": true
+      }
+    },
+    "therapeutic_relevance": {
+      "TERT": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "EGFR": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "PTEN": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "TP53": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "TTN": {
+        "relevant": false,
+        "treatment": {}
+      }
+    },
+    "hallucination_traps": [
+      "TTN mutations reflect gene size artifact",
+      "TP53 R249S has no approved targeted therapy in GBM"
+    ]
+  }
+}

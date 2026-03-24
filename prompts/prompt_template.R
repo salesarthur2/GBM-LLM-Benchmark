@@ -1,8 +1,7 @@
 # =============================================================
 # prompt_template.R — GBM-LLM-Benchmark
-# Version: 3.0 — Final
+# Version: 3.1 — MAX_TOKENS_GEMINI added
 # Zero-shot structured — single arm
-# Aligned with scoring criteria C1, C2, C3, C4
 # DO NOT modify after data collection starts
 # =============================================================
 
@@ -44,18 +43,19 @@ GENOMIC PROFILE:
 # Execution parameters
 # =============================================================
 
-# GPT-4o and Gemini 2.5 Pro
-TEMPERATURE    <- 0      # deterministic — do not change
-MAX_TOKENS     <- 1500   # sufficient for structured output
+# GPT-4o
+TEMPERATURE  <- 0
+MAX_TOKENS   <- 1500
+
+# Gemini 2.5 Pro — requires higher token budget due to internal reasoning
+TEMPERATURE_GEMINI  <- 0
+MAX_TOKENS_GEMINI   <- 8000
 
 # DeepSeek R1 — reasoning model requires higher token budget
-# The model generates internal chain-of-thought before final response
-# Only the content field (final response) is used for scoring
-# The reasoning_content field is archived separately
 TEMPERATURE_R1 <- 0
-MAX_TOKENS_R1  <- 8000   # accommodates reasoning + structured output
+MAX_TOKENS_R1  <- 8000
 
-PROMPT_TYPE    <- "zero-shot structured"
+PROMPT_TYPE <- "zero-shot structured"
 
 # =============================================================
 # Scoring criteria (reference only — not sent to model)
@@ -65,6 +65,3 @@ PROMPT_TYPE    <- "zero-shot structured"
 # C3: 2pts if correct treatment named where C2=Yes (correct)        [human, rare]
 # C4: hallucination = Yes where ground truth is No                  [automatic, separate metric]
 # C5: confidence-accuracy analysis                                   [not scored, qualitative]
-#
-# Statistical unit: each variant is an independent observation
-# Mixed-effects logistic regression with case as random effect

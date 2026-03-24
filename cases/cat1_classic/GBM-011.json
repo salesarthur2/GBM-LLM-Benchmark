@@ -1,0 +1,135 @@
+{
+  "case_id": "GBM-011",
+  "category": "CAT-1",
+  "difficulty": "low",
+  "clinical_info": {
+    "patient_id": "SYN-011",
+    "sex": "Female",
+    "age": 67.3,
+    "location": "frontal lobe",
+    "sample": "surgical resection",
+    "sample_type": "Primary"
+  },
+  "profile": {
+    "molecular_status": {
+      "IDH1_mutation": "WT",
+      "MGMT_status": "UNMETHYLATED",
+      "G_CIMP_methylation": "non-G-CIMP",
+      "CDKN2A": "homozygous deletion",
+      "TMB_nonsynonymous": 5.5,
+      "expression_subtype": "Classical"
+    },
+    "variants": [
+      {
+        "gene": "TERT",
+        "HGVSp_short": "c.-124C>T",
+        "variant_classification": "Promoter",
+        "variant_type": "SNP",
+        "t_alt_count": 82,
+        "t_ref_count": 18,
+        "vaf": 0.82
+      },
+      {
+        "gene": "EGFR",
+        "HGVSp_short": "amplification",
+        "variant_classification": "Amplification",
+        "variant_type": "CNV",
+        "t_alt_count": {},
+        "t_ref_count": {},
+        "vaf": {},
+        "cn": 26
+      },
+      {
+        "gene": "EGFR",
+        "HGVSp_short": "p.R108K",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 51,
+        "t_ref_count": 49,
+        "vaf": 0.51
+      },
+      {
+        "gene": "TP53",
+        "HGVSp_short": "p.R248Q",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 29,
+        "t_ref_count": 71,
+        "vaf": 0.29
+      },
+      {
+        "gene": "PIK3CA",
+        "HGVSp_short": "p.E545K",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 24,
+        "t_ref_count": 76,
+        "vaf": 0.24
+      },
+      {
+        "gene": "TTN",
+        "HGVSp_short": "p.R25858C",
+        "variant_classification": "Missense_Mutation",
+        "variant_type": "SNP",
+        "t_alt_count": 5,
+        "t_ref_count": 95,
+        "vaf": 0.05
+      }
+    ]
+  },
+  "ground_truth": {
+    "classifications": {
+      "TERT": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "EGFR": {
+        "class": "driver",
+        "oncokb_level": "1",
+        "is_trap": false
+      },
+      "TP53": {
+        "class": "co-driver",
+        "oncokb_level": "3",
+        "is_trap": false
+      },
+      "PIK3CA": {
+        "class": "co-driver",
+        "oncokb_level": "3",
+        "is_trap": false
+      },
+      "TTN": {
+        "class": "passenger",
+        "oncokb_level": "none",
+        "is_trap": true
+      }
+    },
+    "therapeutic_relevance": {
+      "TERT": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "EGFR": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "TP53": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "PIK3CA": {
+        "relevant": false,
+        "treatment": {}
+      },
+      "TTN": {
+        "relevant": false,
+        "treatment": {}
+      }
+    },
+    "hallucination_traps": [
+      "TTN is a large gene with frequent passenger mutations",
+      "PIK3CA E545K has no approved targeted therapy in GBM"
+    ]
+  }
+}
