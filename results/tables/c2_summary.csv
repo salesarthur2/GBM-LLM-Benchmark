@@ -1,0 +1,4 @@
+model,n_variants,c2_correct,c2_accuracy
+deepseek_r1,512,503,503
+gemini25,512,504,504
+gpt4o,512,439,439

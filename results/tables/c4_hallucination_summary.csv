@@ -1,0 +1,4 @@
+model,n_no_variants,n_hallucinations,hallucination_rate,n_high_conf,n_mod_conf,n_low_conf
+deepseek_r1,501,1,0.002,0,1,0
+gemini25,501,5,0.01,2,3,0
+gpt4o,501,68,0.136,30,38,0

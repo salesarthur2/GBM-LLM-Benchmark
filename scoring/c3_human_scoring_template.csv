@@ -1,0 +1,21 @@
+model,case_id,category,gene,gt_treatment,treatment,c3_score,rater1_score,rater2_score,notes
+gpt4o,GBM-092,CAT-5,BRAF,dabrafenib + trametinib,"BRAF inhibitors (e.g., vemurafenib, dabrafenib)",NA,NA,NA,NA
+gemini25,GBM-092,CAT-5,BRAF,dabrafenib + trametinib,Dabrafenib + Trametinib,NA,NA,NA,NA
+deepseek_r1,GBM-092,CAT-5,BRAF,dabrafenib + trametinib,dabrafenib + trametinib,NA,NA,NA,NA
+gpt4o,GBM-093,CAT-5,NTRK1,larotrectinib or entrectinib,Larotrectinib or Entrectinib,NA,NA,NA,NA
+gemini25,GBM-093,CAT-5,NTRK1,larotrectinib or entrectinib,Larotrectinib or Entrectinib,NA,NA,NA,NA
+gemini25,GBM-095,CAT-5,MLH1,pembrolizumab (MSI-H),Pembrolizumab,NA,NA,NA,NA
+gpt4o,GBM-096,CAT-5,BRAF,dabrafenib + trametinib,"BRAF inhibitors (e.g., vemurafenib, dabrafenib)",NA,NA,NA,NA
+gemini25,GBM-096,CAT-5,BRAF,dabrafenib + trametinib,Dabrafenib + Trametinib,NA,NA,NA,NA
+deepseek_r1,GBM-096,CAT-5,BRAF,dabrafenib + trametinib,Dabrafenib + Trametinib,NA,NA,NA,NA
+gpt4o,GBM-097,CAT-5,NTRK3,larotrectinib or entrectinib,Larotrectinib or Entrectinib,NA,NA,NA,NA
+gemini25,GBM-097,CAT-5,NTRK3,larotrectinib or entrectinib,Larotrectinib or Entrectinib,NA,NA,NA,NA
+gpt4o,GBM-099,CAT-5,BRAF,dabrafenib + trametinib,BRAF inhibitors,NA,NA,NA,NA
+gemini25,GBM-099,CAT-5,BRAF,dabrafenib + trametinib,Dabrafenib plus trametinib,NA,NA,NA,NA
+gpt4o,GBM-100,CAT-5,NTRK2,larotrectinib or entrectinib,Larotrectinib or Entrectinib,NA,NA,NA,NA
+gpt4o,GBM-100,CAT-5,BRAF,dabrafenib + trametinib,Dabrafenib and Trametinib,NA,NA,NA,NA
+gemini25,GBM-100,CAT-5,NTRK2,larotrectinib or entrectinib,Larotrectinib or Entrectinib,NA,NA,NA,NA
+gemini25,GBM-100,CAT-5,BRAF,dabrafenib + trametinib,Dabrafenib plus Trametinib,NA,NA,NA,NA
+deepseek_r1,GBM-100,CAT-5,NTRK2,larotrectinib or entrectinib,"TRK inhibitor (e.g., larotrectinib, entrectinib)",NA,NA,NA,NA
+deepseek_r1,GBM-100,CAT-5,BRAF,dabrafenib + trametinib,"BRAF/MEK inhibitor combination (e.g., dabrafenib + trametinib)",NA,NA,NA,NA
+gemini25,GBM-101,CAT-5,MSH2,pembrolizumab (MSI-H and TMB-high >= 10 mut/Mb),Pembrolizumab,NA,NA,NA,NA

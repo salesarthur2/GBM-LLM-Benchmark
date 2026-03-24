@@ -1,0 +1,9 @@
+model,confidence,n,c1_accuracy,criterion
+deepseek_r1,high,363,0.78,C1
+deepseek_r1,low,33,0.576,C1
+deepseek_r1,moderate,115,0.522,C1
+gemini25,high,451,0.854,C1
+gemini25,moderate,60,0.55,C1
+gpt4o,high,233,0.918,C1
+gpt4o,low,89,0.787,C1
+gpt4o,moderate,189,0.476,C1

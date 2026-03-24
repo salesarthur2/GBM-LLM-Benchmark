@@ -1,0 +1,4 @@
+model,n_variants,c1_correct,c1_accuracy,c1_sens_accuracy
+deepseek_r1,512,362,362,0.918
+gemini25,512,418,418,0.945
+gpt4o,512,374,374,0.924
