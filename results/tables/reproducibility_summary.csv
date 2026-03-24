@@ -1,0 +1,4 @@
+"model","n","n_match","match_rate"
+"deepseek_r1",10,0,0
+"gemini25",9,4,0.444
+"gpt4o",10,4,0.4
