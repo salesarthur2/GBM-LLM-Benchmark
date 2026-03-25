@@ -76,8 +76,8 @@
         "is_trap": false
       },
       "EGFR": {
-        "class": "driver",
-        "oncokb_level": "2",
+        "class": "VUS",
+        "oncokb_level": "none",
         "is_trap": false
       },
       "PIK3CA": {

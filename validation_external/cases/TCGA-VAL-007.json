@@ -71,8 +71,8 @@
   "ground_truth": {
     "classifications": {
       "PDGFRA": {
-        "class": "co-driver",
-        "oncokb_level": "3",
+        "class": "driver",
+        "oncokb_level": "2",
         "is_trap": false
       },
       "TP53": {
@@ -81,9 +81,9 @@
         "is_trap": false
       },
       "ANXA2R": {
-        "class": "VUS",
+        "class": "passenger",
         "oncokb_level": "none",
-        "is_trap": false
+        "is_trap": true
       }
     },
     "therapeutic_relevance": {

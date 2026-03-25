@@ -71,8 +71,8 @@
   "ground_truth": {
     "classifications": {
       "EGFR": {
-        "class": "driver",
-        "oncokb_level": "2",
+        "class": "VUS",
+        "oncokb_level": "none",
         "is_trap": false
       },
       "FGFR3": {
@@ -91,9 +91,9 @@
         "is_trap": true
       },
       "ACPL2": {
-        "class": "VUS",
+        "class": "passenger",
         "oncokb_level": "none",
-        "is_trap": false
+        "is_trap": true
       }
     },
     "therapeutic_relevance": {
