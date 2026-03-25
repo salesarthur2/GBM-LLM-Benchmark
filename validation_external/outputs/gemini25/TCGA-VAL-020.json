@@ -1,0 +1,7 @@
+{
+  "case_id": "TCGA-VAL-020",
+  "model": "gemini25",
+  "timestamp": "2026-03-25 03:29:32",
+  "content": "TP53 p.G302Rfs*4:\nClassification: driver — Confidence: high\nTherapeutic relevance: No — Confidence: high\n\nMARCH6 p.G766Wfs*25:\nClassification: VUS — Confidence: high\nTherapeutic relevance: No — Confidence: high\n\nAKTIP p.Q207*:\nClassification: VUS — Confidence: high\nTherapeutic relevance: No — Confidence: high\n\nANK2 p.I3382T:\nClassification: passenger — Confidence: high\nTherapeutic relevance: No — Confidence: high\n\nC2orf71 p.E494del:\nClassification: passenger — Confidence: high\nTherapeutic relevance: No — Confidence: high",
+  "reasoning": {}
+}

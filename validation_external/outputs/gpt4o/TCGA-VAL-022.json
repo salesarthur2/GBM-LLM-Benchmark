@@ -1,0 +1,7 @@
+{
+  "case_id": "TCGA-VAL-022",
+  "model": "gpt4o",
+  "timestamp": "2026-03-25 03:32:05",
+  "content": "PTEN p.P95L:  \nClassification: driver — Confidence: high  \nTherapeutic relevance: No — Confidence: high  \n\nA2M p.X1253_splice:  \nClassification: passenger — Confidence: low  \nTherapeutic relevance: No — Confidence: low  \n\nAKR1B15 p.G143R:  \nClassification: passenger — Confidence: low  \nTherapeutic relevance: No — Confidence: low  \n\nATP6V0D1 p.G313D:  \nClassification: passenger — Confidence: low  \nTherapeutic relevance: No — Confidence: low  \n\nCNTRL p.Y1244H:  \nClassification: passenger — Confidence: low  \nTherapeutic relevance: No — Confidence: low  ",
+  "reasoning": {}
+}

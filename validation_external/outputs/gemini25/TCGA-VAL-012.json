@@ -1,0 +1,7 @@
+{
+  "case_id": "TCGA-VAL-012",
+  "model": "gemini25",
+  "timestamp": "2026-03-25 03:37:24",
+  "content": "ADAMTS18 p.R479H:\nClassification: passenger — Confidence: high\nTherapeutic relevance: No — Confidence: high\n\nAMPD2 p.R674C:\nClassification: passenger — Confidence: high\nTherapeutic relevance: No — Confidence: high\n\nASB10 p.R259C:\nClassification: passenger — Confidence: high\nTherapeutic relevance: No — Confidence: high\n\nCHST13 p.V123M:\nClassification: passenger — Confidence: high\nTherapeutic relevance: No — Confidence: high\n\nCILP2 p.V547M:\nClassification: passenger — Confidence: high\nTherapeutic relevance: No — Confidence: high",
+  "reasoning": {}
+}

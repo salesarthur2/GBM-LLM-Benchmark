@@ -1,0 +1,7 @@
+{
+  "case_id": "TCGA-VAL-014",
+  "model": "gpt4o",
+  "timestamp": "2026-03-25 03:22:25",
+  "content": "GENE HGVSp: AASDH p.L440F  \nClassification: passenger — Confidence: low  \nTherapeutic relevance: No — Confidence: high  \n\nGENE HGVSp: CNDP1 p.R91H  \nClassification: passenger — Confidence: low  \nTherapeutic relevance: No — Confidence: high  \n\nGENE HGVSp: CXorf22 p.T543M  \nClassification: passenger — Confidence: low  \nTherapeutic relevance: No — Confidence: high  \n\nGENE HGVSp: DARC p.R89H  \nClassification: passenger — Confidence: low  \nTherapeutic relevance: No — Confidence: high  \n\nGENE HGVSp: DBR1 p.D542del  \nClassification: passenger — Confidence: low  \nTherapeutic relevance: No — Confidence: high  ",
+  "reasoning": {}
+}

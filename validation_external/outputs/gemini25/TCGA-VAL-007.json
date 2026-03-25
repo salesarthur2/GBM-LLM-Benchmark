@@ -1,0 +1,7 @@
+{
+  "case_id": "TCGA-VAL-007",
+  "model": "gemini25",
+  "timestamp": "2026-03-25 03:13:20",
+  "content": "PDGFRA amplification:\nClassification: driver — Confidence: high\nTherapeutic relevance: No — Confidence: high\n\nPDGFRA p.E372K:\nClassification: VUS — Confidence: high\nTherapeutic relevance: No — Confidence: high\n\nTP53 p.P190L:\nClassification: driver — Confidence: high\nTherapeutic relevance: No — Confidence: high\n\nTP53 p.T155N:\nClassification: driver — Confidence: high\nTherapeutic relevance: No — Confidence: high\n\nANXA2R p.E31*:\nClassification: passenger — Confidence: moderate\nTherapeutic relevance: No — Confidence: high",
+  "reasoning": {}
+}

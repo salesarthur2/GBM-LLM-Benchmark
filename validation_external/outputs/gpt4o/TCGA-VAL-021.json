@@ -1,0 +1,7 @@
+{
+  "case_id": "TCGA-VAL-021",
+  "model": "gpt4o",
+  "timestamp": "2026-03-25 03:30:33",
+  "content": "GENE HGVSp: SEPT14 p.I128M  \nClassification: passenger — Confidence: low  \nTherapeutic relevance: No — Confidence: high  \n\nGENE HGVSp: DNAH2 p.V3385I  \nClassification: passenger — Confidence: low  \nTherapeutic relevance: No — Confidence: high  \n\nGENE HGVSp: EPPK1 p.R745W  \nClassification: passenger — Confidence: low  \nTherapeutic relevance: No — Confidence: high  \n\nGENE HGVSp: EPS8 p.N399S  \nClassification: passenger — Confidence: low  \nTherapeutic relevance: No — Confidence: high  \n\nGENE HGVSp: FAM193A p.S1253P  \nClassification: passenger — Confidence: low  \nTherapeutic relevance: No — Confidence: high  ",
+  "reasoning": {}
+}

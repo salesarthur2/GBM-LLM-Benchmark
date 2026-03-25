@@ -1,0 +1,7 @@
+{
+  "case_id": "TCGA-VAL-010",
+  "model": "gpt4o",
+  "timestamp": "2026-03-25 03:17:03",
+  "content": "EGFR amplification:  \nClassification: driver — Confidence: high  \nTherapeutic relevance: Yes — Confidence: moderate  \nIf Yes → Treatment: EGFR inhibitors (e.g., afatinib) — Confidence: moderate  \n\nCDKN2A homozygous_deletion:  \nClassification: co-driver — Confidence: high  \nTherapeutic relevance: No — Confidence: high  \n\nPTEN p.T319*:  \nClassification: co-driver — Confidence: high  \nTherapeutic relevance: No — Confidence: high  \n\nA2M p.K456R:  \nClassification: passenger — Confidence: low  \nTherapeutic relevance: No — Confidence: low  \n\nATP6V0A4 p.X214_splice:  \nClassification: VUS — Confidence: low  \nTherapeutic relevance: No — Confidence: low  ",
+  "reasoning": {}
+}

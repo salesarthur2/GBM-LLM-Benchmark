@@ -1,0 +1,7 @@
+{
+  "case_id": "TCGA-VAL-013",
+  "model": "gpt4o",
+  "timestamp": "2026-03-25 03:21:26",
+  "content": "CDKN2A HGVSp: homozygous_deletion  \nClassification: driver — Confidence: high  \nTherapeutic relevance: No — Confidence: high  \n\nEGFR HGVSp: p.N771_H773dup  \nClassification: driver — Confidence: high  \nTherapeutic relevance: Yes — Confidence: moderate  \nIf Yes → Treatment: EGFR inhibitors — Confidence: moderate  \n\nPIK3CA HGVSp: p.E453D  \nClassification: VUS — Confidence: low  \nTherapeutic relevance: No — Confidence: low  \n\nPIK3CA HGVSp: p.L455_G460delinsF  \nClassification: VUS — Confidence: low  \nTherapeutic relevance: No — Confidence: low  \n\nAADACL2 HGVSp: p.T333I  \nClassification: passenger — Confidence: low  \nTherapeutic relevance: No — Confidence: low  ",
+  "reasoning": {}
+}

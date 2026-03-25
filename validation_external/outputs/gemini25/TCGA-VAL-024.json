@@ -1,0 +1,7 @@
+{
+  "case_id": "TCGA-VAL-024",
+  "model": "gemini25",
+  "timestamp": "2026-03-25 03:34:09",
+  "content": "EGFR amplification:\nClassification: driver — Confidence: high\nTherapeutic relevance: No — Confidence: high\n\nATP6V0A4 p.T245N:\nClassification: passenger — Confidence: high\nTherapeutic relevance: No — Confidence: high\n\nC9orf131 p.*1080Yext*5:\nClassification: passenger — Confidence: high\nTherapeutic relevance: No — Confidence: high\n\nCD163L1 p.R270H:\nClassification: passenger — Confidence: high\nTherapeutic relevance: No — Confidence: high\n\nCEP135 p.R788*:\nClassification: VUS — Confidence: moderate\nTherapeutic relevance: No — Confidence: high",
+  "reasoning": {}
+}

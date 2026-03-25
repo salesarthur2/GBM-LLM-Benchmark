@@ -1,0 +1,7 @@
+{
+  "case_id": "TCGA-VAL-006",
+  "model": "gpt4o",
+  "timestamp": "2026-03-25 03:11:35",
+  "content": "CDKN2A HGVSp: homozygous_deletion  \nClassification: driver — Confidence: high  \nTherapeutic relevance: No — Confidence: high  \n\nPIK3R1 HGVSp: p.X582_splice  \nClassification: co-driver — Confidence: moderate  \nTherapeutic relevance: No — Confidence: high  \n\nPTEN HGVSp: p.D371Efs*45  \nClassification: driver — Confidence: high  \nTherapeutic relevance: No — Confidence: high  \n\nSEPT9 HGVSp: p.P236L  \nClassification: VUS — Confidence: low  \nTherapeutic relevance: No — Confidence: low  \n\nABCC3 HGVSp: p.W1242*  \nClassification: passenger — Confidence: low  \nTherapeutic relevance: No — Confidence: low  ",
+  "reasoning": {}
+}

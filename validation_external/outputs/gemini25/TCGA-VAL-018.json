@@ -1,0 +1,7 @@
+{
+  "case_id": "TCGA-VAL-018",
+  "model": "gemini25",
+  "timestamp": "2026-03-25 03:27:10",
+  "content": "CDKN2A homozygous_deletion:\nClassification: driver — Confidence: high\nTherapeutic relevance: No — Confidence: high\n\nTP53 p.R282W:\nClassification: driver — Confidence: high\nTherapeutic relevance: No — Confidence: high\n\nTP53 p.R196*:\nClassification: driver — Confidence: high\nTherapeutic relevance: No — Confidence: high\n\nAACS p.H302P:\nClassification: passenger — Confidence: moderate\nTherapeutic relevance: No — Confidence: high\n\nAARS p.L133I:\nClassification: passenger — Confidence: moderate\nTherapeutic relevance: No — Confidence: high",
+  "reasoning": {}
+}

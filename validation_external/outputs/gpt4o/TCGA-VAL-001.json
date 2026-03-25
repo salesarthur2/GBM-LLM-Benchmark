@@ -1,0 +1,7 @@
+{
+  "case_id": "TCGA-VAL-001",
+  "model": "gpt4o",
+  "timestamp": "2026-03-25 03:06:30",
+  "content": "EGFR p.D807H:  \nClassification: VUS — Confidence: moderate  \nTherapeutic relevance: No — Confidence: high  \n\nFGFR3 p.R603Q:  \nClassification: VUS — Confidence: moderate  \nTherapeutic relevance: No — Confidence: high  \n\nPIK3CA p.X463_splice:  \nClassification: VUS — Confidence: moderate  \nTherapeutic relevance: No — Confidence: high  \n\nSEPT4 p.G156D:  \nClassification: passenger — Confidence: low  \nTherapeutic relevance: No — Confidence: high  \n\nACPL2 p.E145*:  \nClassification: passenger — Confidence: low  \nTherapeutic relevance: No — Confidence: high  ",
+  "reasoning": {}
+}

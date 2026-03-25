@@ -1,0 +1,7 @@
+{
+  "case_id": "TCGA-VAL-025",
+  "model": "gemini25",
+  "timestamp": "2026-03-25 03:35:37",
+  "content": "EGFR amplification:\nClassification: driver — Confidence: high\nTherapeutic relevance: No — Confidence: high\n\nCDKN2A homozygous_deletion:\nClassification: driver — Confidence: high\nTherapeutic relevance: Yes — Confidence: moderate\nIf Yes → Treatment: CDK4/6 inhibitors — Confidence: moderate\n\nPDGFRA amplification:\nClassification: driver — Confidence: high\nTherapeutic relevance: No — Confidence: high\n\nEGFR p.A289V:\nClassification: VUS — Confidence: high\nTherapeutic relevance: No — Confidence: high\n\nEGFR p.E160K:\nClassification: VUS — Confidence: high\nTherapeutic relevance: No — Confidence: high",
+  "reasoning": {}
+}

@@ -1,0 +1,7 @@
+{
+  "case_id": "TCGA-VAL-022",
+  "model": "gemini25",
+  "timestamp": "2026-03-25 03:32:29",
+  "content": "PTEN p.P95L:\nClassification: VUS — Confidence: moderate\nTherapeutic relevance: No — Confidence: high\n\nA2M p.X1253_splice:\nClassification: VUS — Confidence: high\nTherapeutic relevance: No — Confidence: high\n\nAKR1B15 p.G143R:\nClassification: passenger — Confidence: high\nTherapeutic relevance: No — Confidence: high\n\nATP6V0D1 p.G313D:\nClassification: passenger — Confidence: high\nTherapeutic relevance: No — Confidence: high\n\nCNTRL p.Y1244H:\nClassification: passenger — Confidence: high\nTherapeutic relevance: No — Confidence: high",
+  "reasoning": {}
+}

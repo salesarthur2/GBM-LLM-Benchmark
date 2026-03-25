@@ -1,0 +1,4 @@
+model,n_eligible,n_hallucinations,rate,n_high
+deepseek_r1,114,0,0,0
+gemini25,114,1,0.009,0
+gpt4o,114,9,0.079,3

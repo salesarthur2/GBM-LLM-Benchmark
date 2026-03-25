@@ -1,0 +1,7 @@
+{
+  "case_id": "TCGA-VAL-009",
+  "model": "gpt4o",
+  "timestamp": "2026-03-25 03:15:38",
+  "content": "EGFR amplification:\nClassification: driver — Confidence: high  \nTherapeutic relevance: Yes — Confidence: moderate  \nIf Yes → Treatment: EGFR inhibitors (e.g., afatinib, erlotinib) — Confidence: moderate  \n\nEGFR p.C628Y:\nClassification: VUS — Confidence: low  \nTherapeutic relevance: No — Confidence: low  \n\nMARCH10 p.R47C:\nClassification: passenger — Confidence: low  \nTherapeutic relevance: No — Confidence: low  \n\nACTL9 p.V411M:\nClassification: passenger — Confidence: low  \nTherapeutic relevance: No — Confidence: low  \n\nADCY3 p.R259Pfs*31:\nClassification: passenger — Confidence: low  \nTherapeutic relevance: No — Confidence: low  ",
+  "reasoning": {}
+}

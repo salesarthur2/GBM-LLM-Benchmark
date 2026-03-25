@@ -1,0 +1,7 @@
+{
+  "case_id": "TCGA-VAL-016",
+  "model": "gemini25",
+  "timestamp": "2026-03-25 03:24:46",
+  "content": "GENE HGVSp: EGFR amplification\nClassification: driver — Confidence: high\nTherapeutic relevance: No — Confidence: high\n\nGENE HGVSp: EGFR p.R222C\nClassification: VUS — Confidence: high\nTherapeutic relevance: No — Confidence: high\n\nGENE HGVSp: AACS p.H399Qfs*57\nClassification: passenger — Confidence: moderate\nTherapeutic relevance: No — Confidence: high\n\nGENE HGVSp: ADAMTS8 p.L513V\nClassification: VUS — Confidence: high\nTherapeutic relevance: No — Confidence: high\n\nGENE HGVSp: ARHGAP21 p.K904E\nClassification: VUS — Confidence: high\nTherapeutic relevance: No — Confidence: high",
+  "reasoning": {}
+}

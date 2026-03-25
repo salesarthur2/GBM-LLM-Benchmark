@@ -1,0 +1,7 @@
+{
+  "case_id": "TCGA-VAL-003",
+  "model": "gpt4o",
+  "timestamp": "2026-03-25 03:07:53",
+  "content": "RB1 p.E559Afs*51:  \nClassification: co-driver — Confidence: high  \nTherapeutic relevance: No — Confidence: high  \n\nANKAR p.I676L:  \nClassification: passenger — Confidence: low  \nTherapeutic relevance: No — Confidence: low  \n\nASTL p.R159C:  \nClassification: passenger — Confidence: low  \nTherapeutic relevance: No — Confidence: low  \n\nC15orf48 p.R44*:  \nClassification: passenger — Confidence: low  \nTherapeutic relevance: No — Confidence: low  \n\nCCL13 p.K68N:  \nClassification: passenger — Confidence: low  \nTherapeutic relevance: No — Confidence: low  ",
+  "reasoning": {}
+}

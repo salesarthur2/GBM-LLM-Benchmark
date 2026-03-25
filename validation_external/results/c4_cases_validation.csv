@@ -1,0 +1,11 @@
+model,case_id,gene,ther_confidence
+gpt4o,TCGA-VAL-002,EGFR,moderate
+gpt4o,TCGA-VAL-004,PDGFRA,moderate
+gpt4o,TCGA-VAL-008,EGFR,moderate
+gpt4o,TCGA-VAL-010,EGFR,moderate
+gpt4o,TCGA-VAL-011,EGFR,high
+gpt4o,TCGA-VAL-013,EGFR,moderate
+gpt4o,TCGA-VAL-015,EGFR,high
+gpt4o,TCGA-VAL-019,EGFR,high
+gpt4o,TCGA-VAL-024,EGFR,moderate
+gemini25,TCGA-VAL-025,CDKN2A,moderate

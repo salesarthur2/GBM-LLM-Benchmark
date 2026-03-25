@@ -1,0 +1,7 @@
+{
+  "case_id": "TCGA-VAL-007",
+  "model": "gpt4o",
+  "timestamp": "2026-03-25 03:12:54",
+  "content": "PDGFRA amplification:\nClassification: co-driver — Confidence: high  \nTherapeutic relevance: Yes — Confidence: moderate  \nIf Yes → Treatment: targeted therapy with PDGFRA inhibitors — Confidence: moderate  \n\nPDGFRA p.E372K:\nClassification: VUS — Confidence: low  \nTherapeutic relevance: No — Confidence: low  \n\nTP53 p.P190L:\nClassification: VUS — Confidence: moderate  \nTherapeutic relevance: No — Confidence: high  \n\nTP53 p.T155N:\nClassification: VUS — Confidence: moderate  \nTherapeutic relevance: No — Confidence: high  \n\nANXA2R p.E31*:\nClassification: passenger — Confidence: low  \nTherapeutic relevance: No — Confidence: high  ",
+  "reasoning": {}
+}
