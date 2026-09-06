@@ -1,0 +1,6 @@
+{
+  "case_id": "GBM-024",
+  "model": "gpt4o",
+  "timestamp": "2026-03-24 14:29:35",
+  "content": "TERT c.-124C>T:\nClassification: driver — Confidence: high  \nTherapeutic relevance: No — Confidence: high  \n\nEGFR amplification:\nClassification: driver — Confidence: high  \nTherapeutic relevance: Yes — Confidence: moderate  \nIf Yes → Treatment: EGFR inhibitors — Confidence: moderate  \n\nNF1 p.Q1966*:\nClassification: co-driver — Confidence: moderate  \nTherapeutic relevance: No — Confidence: moderate  \n\nPIK3R1 p.R557*:\nClassification: VUS — Confidence: low  \nTherapeutic relevance: No — Confidence: low  \n\nOBSCN p.R4444C:\nClassification: passenger — Confidence: low  \nTherapeutic relevance: No — Confidence: low  "
+}

@@ -1,0 +1,6 @@
+{
+  "case_id": "GBM-033",
+  "model": "gpt4o",
+  "timestamp": "2026-03-24 14:30:17",
+  "content": "TERT c.-146C>T:\nClassification: driver — Confidence: high  \nTherapeutic relevance: No — Confidence: high  \n\nPDGFRA amplification:\nClassification: co-driver — Confidence: moderate  \nTherapeutic relevance: No — Confidence: high  \n\nPTEN p.R173H:\nClassification: co-driver — Confidence: moderate  \nTherapeutic relevance: No — Confidence: high  \n\nATRX p.Q836*:\nClassification: co-driver — Confidence: moderate  \nTherapeutic relevance: No — Confidence: high  \n\nMUC16 p.R8876C:\nClassification: passenger — Confidence: low  \nTherapeutic relevance: No — Confidence: high  "
+}

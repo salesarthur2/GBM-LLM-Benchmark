@@ -8,10 +8,6 @@
 *.Rproj.user
 
 # Large raw output files (commit summaries only)
-outputs/gpt4o/*.json
-outputs/gemini25/*.json
-outputs/deepseek_r1/*.json
-validation_external/outputs/*.json
 
 # Raw TCGA data (cBioPortal license)
 validation_external/raw_data/

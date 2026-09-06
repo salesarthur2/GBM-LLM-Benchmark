@@ -1,0 +1,6 @@
+{
+  "case_id": "GBM-006",
+  "model": "gemini25",
+  "timestamp": "2026-03-24 10:06:15",
+  "content": "GENE HGVSp: TERT c.-124C>T\nClassification: driver — Confidence: high\nTherapeutic relevance: No — Confidence: high\n\nGENE HGVSp: EGFR amplification\nClassification: driver — Confidence: high\nTherapeutic relevance: No — Confidence: high\n\nGENE HGVSp: NF1 p.Q1966*\nClassification: co-driver — Confidence: high\nTherapeutic relevance: No — Confidence: high\n\nGENE HGVSp: TP53 p.R175H\nClassification: co-driver — Confidence: high\nTherapeutic relevance: No — Confidence: high\n\nGENE HGVSp: TTN p.E26006K\nClassification: passenger — Confidence: high\nTherapeutic relevance: No — Confidence: high"
+}

@@ -1,0 +1,6 @@
+{
+  "case_id": "GBM-064",
+  "model": "gpt4o",
+  "timestamp": "2026-03-24 14:32:51",
+  "content": "TERT c.-146C>T:  \nClassification: driver — Confidence: high  \nTherapeutic relevance: No — Confidence: high  \n\nPTEN p.R130G:  \nClassification: co-driver — Confidence: moderate  \nTherapeutic relevance: No — Confidence: high  \n\nAKT1 p.E17K:  \nClassification: VUS — Confidence: moderate  \nTherapeutic relevance: No — Confidence: high  \n\nmTOR p.L2209V:  \nClassification: VUS — Confidence: moderate  \nTherapeutic relevance: No — Confidence: high  \n\nOBSCN p.R5517C:  \nClassification: passenger — Confidence: low  \nTherapeutic relevance: No — Confidence: high  "
+}

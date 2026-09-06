@@ -1,0 +1,6 @@
+{
+  "case_id": "GBM-091",
+  "model": "gemini25",
+  "timestamp": "2026-03-24 16:26:16",
+  "content": "TERT c.-124C>T:\nClassification: driver — Confidence: high\nTherapeutic relevance: No — Confidence: high\n\nEGFR amplification:\nClassification: driver — Confidence: high\nTherapeutic relevance: No — Confidence: high\n\nKDR amplification:\nClassification: co-driver — Confidence: moderate\nTherapeutic relevance: Yes — Confidence: high\nIf Yes → Treatment: Bevacizumab — Confidence: high\n\nPTEN p.R173C:\nClassification: driver — Confidence: high\nTherapeutic relevance: No — Confidence: high\n\nTTN p.G22391R:\nClassification: passenger — Confidence: high\nTherapeutic relevance: No — Confidence: high"
+}

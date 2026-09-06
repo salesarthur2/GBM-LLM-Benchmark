@@ -1,0 +1,6 @@
+{
+  "case_id": "GBM-005",
+  "model": "gemini25",
+  "timestamp": "2026-03-24 10:05:45",
+  "content": "TERT c.-146C>T:\nClassification: driver — Confidence: high\nTherapeutic relevance: No — Confidence: high\n\nPDGFRA amplification:\nClassification: driver — Confidence: high\nTherapeutic relevance: No — Confidence: high\n\nPTEN p.C136R:\nClassification: driver — Confidence: high\nTherapeutic relevance: No — Confidence: high\n\nATRX p.R1302*:\nClassification: VUS — Confidence: moderate\nTherapeutic relevance: No — Confidence: high\n\nMUC16 p.S11377F:\nClassification: passenger — Confidence: high\nTherapeutic relevance: No — Confidence: high"
+}

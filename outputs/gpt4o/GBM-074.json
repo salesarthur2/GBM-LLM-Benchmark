@@ -1,0 +1,6 @@
+{
+  "case_id": "GBM-074",
+  "model": "gpt4o",
+  "timestamp": "2026-03-24 14:33:32",
+  "content": "\nTERT c.-124C>T:  \nClassification: driver — Confidence: high  \nTherapeutic relevance: No — Confidence: high  \n\nEGFR amplification:  \nClassification: driver — Confidence: high  \nTherapeutic relevance: No — Confidence: high  \n\nEGFR exon2-7deletion:  \nClassification: co-driver — Confidence: high  \nTherapeutic relevance: No — Confidence: high  \n\nPTEN p.R233*:  \nClassification: co-driver — Confidence: moderate  \nTherapeutic relevance: No — Confidence: high  \n\nOBSCN p.T5380M:  \nClassification: VUS — Confidence: low  \nTherapeutic relevance: No — Confidence: low  "
+}

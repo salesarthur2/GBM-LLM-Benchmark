@@ -1,0 +1,6 @@
+{
+  "case_id": "GBM-093",
+  "model": "gpt4o",
+  "timestamp": "2026-03-24 14:34:58",
+  "content": "TERT c.-146C>T:\nClassification: driver — Confidence: high  \nTherapeutic relevance: No — Confidence: high\n\nNTRK1 fusion:\nClassification: co-driver — Confidence: high  \nTherapeutic relevance: Yes — Confidence: high  \nIf Yes → Treatment: Larotrectinib or Entrectinib — Confidence: high\n\nPTEN p.C136R:\nClassification: co-driver — Confidence: moderate  \nTherapeutic relevance: No — Confidence: high\n\nNF1 p.R1947*:\nClassification: co-driver — Confidence: moderate  \nTherapeutic relevance: No — Confidence: high\n\nTTN p.R14023C:\nClassification: passenger — Confidence: high  \nTherapeutic relevance: No — Confidence: high"
+}

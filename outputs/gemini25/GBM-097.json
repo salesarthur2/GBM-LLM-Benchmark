@@ -1,0 +1,6 @@
+{
+  "case_id": "GBM-097",
+  "model": "gemini25",
+  "timestamp": "2026-03-24 16:38:34",
+  "content": "TERT c.-146C>T:\nClassification: driver — Confidence: high\nTherapeutic relevance: No — Confidence: high\n\nPDGFRA amplification:\nClassification: driver — Confidence: high\nTherapeutic relevance: No — Confidence: high\n\nNTRK3 fusion:\nClassification: driver — Confidence: high\nTherapeutic relevance: Yes — Confidence: high\nIf Yes → Treatment: Larotrectinib or Entrectinib — Confidence: high\n\nPTEN p.R173H:\nClassification: driver — Confidence: high\nTherapeutic relevance: No — Confidence: high\n\nOBSCN p.R5517C:\nClassification: passenger — Confidence: moderate\nTherapeutic relevance: No — Confidence: high"
+}

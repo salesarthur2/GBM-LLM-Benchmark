@@ -1,0 +1,6 @@
+{
+  "case_id": "GBM-087",
+  "model": "gpt4o",
+  "timestamp": "2026-03-24 14:34:30",
+  "content": "TERT c.-124C>T:\nClassification: driver — Confidence: high  \nTherapeutic relevance: No — Confidence: high  \n\nEGFR amplification:\nClassification: driver — Confidence: high  \nTherapeutic relevance: Yes — Confidence: moderate  \nIf Yes → Treatment: EGFR inhibitors (e.g., afatinib, erlotinib) — Confidence: moderate  \n\nIDH1 p.R132C:\nClassification: VUS — Confidence: high  \nTherapeutic relevance: No — Confidence: high  \n\nPTEN p.R233*:\nClassification: co-driver — Confidence: high  \nTherapeutic relevance: No — Confidence: high  \n\nMUC16 p.R8876C:\nClassification: passenger — Confidence: moderate  \nTherapeutic relevance: No — Confidence: high  "
+}

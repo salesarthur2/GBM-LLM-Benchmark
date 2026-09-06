@@ -1,0 +1,6 @@
+{
+  "case_id": "GBM-100",
+  "model": "gemini25",
+  "timestamp": "2026-03-24 16:39:52",
+  "content": "TERT c.-146C>T:\nClassification: driver — Confidence: high\nTherapeutic relevance: No — Confidence: high\n\nNTRK2 fusion:\nClassification: driver — Confidence: high\nTherapeutic relevance: Yes — Confidence: high\nIf Yes → Treatment: Larotrectinib or Entrectinib — Confidence: high\n\nBRAF p.V600E:\nClassification: driver — Confidence: high\nTherapeutic relevance: Yes — Confidence: high\nIf Yes → Treatment: Dabrafenib plus Trametinib — Confidence: high\n\nPTEN p.C136Y:\nClassification: driver — Confidence: high\nTherapeutic relevance: No — Confidence: high\n\nOBSCN p.T3821M:\nClassification: passenger — Confidence: moderate\nTherapeutic relevance: No — Confidence: high"
+}

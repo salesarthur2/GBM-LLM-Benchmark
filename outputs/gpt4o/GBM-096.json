@@ -1,0 +1,6 @@
+{
+  "case_id": "GBM-096",
+  "model": "gpt4o",
+  "timestamp": "2026-03-24 14:35:13",
+  "content": "TERT c.-124C>T:  \nClassification: driver — Confidence: high  \nTherapeutic relevance: No — Confidence: high  \n\nEGFR amplification:  \nClassification: driver — Confidence: high  \nTherapeutic relevance: Yes — Confidence: high  \nIf Yes → Treatment: EGFR inhibitors (e.g., afatinib, dacomitinib) — Confidence: moderate  \n\nBRAF p.V600E:  \nClassification: co-driver — Confidence: high  \nTherapeutic relevance: Yes — Confidence: high  \nIf Yes → Treatment: BRAF inhibitors (e.g., vemurafenib, dabrafenib) — Confidence: high  \n\nNF1 p.Q1966*:  \nClassification: co-driver — Confidence: moderate  \nTherapeutic relevance: No — Confidence: moderate  \n\nTTN p.G22391R:  \nClassification: passenger — Confidence: high  \nTherapeutic relevance: No — Confidence: high  "
+}

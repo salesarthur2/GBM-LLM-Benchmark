@@ -1,0 +1,6 @@
+{
+  "case_id": "GBM-089",
+  "model": "gemini25",
+  "timestamp": "2026-03-24 16:48:09",
+  "content": "TERT c.-146C>T:\nClassification: driver — Confidence: high\nTherapeutic relevance: No — Confidence: high\n\nEGFR amplification:\nClassification: driver — Confidence: high\nTherapeutic relevance: No — Confidence: high\n\nBRCA1 p.E1694*:\nClassification: VUS — Confidence: high\nTherapeutic relevance: No — Confidence: high\n\nPTEN p.R130Q:\nClassification: driver — Confidence: high\nTherapeutic relevance: No — Confidence: high\n\nOBSCN p.R5517C:\nClassification: passenger — Confidence: moderate\nTherapeutic relevance: No — Confidence: high"
+}

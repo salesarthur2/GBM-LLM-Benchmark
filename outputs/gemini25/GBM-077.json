@@ -1,0 +1,6 @@
+{
+  "case_id": "GBM-077",
+  "model": "gemini25",
+  "timestamp": "2026-03-24 16:34:10",
+  "content": "TERT c.-124C>T:\nClassification: driver — Confidence: high\nTherapeutic relevance: No — Confidence: high\n\nEGFR amplification:\nClassification: driver — Confidence: high\nTherapeutic relevance: No — Confidence: high\n\nBRAF p.V600E:\nClassification: driver — Confidence: high\nTherapeutic relevance: Yes — Confidence: high\nIf Yes → Treatment: Dabrafenib + Trametinib — Confidence: high\n\nPTEN p.R130*:\nClassification: driver — Confidence: high\nTherapeutic relevance: No — Confidence: high\n\nOBSCN p.A6506T:\nClassification: VUS — Confidence: high\nTherapeutic relevance: No — Confidence: high"
+}
