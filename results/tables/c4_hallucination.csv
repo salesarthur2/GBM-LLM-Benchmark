@@ -1,4 +1,4 @@
 model,n_variants,n_hallucinations,rate,pct,n_high_conf,n_mod_conf,n_low_conf
-gpt4o,501,68,0.1357,13.57,30,38,0
-gemini25,501,5,0.01,1,2,3,0
-deepseek_r1,501,1,0.002,0.2,0,1,0
+gpt4o,509,72,0.1415,14.15,30,42,0
+gemini25,509,5,0.0098,0.98,2,3,0
+deepseek_r1,509,1,0.002,0.2,0,1,0
