@@ -1,21 +1,7 @@
 # =============================================================
 # 02_scoring_validation.R — GBM-LLM-Benchmark
 # Scoring for TCGA external validation (25 cases x 3 models)
-# Version: 5.0 — gene-symbol collision bug fixed (same fix as
-# 02_scoring_auto.R v5.0; see that file's header for full rationale)
-# =============================================================
-#
-# CHANGE LOG (v4.0 -> v5.0): identical fix to 02_scoring_auto.R:
-# ground truth expanded per profile$variants entry (not per unique
-# gene name), model output parsed into an ordered list of blocks
-# (not a named list keyed by gene), matched positionally, and the
-# gene-header regex widened from ^[A-Z] to ^[A-Za-z]. This recovers
-# all 125 TCGA variants (previously scored as 114; 8 cases had a
-# duplicated gene: TCGA-VAL-005, -007 (x2 genes), -009, -013, -016,
-# -017 (x2 genes), -018, -025 (triplicate EGFR)).
-#
-# The original (uncorrected) v4.0 script is retained in this
-# repository as 02_scoring_validation_v4_ORIGINAL.R for transparency.
+# Same parser and criteria as 02_scoring_auto.R
 # =============================================================
 
 library(jsonlite)
@@ -23,34 +9,26 @@ library(tidyverse)
 library(here)
 
 # =============================================================
-# HELPERS (shared logic with 02_scoring_auto.R v5.0)
+# HELPERS (same as 02_scoring_auto.R)
 # =============================================================
 
-expand_ground_truth <- function(case_file) {
-  case_data <- fromJSON(case_file, simplifyVector = FALSE)
-  variants  <- case_data$profile$variants
+load_ground_truth <- function(case_file) {
+  case_data <- fromJSON(case_file, simplifyVector=FALSE)
   gt_class  <- case_data$ground_truth$classifications
   gt_ther   <- case_data$ground_truth$therapeutic_relevance
-
-  rows <- lapply(variants, function(v) {
-    gene <- v$gene
-    cls  <- gt_class[[gene]]
-    ther <- gt_ther[[gene]]
-
-    treatment_val <- ther$treatment
+  rows <- lapply(names(gt_class), function(gene) {
+    treatment_val <- gt_ther[[gene]]$treatment
     if (is.null(treatment_val) || length(treatment_val) == 0 ||
         is.list(treatment_val)) treatment_val <- NA_character_
-    relevant_val <- ther$relevant
+    relevant_val <- gt_ther[[gene]]$relevant
     if (is.null(relevant_val) || length(relevant_val) == 0)
       relevant_val <- FALSE
-
     data.frame(
       gene         = gene,
-      hgvsp        = if (is.null(v$HGVSp_short)) NA_character_ else v$HGVSp_short,
-      gt_class     = if (is.null(cls$class)) NA_character_ else cls$class,
+      gt_class     = gt_class[[gene]]$class,
       gt_relevant  = as.logical(relevant_val),
       gt_treatment = as.character(treatment_val),
-      is_trap      = if (is.null(cls$is_trap)) FALSE else as.logical(cls$is_trap),
+      is_trap      = as.logical(gt_class[[gene]]$is_trap),
       stringsAsFactors = FALSE
     )
   })
@@ -71,7 +49,7 @@ detect_gene_header <- function(line) {
   }
   clean <- trimws(gsub(":$", "", line))
   if (nchar(clean) == 0 || nchar(clean) > 80) return(NA)
-  if (!grepl("^[A-Za-z]", clean)) return(NA)   # was ^[A-Z] in v4.0
+  if (!grepl("^[A-Z]", clean)) return(NA)
   return(clean)
 }
 
@@ -81,43 +59,41 @@ parse_model_output <- function(content, case_id, model) {
   lines <- strsplit(content, "\n")[[1]]
   lines <- trimws(lines)
   lines <- lines[nchar(lines) > 0]
-
-  blocks  <- list()
-  current <- NULL
-
+  results      <- list()
+  current_gene <- NULL
   for (line in lines) {
-    gc <- detect_gene_header(line)
-    if (!is.na(gc)) {
-      gene_symbol <- trimws(gsub("\\s+.*$", "", gc))
-      current <- list(
-        gene=gene_symbol, classification=NA_character_,
-        class_confidence=NA_character_, therapeutic=NA_character_,
-        ther_confidence=NA_character_, treatment=NA_character_,
-        treat_confidence=NA_character_)
-      blocks[[length(blocks) + 1]] <- current
+    gene_candidate <- detect_gene_header(line)
+    if (!is.na(gene_candidate)) {
+      gene_symbol  <- trimws(gsub("\\s+.*$", "", gene_candidate))
+      current_gene <- gene_symbol
+      if (!current_gene %in% names(results)) {
+        results[[current_gene]] <- list(
+          gene=current_gene, classification=NA_character_,
+          class_confidence=NA_character_, therapeutic=NA_character_,
+          ther_confidence=NA_character_, treatment=NA_character_,
+          treat_confidence=NA_character_)
+      }
       next
     }
-    if (is.null(current)) next
-    i <- length(blocks)
-
+    if (is.null(current_gene)) next
     if (grepl("^Classification:", line, ignore.case=TRUE)) {
       m <- regmatches(line, regexpr("\\b(driver|co-driver|VUS|passenger)\\b",
                                     line, ignore.case=TRUE))
-      if (length(m) > 0) blocks[[i]]$classification <- tolower(m)
+      if (length(m) > 0) results[[current_gene]]$classification <- tolower(m)
       m <- regmatches(line, regexpr("Confidence:\\s*(high|moderate|low)",
                                     line, ignore.case=TRUE))
       if (length(m) > 0)
-        blocks[[i]]$class_confidence <- tolower(
+        results[[current_gene]]$class_confidence <- tolower(
           trimws(sub("Confidence:\\s*", "", m, ignore.case=TRUE)))
       next
     }
     if (grepl("^Therapeutic", line, ignore.case=TRUE)) {
       m <- regmatches(line, regexpr("\\b(Yes|No)\\b", line, ignore.case=TRUE))
-      if (length(m) > 0) blocks[[i]]$therapeutic <- tolower(m)
+      if (length(m) > 0) results[[current_gene]]$therapeutic <- tolower(m)
       m <- regmatches(line, regexpr("Confidence:\\s*(high|moderate|low)",
                                     line, ignore.case=TRUE))
       if (length(m) > 0)
-        blocks[[i]]$ther_confidence <- tolower(
+        results[[current_gene]]$ther_confidence <- tolower(
           trimws(sub("Confidence:\\s*", "", m, ignore.case=TRUE)))
       next
     }
@@ -130,49 +106,21 @@ parse_model_output <- function(content, case_id, model) {
         tx <- sub("Treatment:\\s*", "", tx, ignore.case=TRUE)
         tx <- sub("\\s*(\u2014|Confidence:).*$", "", tx)
         tx <- trimws(tx)
-        if (nchar(tx) > 0) blocks[[i]]$treatment <- tx
+        if (nchar(tx) > 0) results[[current_gene]]$treatment <- tx
       }
       m <- regmatches(line, regexpr("Confidence:\\s*(high|moderate|low)",
                                     line, ignore.case=TRUE))
       if (length(m) > 0)
-        blocks[[i]]$treat_confidence <- tolower(
+        results[[current_gene]]$treat_confidence <- tolower(
           trimws(sub("Confidence:\\s*", "", m, ignore.case=TRUE)))
       next
     }
   }
-  if (length(blocks) == 0) return(NULL)
-  df         <- bind_rows(lapply(blocks, as.data.frame, stringsAsFactors=FALSE))
+  if (length(results) == 0) return(NULL)
+  df         <- bind_rows(lapply(results, as.data.frame, stringsAsFactors=FALSE))
   df$case_id <- case_id
   df$model   <- model
   return(df)
-}
-
-match_positional <- function(gt, parsed) {
-  if (nrow(gt) == nrow(parsed)) {
-    parsed_cols <- parsed |>
-      select(classification, class_confidence, therapeutic,
-             ther_confidence, treatment, treat_confidence)
-    return(bind_cols(gt, parsed_cols))
-  }
-  warning(sprintf(
-    "  [length mismatch] case has %d ground-truth rows but %d parsed blocks — using per-gene positional fallback",
-    nrow(gt), nrow(parsed)))
-  out <- gt
-  out[, c("classification","class_confidence","therapeutic",
-          "ther_confidence","treatment","treat_confidence")] <- NA_character_
-  for (g in unique(gt$gene)) {
-    gt_idx     <- which(gt$gene == g)
-    parsed_idx <- which(parsed$gene == g)
-    n          <- min(length(gt_idx), length(parsed_idx))
-    if (n == 0) next
-    for (k in seq_len(n)) {
-      out[gt_idx[k], c("classification","class_confidence","therapeutic",
-                        "ther_confidence","treatment","treat_confidence")] <-
-        parsed[parsed_idx[k], c("classification","class_confidence","therapeutic",
-                                 "ther_confidence","treatment","treat_confidence")]
-    }
-  }
-  out
 }
 
 # =============================================================
@@ -186,12 +134,12 @@ case_files <- list.files(here("validation_external","cases"),
 all_scores     <- list()
 parse_failures <- c()
 
-message(">>> Scoring TCGA validation (v5.0, gene-collision fix) — ",
-        length(case_files), " cases x ", length(models), " models\n")
+message(">>> Scoring TCGA validation — ", length(case_files),
+        " cases x ", length(models), " models\n")
 
 for (case_file in case_files) {
   case_id  <- tools::file_path_sans_ext(basename(case_file))
-  gt       <- expand_ground_truth(case_file)
+  gt       <- load_ground_truth(case_file)
 
   for (model in models) {
     out_file <- here("validation_external","outputs", model,
@@ -207,10 +155,10 @@ for (case_file in case_files) {
     if (is.null(parsed) || nrow(parsed) == 0) {
       parse_failures <- c(parse_failures, paste0(model, "/", case_id)); next
     }
-
-    matched <- match_positional(gt, parsed)
-
-    scored <- matched |>
+    scored <- gt |>
+      left_join(parsed |> select(gene, classification, class_confidence,
+                                  therapeutic, ther_confidence,
+                                  treatment, treat_confidence), by="gene") |>
       mutate(
         case_id  = case_id,
         model    = model,
@@ -233,7 +181,7 @@ for (case_file in case_files) {
 }
 
 scores_val <- bind_rows(all_scores)
-message(">>> Total observations: ", nrow(scores_val), " (expect 125 x 3 = 375)")
+message(">>> Total observations: ", nrow(scores_val))
 message(">>> Models: ", paste(unique(scores_val$model), collapse=", "))
 
 # =============================================================

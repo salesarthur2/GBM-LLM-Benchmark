@@ -1,4 +1,4 @@
 model,n,correct,accuracy
-deepseek_r1,114,114,1
-gemini25,114,113,0.991
-gpt4o,114,105,0.921
+deepseek_r1,125,125,1
+gemini25,125,124,0.992
+gpt4o,125,110,0.88

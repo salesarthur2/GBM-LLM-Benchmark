@@ -1,70 +1,7 @@
 # =============================================================
 # 02_scoring_auto.R — GBM-LLM-Benchmark
 # Automatic scoring — C1, C2, C4, C5
-# Version: 5.1 — gene-symbol collision bug fixed; c1/c2 summary
-#                variable-masking bug fixed
-# =============================================================
-#
-# CHANGE LOG (v4.0 -> v5.1):
-#
-#   v5.1 (on top of v5.0, found during verification of this very
-#   file before upload): the `c1_summary` and `c2_summary` blocks
-#   computed `c1_correct = sum(c1_correct, ...)` and then, in the
-#   SAME summarise() call, `c1_accuracy = round(mean(c1_correct,
-#   ...), 3)`. dplyr::summarise() evaluates expressions in order and
-#   makes each newly created column available to later expressions
-#   in the same call — so the second `c1_correct` on the right-hand
-#   side referred to the just-created single summary number, not the
-#   original per-row column, and `mean()` of a single number is that
-#   number. Result: the `c1_accuracy`/`c2_accuracy` columns in
-#   results/tables/c1_summary.csv and c2_summary.csv held the raw
-#   correct-count, not a fraction (e.g. 374 instead of 0.730). This
-#   bug was already present in v4.0, unchanged by the v5.0 fix above
-#   (confirmed against the currently committed c1_summary.csv /
-#   c2_summary.csv in this repository). It did NOT affect any number
-#   reported in the manuscript: 03_analysis.R independently recomputes
-#   correct/n_eligible into c1_accuracy.csv / c2_accuracy.csv, which
-#   is what the manuscript actually draws on, and those values are
-#   correct. Fixed here by moving the division out of the masked
-#   summarise() call.
-#
-#   v4.0 keyed ground truth, parsed model output, and the final
-#   join exclusively by GENE SYMBOL. When a case contained two
-#   distinct variants on the same gene (7 synthetic cases with two
-#   EGFR variants, 1 with two PDGFRA variants; 8 analogous cases in
-#   the TCGA validation set), the second block silently overwrote
-#   the first in both the ground-truth list and the parsed model
-#   output, and the final left_join(by = "gene") then produced a
-#   single merged row instead of two. Net effect: 520 raw synthetic
-#   variants were scored as 512 (125 TCGA variants as 114).
-#
-#   v5.0 instead:
-#     (a) expands ground truth to one row PER ENTRY IN
-#         profile$variants (repeating the gene-level classification
-#         / therapeutic-relevance value, since ground truth in this
-#         dataset is stored per gene, not per variant — confirmed
-#         against protocol/study_protocol.md sec. 5.6, where every
-#         variant type on a given gene shares one classification);
-#     (b) parses model output into an ORDERED LIST of blocks
-#         (list(), appended to — not a named list keyed by gene,
-#         which silently merges repeats);
-#     (c) matches ground truth to parsed blocks POSITIONALLY, in
-#         order of appearance within the case. This was verified
-#         (scripts/verify_variant_order.R) to agree with
-#         profile$variants order in 520/520 synthetic and 125/125
-#         TCGA variants across all 3 models — the models answer
-#         variants in the order the prompt presents them.
-#     (d) widens the gene-header regex from `^[A-Z]` to `^[A-Za-z]`,
-#         which previously failed to recognise the lowercase-leading
-#         gene symbol "mTOR" (GBM-064; affected 1 case x 3 models).
-#
-#   See manuscript Limitations for the effect of this correction on
-#   reported results (GPT-4o hallucination rate: 13.6% -> 14.1%
-#   synthetic, 7.9% -> 12.0% TCGA; no qualitative change to any
-#   other result).
-#
-#   The original (uncorrected) v4.0 script is retained in this
-#   repository as 02_scoring_auto_v4_ORIGINAL.R for transparency.
+# Version: 4.0 — gene name extraction fixed
 # =============================================================
 
 library(jsonlite)
@@ -72,41 +9,27 @@ library(tidyverse)
 library(here)
 
 # =============================================================
-# HELPER: Expand ground truth to one row per profile variant
+# HELPER: Load ground truth
 # =============================================================
-#
-# Unlike v4.0's load_ground_truth(), which returned one row per
-# UNIQUE GENE NAME in ground_truth$classifications, this returns
-# one row per entry in profile$variants (the authoritative, ordered,
-# per-variant list), carrying over that variant's gene-level ground
-# truth. A case with two variants on the same gene therefore yields
-# two rows here, both with that gene's classification/relevance.
 
-expand_ground_truth <- function(case_file) {
-  case_data <- fromJSON(case_file, simplifyVector = FALSE)
-  variants  <- case_data$profile$variants
+load_ground_truth <- function(case_file) {
+  case_data <- fromJSON(case_file)
   gt_class  <- case_data$ground_truth$classifications
   gt_ther   <- case_data$ground_truth$therapeutic_relevance
 
-  rows <- lapply(variants, function(v) {
-    gene <- v$gene
-    cls  <- gt_class[[gene]]
-    ther <- gt_ther[[gene]]
-
-    treatment_val <- ther$treatment
+  rows <- lapply(names(gt_class), function(gene) {
+    treatment_val <- gt_ther[[gene]]$treatment
     if (is.null(treatment_val) || length(treatment_val) == 0 ||
         is.list(treatment_val)) treatment_val <- NA_character_
-    relevant_val <- ther$relevant
+    relevant_val <- gt_ther[[gene]]$relevant
     if (is.null(relevant_val) || length(relevant_val) == 0)
       relevant_val <- FALSE
-
     data.frame(
       gene         = gene,
-      hgvsp        = if (is.null(v$HGVSp_short)) NA_character_ else v$HGVSp_short,
-      gt_class     = if (is.null(cls$class)) NA_character_ else cls$class,
+      gt_class     = gt_class[[gene]]$class,
       gt_relevant  = as.logical(relevant_val),
       gt_treatment = as.character(treatment_val),
-      is_trap      = if (is.null(cls$is_trap)) FALSE else as.logical(cls$is_trap),
+      is_trap      = as.logical(gt_class[[gene]]$is_trap),
       stringsAsFactors = FALSE
     )
   })
@@ -116,9 +39,6 @@ expand_ground_truth <- function(case_file) {
 # =============================================================
 # HELPER: Detect gene header line
 # =============================================================
-#
-# Identical to v4.0 except the final check now accepts a leading
-# lowercase letter (fixes "mTOR" non-detection; see change log).
 
 detect_gene_header <- function(line) {
   if (grepl("^Classification:", line, ignore.case=TRUE)) return(NA)
@@ -137,19 +57,13 @@ detect_gene_header <- function(line) {
 
   clean <- trimws(gsub(":$", "", line))
   if (nchar(clean) == 0 || nchar(clean) > 80) return(NA)
-  # v4.0: if (!grepl("^[A-Z]", clean)) return(NA)   <- missed "mTOR"
-  if (!grepl("^[A-Za-z]", clean)) return(NA)
+  if (!grepl("^[A-Z]", clean)) return(NA)
   return(clean)
 }
 
 # =============================================================
-# HELPER: Parse model output into an ORDERED LIST of blocks
+# HELPER: Parse model output
 # =============================================================
-#
-# v4.0 returned a named list keyed by current_gene, so a second
-# header for an already-seen gene reused (and overwrote) the first
-# block instead of starting a new one. v5.0 always appends a new
-# block, preserving every occurrence in order.
 
 parse_model_output <- function(content, case_id, model) {
   if (is.null(content) || length(content) == 0 ||
@@ -159,41 +73,49 @@ parse_model_output <- function(content, case_id, model) {
   lines <- trimws(lines)
   lines <- lines[nchar(lines) > 0]
 
-  blocks  <- list()   # ORDERED, appended to — not keyed by gene
-  current <- NULL
+  results      <- list()
+  current_gene <- NULL
 
   for (line in lines) {
     gene_candidate <- detect_gene_header(line)
     if (!is.na(gene_candidate)) {
+      # Extract only the gene symbol (first word before space)
       gene_symbol <- trimws(gsub("\\s+.*$", "", gene_candidate))
-      current <- list(
-        gene             = gene_symbol,
-        classification   = NA_character_,
-        class_confidence = NA_character_,
-        therapeutic      = NA_character_,
-        ther_confidence  = NA_character_,
-        treatment        = NA_character_,
-        treat_confidence = NA_character_
-      )
-      blocks[[length(blocks) + 1]] <- current
+      # Handle fusion genes like FGFR3-TACC3
+      if (grepl("^[A-Z0-9]+-[A-Z0-9]+$", gene_symbol)) {
+        current_gene <- gene_symbol
+      } else {
+        current_gene <- gene_symbol
+      }
+      if (!current_gene %in% names(results)) {
+        results[[current_gene]] <- list(
+          gene             = current_gene,
+          classification   = NA_character_,
+          class_confidence = NA_character_,
+          therapeutic      = NA_character_,
+          ther_confidence  = NA_character_,
+          treatment        = NA_character_,
+          treat_confidence = NA_character_
+        )
+      }
       next
     }
 
-    if (is.null(current)) next
-    i <- length(blocks)  # index of the block currently being filled
+    if (is.null(current_gene)) next
 
     # Classification
     if (grepl("^Classification:", line, ignore.case=TRUE)) {
       m <- regmatches(line,
             regexpr("\\b(driver|co-driver|VUS|passenger)\\b",
                     line, ignore.case=TRUE))
-      if (length(m) > 0) blocks[[i]]$classification <- tolower(m)
+      if (length(m) > 0)
+        results[[current_gene]]$classification <- tolower(m)
 
       m <- regmatches(line,
             regexpr("Confidence:\\s*(high|moderate|low)",
                     line, ignore.case=TRUE))
       if (length(m) > 0)
-        blocks[[i]]$class_confidence <- tolower(
+        results[[current_gene]]$class_confidence <- tolower(
           trimws(sub("Confidence:\\s*", "", m, ignore.case=TRUE)))
       next
     }
@@ -201,13 +123,14 @@ parse_model_output <- function(content, case_id, model) {
     # Therapeutic relevance
     if (grepl("^Therapeutic", line, ignore.case=TRUE)) {
       m <- regmatches(line, regexpr("\\b(Yes|No)\\b", line, ignore.case=TRUE))
-      if (length(m) > 0) blocks[[i]]$therapeutic <- tolower(m)
+      if (length(m) > 0)
+        results[[current_gene]]$therapeutic <- tolower(m)
 
       m <- regmatches(line,
             regexpr("Confidence:\\s*(high|moderate|low)",
                     line, ignore.case=TRUE))
       if (length(m) > 0)
-        blocks[[i]]$ther_confidence <- tolower(
+        results[[current_gene]]$ther_confidence <- tolower(
           trimws(sub("Confidence:\\s*", "", m, ignore.case=TRUE)))
       next
     }
@@ -222,67 +145,25 @@ parse_model_output <- function(content, case_id, model) {
         tx <- sub("Treatment:\\s*", "", tx, ignore.case=TRUE)
         tx <- sub("\\s*(\u2014|Confidence:).*$", "", tx)
         tx <- trimws(tx)
-        if (nchar(tx) > 0) blocks[[i]]$treatment <- tx
+        if (nchar(tx) > 0) results[[current_gene]]$treatment <- tx
       }
 
       m <- regmatches(line,
             regexpr("Confidence:\\s*(high|moderate|low)",
                     line, ignore.case=TRUE))
       if (length(m) > 0)
-        blocks[[i]]$treat_confidence <- tolower(
+        results[[current_gene]]$treat_confidence <- tolower(
           trimws(sub("Confidence:\\s*", "", m, ignore.case=TRUE)))
       next
     }
   }
 
-  if (length(blocks) == 0) return(NULL)
+  if (length(results) == 0) return(NULL)
 
-  df         <- bind_rows(lapply(blocks, as.data.frame, stringsAsFactors=FALSE))
+  df         <- bind_rows(lapply(results, as.data.frame, stringsAsFactors=FALSE))
   df$case_id <- case_id
   df$model   <- model
   return(df)
-}
-
-# =============================================================
-# HELPER: Positional match between ground truth and parsed blocks
-# =============================================================
-#
-# Primary path: ground truth and parsed blocks have equal length ->
-# bind column-wise in order. Fallback (should not trigger on the
-# current dataset; kept for robustness against future model output
-# that skips or duplicates a block unexpectedly): match within each
-# gene's own sub-sequence, so a partial mismatch does not silently
-# misattribute a different gene's answer.
-
-match_positional <- function(gt, parsed) {
-  if (nrow(gt) == nrow(parsed)) {
-    parsed_cols <- parsed |>
-      select(classification, class_confidence, therapeutic,
-             ther_confidence, treatment, treat_confidence)
-    return(bind_cols(gt, parsed_cols))
-  }
-
-  warning(sprintf(
-    "  [length mismatch] case has %d ground-truth rows but %d parsed blocks — using per-gene positional fallback",
-    nrow(gt), nrow(parsed)))
-
-  out <- gt
-  out[, c("classification","class_confidence","therapeutic",
-          "ther_confidence","treatment","treat_confidence")] <- NA_character_
-
-  for (g in unique(gt$gene)) {
-    gt_idx     <- which(gt$gene == g)
-    parsed_idx <- which(parsed$gene == g)
-    n          <- min(length(gt_idx), length(parsed_idx))
-    if (n == 0) next
-    for (k in seq_len(n)) {
-      out[gt_idx[k], c("classification","class_confidence","therapeutic",
-                        "ther_confidence","treatment","treat_confidence")] <-
-        parsed[parsed_idx[k], c("classification","class_confidence","therapeutic",
-                                 "ther_confidence","treatment","treat_confidence")]
-    }
-  }
-  out
 }
 
 # =============================================================
@@ -296,14 +177,14 @@ case_files <- list.files(here("cases"), pattern="\\.json$",
 all_scores     <- list()
 parse_failures <- c()
 
-message(">>> Starting automatic scoring (v5.0, gene-collision fix) — ",
-        length(case_files), " cases x ", length(models), " models\n")
+message(">>> Starting automatic scoring — ", length(case_files),
+        " cases x ", length(models), " models\n")
 
 for (case_file in case_files) {
 
   case_id  <- tools::file_path_sans_ext(basename(case_file))
   category <- fromJSON(case_file)$category
-  gt       <- expand_ground_truth(case_file)
+  gt       <- load_ground_truth(case_file)
 
   for (model in models) {
 
@@ -329,9 +210,13 @@ for (case_file in case_files) {
       next
     }
 
-    matched <- match_positional(gt, parsed)
-
-    scored <- matched |>
+    scored <- gt |>
+      left_join(
+        parsed |> select(gene, classification, class_confidence,
+                         therapeutic, ther_confidence,
+                         treatment, treat_confidence),
+        by = "gene"
+      ) |>
       mutate(
         case_id  = case_id,
         model    = model,
@@ -364,27 +249,22 @@ for (case_file in case_files) {
 # =============================================================
 
 scores_df <- bind_rows(all_scores)
-message("\n>>> Total observations: ", nrow(scores_df),
-        " (expect ", length(case_files) * length(models) * 5.2, "-ish; 520 variants x 3 models = 1560)")
+message("\n>>> Total observations: ", nrow(scores_df))
 message(">>> Models: ", paste(unique(scores_df$model), collapse=", "))
 
 # =============================================================
-# SUMMARIES (unchanged from v4.0)
+# SUMMARIES
 # =============================================================
 
 c1_summary <- scores_df |>
   group_by(model) |>
   summarise(
     n_variants       = n(),
-    c1_correct_n     = sum(c1_correct, na.rm=TRUE),
+    c1_correct       = sum(c1_correct, na.rm=TRUE),
+    c1_accuracy      = round(mean(c1_correct, na.rm=TRUE), 3),
     c1_sens_accuracy = round(mean(c1_sens_correct, na.rm=TRUE), 3),
     .groups = "drop"
-  ) |>
-  mutate(
-    c1_correct  = c1_correct_n,
-    c1_accuracy = round(c1_correct_n / n_variants, 3)
-  ) |>
-  select(model, n_variants, c1_correct, c1_accuracy, c1_sens_accuracy)
+  )
 
 c1_by_cat <- scores_df |>
   group_by(model, category) |>
@@ -397,15 +277,11 @@ c1_by_cat <- scores_df |>
 c2_summary <- scores_df |>
   group_by(model) |>
   summarise(
-    n_variants    = n(),
-    c2_correct_n  = sum(c2_correct, na.rm=TRUE),
+    n_variants  = n(),
+    c2_correct  = sum(c2_correct, na.rm=TRUE),
+    c2_accuracy = round(mean(c2_correct, na.rm=TRUE), 3),
     .groups = "drop"
-  ) |>
-  mutate(
-    c2_correct  = c2_correct_n,
-    c2_accuracy = round(c2_correct_n / n_variants, 3)
-  ) |>
-  select(model, n_variants, c2_correct, c2_accuracy)
+  )
 
 c4_summary <- scores_df |>
   filter(!gt_relevant) |>

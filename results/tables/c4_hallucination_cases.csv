@@ -3,9 +3,11 @@ gpt4o,GBM-002,CAT-1,EGFR,moderate
 gpt4o,GBM-003,CAT-1,EGFR,moderate
 gpt4o,GBM-004,CAT-1,EGFR,high
 gpt4o,GBM-006,CAT-1,EGFR,high
+gpt4o,GBM-007,CAT-1,EGFR,moderate
 gpt4o,GBM-008,CAT-1,EGFR,moderate
 gpt4o,GBM-009,CAT-1,EGFR,moderate
 gpt4o,GBM-010,CAT-1,EGFR,high
+gpt4o,GBM-011,CAT-1,EGFR,moderate
 gpt4o,GBM-012,CAT-1,EGFR,moderate
 gpt4o,GBM-013,CAT-1,EGFR,moderate
 gpt4o,GBM-014,CAT-1,EGFR,moderate
@@ -13,6 +15,7 @@ gpt4o,GBM-016,CAT-1,EGFR,moderate
 gpt4o,GBM-018,CAT-1,EGFR,moderate
 gpt4o,GBM-019,CAT-1,EGFR,moderate
 gpt4o,GBM-020,CAT-1,EGFR,high
+gpt4o,GBM-021,CAT-1,EGFR,moderate
 gpt4o,GBM-022,CAT-2,EGFR,moderate
 gpt4o,GBM-023,CAT-2,EGFR,moderate
 gpt4o,GBM-024,CAT-2,EGFR,moderate
@@ -23,6 +26,7 @@ gpt4o,GBM-030,CAT-2,EGFR,high
 gpt4o,GBM-031,CAT-2,EGFR,high
 gpt4o,GBM-032,CAT-2,EGFR,high
 gpt4o,GBM-034,CAT-2,EGFR,high
+gpt4o,GBM-035,CAT-2,EGFR,moderate
 gpt4o,GBM-036,CAT-2,EGFR,high
 gpt4o,GBM-037,CAT-2,EGFR,moderate
 gpt4o,GBM-038,CAT-2,EGFR,high
