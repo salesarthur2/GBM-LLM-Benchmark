@@ -2,11 +2,13 @@
 Primary, pre-registered C4 analysis (chi-squared, independent counts) is in
 statistical_tests.txt / 03_analysis.R.
 
-Method: GEE (geepack::geeglm), cluster = variant (each of the 509 eligible
-variants contributes one paired observation per model), exchangeable working
-correlation, robust (sandwich) standard errors. This directly represents the
-repeated-measures pairing across models that a case-level-only random
-intercept does not capture.
+Method: GEE (geepack::geeglm), cluster = CASE (each case's full set of
+variant x model observations is one cluster), exchangeable working
+correlation, robust (sandwich) standard errors. This covers both layers of
+non-independence in this design -- the same variant scored by all three
+models, and multiple variants sharing a case -- within one cluster, so
+robust SEs are valid without requiring either correlation to be estimated
+exactly right.
 
 === OMNIBUS WALD TEST ===
 Analysis of 'Wald statistic' Table
@@ -15,15 +17,15 @@ Response: c4_hallucination
 Terms added sequentially (first to last)
 
       Df   X2 P(>|Chi|)    
-model  2 41.5   9.5e-10 ***
+model  2 44.6   2.1e-10 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
 === PAIRWISE COMPARISONS (Bonferroni) ===
  contrast               estimate    SE  df z.ratio p.value
- gpt4o - gemini25           2.81 0.458 Inf   6.136  <.0001
- gpt4o - deepseek_r1        4.43 0.995 Inf   4.449  <.0001
- gemini25 - deepseek_r1     1.62 0.896 Inf   1.805  0.2134
+ gpt4o - gemini25           2.81 0.438 Inf   6.425  <.0001
+ gpt4o - deepseek_r1        4.43 1.000 Inf   4.430  <.0001
+ gemini25 - deepseek_r1     1.62 0.900 Inf   1.799  0.2160
 
 Results are given on the log odds ratio (not the response) scale. 
 P value adjustment: bonferroni method for 3 tests 

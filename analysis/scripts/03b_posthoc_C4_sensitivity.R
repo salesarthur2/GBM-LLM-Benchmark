@@ -9,28 +9,28 @@
 #   PRIMARY, pre-registered analysis in 03_analysis.R and in the
 #   manuscript.
 #
-#   The same 509 eligible variants were evaluated by all three
-#   models (a repeated-measures design: each variant contributes
-#   one paired observation per model), which the chi-squared test
-#   does not model.
+#   Non-independence in this data has two layers: (1) the same
+#   variant is evaluated by all three models (repeated measures),
+#   and (2) multiple variants belong to the same case, and may
+#   share case-level difficulty. The chi-squared test ignores both.
 #
 #   Revision history of this script (kept for transparency):
-#   v1 fit glmer(hallucination ~ model + (1|case_id)) — a random
-#   intercept for CASE only. Because a case can contain several
-#   different variants, this does not represent the within-variant
-#   pairing across the three models, only broader case-level
-#   clustering. Its variance component was estimated at the
-#   boundary (~0), which v1 mis-described as evidence of "no
-#   material clustering" — a boundary estimate does not establish
-#   independence, especially with these sparse hallucination counts
-#   (72 / 5 / 1 across the three models).
-#
-#   v2 (this version) instead fits a GEE (geepack::geeglm) with the
-#   cluster identifier set to VARIANT (not case): each variant
-#   contributes exactly 3 correlated observations, one per model,
-#   and an exchangeable working correlation with robust (sandwich)
-#   standard errors is used, so inference does not depend on a
-#   variance component being estimable away from the boundary.
+#   v1 fit glmer(hallucination ~ model + (1|case_id)) — random
+#   intercept for case only; its boundary (~0) variance estimate
+#   was mis-described as evidence of "no material clustering."
+#   v2 fit a GEE clustered on VARIANT (exchangeable corr, robust
+#   SE) — this models layer (1) correctly, but still treats
+#   different variants within the same case as independent
+#   clusters, leaving layer (2) unaddressed.
+#   v3 (this version) clusters on CASE instead: each case cluster
+#   contains all (variant x model) observations for that case, so
+#   both layers of non-independence fall inside one cluster and
+#   are covered by the robust sandwich SE, without needing either
+#   layer's correlation to be estimated exactly right (GEE's
+#   robust SE is valid under correlation misspecification as long
+#   as the clustering/independence unit itself is correct, and
+#   case is the correct unit here: different cases are genuinely
+#   independent patients/profiles).
 # =============================================================
 
 library(tidyverse)
@@ -39,25 +39,23 @@ library(emmeans)
 library(here)
 
 scores <- read_csv(here("scoring", "scores_all_variants.csv"),
-                    show_col_types = FALSE) |>
-  mutate(variant_id = paste(case_id, gene, hgvsp, sep = "|"))
+                    show_col_types = FALSE)
 
 scores_c4 <- scores |>
   filter(!gt_relevant) |>
   mutate(model = factor(model, levels = c("gpt4o", "gemini25", "deepseek_r1")),
-         variant_num = as.integer(factor(variant_id))) |>
-  arrange(variant_num, model) |>
+         case_num = as.integer(factor(case_id))) |>
+  arrange(case_num, model) |>
   as.data.frame()
 
-message(">>> C4 post-hoc sensitivity analysis (GEE, cluster = variant)")
+message(">>> C4 post-hoc sensitivity analysis (GEE, cluster = case)")
 message(">>> N eligible observations: ", nrow(scores_c4))
-message(">>> N variant clusters (each size 3, one obs per model): ",
-        length(unique(scores_c4$variant_num)))
+message(">>> N case clusters: ", length(unique(scores_c4$case_num)))
 
-gee_c4 <- geeglm(c4_hallucination ~ model, id = variant_num, data = scores_c4,
+gee_c4 <- geeglm(c4_hallucination ~ model, id = case_num, data = scores_c4,
                   family = binomial, corstr = "exchangeable")
 
-cat("\n=== C4 GEE MODEL SUMMARY ===\n")
+cat("\n=== C4 GEE MODEL SUMMARY (cluster = case) ===\n")
 print(summary(gee_c4))
 
 cat("\n=== C4 GEE OMNIBUS WALD TEST ===\n")
@@ -74,11 +72,13 @@ sink(here("results", "tables", "c4_posthoc_mixed_model.txt"))
 cat("=== C4 POST-HOC SENSITIVITY ANALYSIS (non-pre-registered) ===\n")
 cat("Primary, pre-registered C4 analysis (chi-squared, independent counts) is in\n")
 cat("statistical_tests.txt / 03_analysis.R.\n\n")
-cat("Method: GEE (geepack::geeglm), cluster = variant (each of the 509 eligible\n")
-cat("variants contributes one paired observation per model), exchangeable working\n")
-cat("correlation, robust (sandwich) standard errors. This directly represents the\n")
-cat("repeated-measures pairing across models that a case-level-only random\n")
-cat("intercept does not capture.\n\n")
+cat("Method: GEE (geepack::geeglm), cluster = CASE (each case's full set of\n")
+cat("variant x model observations is one cluster), exchangeable working\n")
+cat("correlation, robust (sandwich) standard errors. This covers both layers of\n")
+cat("non-independence in this design -- the same variant scored by all three\n")
+cat("models, and multiple variants sharing a case -- within one cluster, so\n")
+cat("robust SEs are valid without requiring either correlation to be estimated\n")
+cat("exactly right.\n\n")
 cat("=== OMNIBUS WALD TEST ===\n"); print(wald_c4)
 cat("\n=== PAIRWISE COMPARISONS (Bonferroni) ===\n"); print(pairs_c4_gee)
 sink()
