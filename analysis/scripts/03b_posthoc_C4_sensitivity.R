@@ -9,64 +9,78 @@
 #   PRIMARY, pre-registered analysis in 03_analysis.R and in the
 #   manuscript.
 #
-#   This script adds a post-hoc robustness check: the same 509
-#   eligible variants were evaluated by all three models (a
-#   repeated-measures design), with further clustering of
-#   variants within case — neither of which the chi-squared test
-#   accounts for. Here we re-fit the comparison as a mixed-effects
-#   logistic regression (model as fixed effect, case as a random
-#   intercept), the same approach pre-registered for C1 and C2,
-#   to check whether the chi-squared conclusion is robust to this
-#   non-independence.
+#   The same 509 eligible variants were evaluated by all three
+#   models (a repeated-measures design: each variant contributes
+#   one paired observation per model), which the chi-squared test
+#   does not model.
 #
-#   This analysis was NOT in protocol v4 and is reported in the
-#   manuscript explicitly as a non-pre-registered sensitivity
-#   analysis, not as a replacement for the primary C4 test.
+#   Revision history of this script (kept for transparency):
+#   v1 fit glmer(hallucination ~ model + (1|case_id)) — a random
+#   intercept for CASE only. Because a case can contain several
+#   different variants, this does not represent the within-variant
+#   pairing across the three models, only broader case-level
+#   clustering. Its variance component was estimated at the
+#   boundary (~0), which v1 mis-described as evidence of "no
+#   material clustering" — a boundary estimate does not establish
+#   independence, especially with these sparse hallucination counts
+#   (72 / 5 / 1 across the three models).
+#
+#   v2 (this version) instead fits a GEE (geepack::geeglm) with the
+#   cluster identifier set to VARIANT (not case): each variant
+#   contributes exactly 3 correlated observations, one per model,
+#   and an exchangeable working correlation with robust (sandwich)
+#   standard errors is used, so inference does not depend on a
+#   variance component being estimable away from the boundary.
 # =============================================================
 
 library(tidyverse)
-library(lme4)
+library(geepack)
 library(emmeans)
 library(here)
 
 scores <- read_csv(here("scoring", "scores_all_variants.csv"),
-                    show_col_types = FALSE)
+                    show_col_types = FALSE) |>
+  mutate(variant_id = paste(case_id, gene, hgvsp, sep = "|"))
 
 scores_c4 <- scores |>
   filter(!gt_relevant) |>
-  mutate(model = factor(model, levels = c("gpt4o", "gemini25", "deepseek_r1")))
+  mutate(model = factor(model, levels = c("gpt4o", "gemini25", "deepseek_r1")),
+         variant_num = as.integer(factor(variant_id))) |>
+  arrange(variant_num, model) |>
+  as.data.frame()
 
-message(">>> C4 post-hoc sensitivity analysis")
-message(">>> N eligible variants: ", nrow(scores_c4))
-message(">>> N cases: ", length(unique(scores_c4$case_id)))
+message(">>> C4 post-hoc sensitivity analysis (GEE, cluster = variant)")
+message(">>> N eligible observations: ", nrow(scores_c4))
+message(">>> N variant clusters (each size 3, one obs per model): ",
+        length(unique(scores_c4$variant_num)))
 
-m_c4 <- glmer(c4_hallucination ~ model + (1 | case_id),
-              data = scores_c4, family = binomial,
-              control = glmerControl(optimizer = "bobyqa"))
-m_c4_null <- glmer(c4_hallucination ~ 1 + (1 | case_id),
-                    data = scores_c4, family = binomial,
-                    control = glmerControl(optimizer = "bobyqa"))
+gee_c4 <- geeglm(c4_hallucination ~ model, id = variant_num, data = scores_c4,
+                  family = binomial, corstr = "exchangeable")
 
-cat("\n=== C4 POST-HOC MIXED-EFFECTS MODEL — LIKELIHOOD RATIO TEST ===\n")
-lrt_c4_posthoc <- anova(m_c4_null, m_c4)
-print(lrt_c4_posthoc)
+cat("\n=== C4 GEE MODEL SUMMARY ===\n")
+print(summary(gee_c4))
 
-cat("\n=== C4 POST-HOC PAIRWISE COMPARISONS (Bonferroni) ===\n")
-emm_c4 <- emmeans(m_c4, ~model)
-pairs_c4_posthoc <- pairs(emm_c4, adjust = "bonferroni")
-print(pairs_c4_posthoc)
+cat("\n=== C4 GEE OMNIBUS WALD TEST ===\n")
+wald_c4 <- anova(gee_c4)
+print(wald_c4)
 
-cat("\n=== MODEL SUMMARY ===\n")
-print(summary(m_c4))
+cat("\n=== C4 GEE PAIRWISE COMPARISONS (Bonferroni, robust SE) ===\n")
+emm_c4 <- emmeans(gee_c4, ~model, vcov. = vcov(gee_c4))
+pairs_c4_gee <- pairs(emm_c4, adjust = "bonferroni")
+print(pairs_c4_gee)
 
 dir.create(here("results", "tables"), recursive = TRUE, showWarnings = FALSE)
 sink(here("results", "tables", "c4_posthoc_mixed_model.txt"))
-cat("=== C4 POST-HOC MIXED-EFFECTS MODEL (non-pre-registered sensitivity analysis) ===\n")
+cat("=== C4 POST-HOC SENSITIVITY ANALYSIS (non-pre-registered) ===\n")
 cat("Primary, pre-registered C4 analysis (chi-squared, independent counts) is in\n")
-cat("statistical_tests.txt / 03_analysis.R. This file checks robustness to the\n")
-cat("repeated-measures / case-clustering structure the chi-squared test ignores.\n\n")
-cat("=== LIKELIHOOD RATIO TEST ===\n"); print(lrt_c4_posthoc)
-cat("\n=== PAIRWISE COMPARISONS (Bonferroni) ===\n"); print(pairs_c4_posthoc)
+cat("statistical_tests.txt / 03_analysis.R.\n\n")
+cat("Method: GEE (geepack::geeglm), cluster = variant (each of the 509 eligible\n")
+cat("variants contributes one paired observation per model), exchangeable working\n")
+cat("correlation, robust (sandwich) standard errors. This directly represents the\n")
+cat("repeated-measures pairing across models that a case-level-only random\n")
+cat("intercept does not capture.\n\n")
+cat("=== OMNIBUS WALD TEST ===\n"); print(wald_c4)
+cat("\n=== PAIRWISE COMPARISONS (Bonferroni) ===\n"); print(pairs_c4_gee)
 sink()
 
 message("\n>>> Post-hoc C4 sensitivity analysis complete.")

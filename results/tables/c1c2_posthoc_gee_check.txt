@@ -1,0 +1,45 @@
+=== C1/C2 POST-HOC GEE ROBUSTNESS CHECK (non-pre-registered) ===
+Primary, pre-registered C1/C2 analysis (mixed-effects logistic regression,
+case as random intercept) is in statistical_tests.txt / 03_analysis.R and is
+unchanged by this file. This check uses GEE with cluster = variant
+(exchangeable correlation, robust SE) to confirm the primary conclusions are
+robust to the within-variant pairing across models.
+
+--- C1 ---
+Analysis of 'Wald statistic' Table
+Model: binomial, link: logit
+Response: c1_correct
+Terms added sequentially (first to last)
+
+      Df     X2 P(>|Chi|)    
+model  2 22.929 1.049e-05 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+ contrast               estimate     SE  df z.ratio p.value
+ gpt4o - gemini25         -0.506 0.1469 Inf  -3.444  0.0017
+ gpt4o - deepseek_r1       0.115 0.0848 Inf   1.360  0.5211
+ gemini25 - deepseek_r1    0.621 0.1314 Inf   4.728  <.0001
+
+Results are given on the log odds ratio (not the response) scale. 
+P value adjustment: bonferroni method for 3 tests 
+
+
+--- C2 ---
+Analysis of 'Wald statistic' Table
+Model: binomial, link: logit
+Response: c2_correct
+Terms added sequentially (first to last)
+
+      Df     X2 P(>|Chi|)    
+model  2 63.331 1.765e-14 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+ contrast               estimate    SE  df z.ratio p.value
+ gpt4o - gemini25         -2.529 0.383 Inf  -6.598  <.0001
+ gpt4o - deepseek_r1      -2.394 0.357 Inf  -6.707  <.0001
+ gemini25 - deepseek_r1    0.135 0.407 Inf   0.333  1.0000
+
+Results are given on the log odds ratio (not the response) scale. 
+P value adjustment: bonferroni method for 3 tests 
